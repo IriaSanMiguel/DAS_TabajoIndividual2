@@ -8,7 +8,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="87dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_myAccount"
@@ -26,8 +28,10 @@
             android:id="@+id/textUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="onClickUsername"
             android:text="TextView"
-            android:textSize="18dp"
+            android:textSize="19dp"
             app:layout_constraintBottom_toTopOf="@+id/textContrasena"
             app:layout_constraintEnd_toStartOf="@+id/editarUsername"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,8 +41,9 @@
             android:id="@+id/textContrasena"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onClickContrasena"
             android:text="TextView"
-            android:textSize="18dp"
+            android:textSize="19dp"
             app:layout_constraintBottom_toTopOf="@+id/textNombre"
             app:layout_constraintEnd_toStartOf="@+id/editarContrasena"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,8 +53,9 @@
             android:id="@+id/textNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onClickNombre"
             android:text="TextView"
-            android:textSize="18dp"
+            android:textSize="19dp"
             app:layout_constraintBottom_toTopOf="@+id/textApellido"
             app:layout_constraintEnd_toStartOf="@+id/editarNombre"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,11 +64,11 @@
         <TextView
             android:id="@+id/textApellido"
             android:layout_width="wrap_content"
-            android:layout_height="19dp"
-            android:layout_marginBottom="60dp"
+            android:layout_height="wrap_content"
+            android:onClick="onClickApellido"
             android:text="TextView"
-            android:textSize="18dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="19dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonGuardar"
             app:layout_constraintEnd_toStartOf="@+id/editarApellido"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textNombre" />
@@ -82,59 +88,61 @@
             android:id="@+id/editarUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="150dp"
             android:ems="10"
             android:hint="@string/hintUsuario"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/editarContrasena"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textUsername"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_myAccount" />
 
         <EditText
             android:id="@+id/editarContrasena"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="150dp"
             android:ems="10"
             android:hint="@string/hintContraseña"
             android:inputType="textPassword"
             app:layout_constraintBottom_toTopOf="@+id/editarNombre"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textContrasena"
             app:layout_constraintTop_toBottomOf="@+id/editarUsername" />
 
         <EditText
             android:id="@+id/editarNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="150dp"
             android:ems="10"
             android:hint="@string/nombre"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/editarApellido"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textNombre"
             app:layout_constraintTop_toBottomOf="@+id/editarContrasena" />
 
         <EditText
             android:id="@+id/editarApellido"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="150dp"
             android:ems="10"
             android:hint="@string/apellido"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/buttonGuardar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textApellido"
             app:layout_constraintTop_toBottomOf="@+id/editarNombre" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="320dp"
+            android:layout_marginBottom="500dp"
             android:text="@string/instruccionesMyAccount"
+            android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_myAccount" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

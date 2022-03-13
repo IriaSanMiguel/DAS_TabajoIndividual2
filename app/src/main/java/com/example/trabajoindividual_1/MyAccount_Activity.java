@@ -2,6 +2,7 @@ package com.example.trabajoindividual_1;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -34,8 +35,6 @@ public class MyAccount_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_account);
         db = new miDB(this, 1);
-        // Asignar ActionBar
-        setSupportActionBar(findViewById(R.id.toolbar_myAccount));
 
         //Obtenemos en nombre de usuario
         Intent i = getIntent();
@@ -58,11 +57,10 @@ public class MyAccount_Activity extends AppCompatActivity {
 
                 Button boton = (Button) findViewById(R.id.buttonGuardar);
 
-                // Definimos los textos de los TextViews
-                usernameTextView.setText(getString(R.string.usernameActual) + ": " + username);
-                contrasenaTextView.setText(getString(R.string.contrasenaActual));
-                nombreTextView.setText(getString(R.string.nombreActual) + ": " + json.getString("Nombre"));
-                apellidoTextView.setText(getString(R.string.apellidoActual) + ": " + json.getString("Apellido"));
+                ConstraintLayout.LayoutParams paramsUsernameTextView = (ConstraintLayout.LayoutParams) usernameTextView.getLayoutParams();
+                ConstraintLayout.LayoutParams paramsContrasenaTextView = (ConstraintLayout.LayoutParams) contrasenaTextView.getLayoutParams();
+                ConstraintLayout.LayoutParams paramsNombreTextView = (ConstraintLayout.LayoutParams) nombreTextView.getLayoutParams();
+                ConstraintLayout.LayoutParams paramsApellidoTextView = (ConstraintLayout.LayoutParams) apellidoTextView.getLayoutParams();
 
                 // Ocultamos los EditText y el botón
                 usernameEditText.setVisibility(View.INVISIBLE);
@@ -71,27 +69,91 @@ public class MyAccount_Activity extends AppCompatActivity {
                 apellidoEditText.setVisibility(View.INVISIBLE);
                 boton.setVisibility(View.INVISIBLE);
 
-                // Cambiamos el margen izquierdo de los TextViews
-                LinearLayout.LayoutParams paramsUsernameTextView = (LinearLayout.LayoutParams) usernameTextView.getLayoutParams();
-                LinearLayout.LayoutParams paramsContrasenaTextView = (LinearLayout.LayoutParams) contrasenaTextView.getLayoutParams();
-                LinearLayout.LayoutParams paramsNombreTextView = (LinearLayout.LayoutParams) nombreTextView.getLayoutParams();
-                LinearLayout.LayoutParams paramsApellidoTextView = (LinearLayout.LayoutParams) apellidoTextView.getLayoutParams();
-                paramsUsernameTextView.setMargins(200,0,0,0);
-                usernameTextView.setLayoutParams(paramsUsernameTextView);
-                paramsContrasenaTextView.setMargins(200,0,0,0);
-                contrasenaTextView.setLayoutParams(paramsContrasenaTextView);
-                paramsNombreTextView.setMargins(200,0,0,0);
-                nombreTextView.setLayoutParams(paramsNombreTextView);
-                paramsApellidoTextView.setMargins(200,0,0,0);
-                apellidoTextView.setLayoutParams(paramsApellidoTextView);
+                if (savedInstanceState != null) { // Si se ha girado la pantalla
+                    boolean visibilityUsername = savedInstanceState.getBoolean("VisibilityUsername");
+                    boolean visibilityContrasena = savedInstanceState.getBoolean("VisibilityContrasena");
+                    boolean visibilityNombre = savedInstanceState.getBoolean("VisibilityNombre");
+                    boolean visibilityApellido = savedInstanceState.getBoolean("VisibilityApellido");
+                    boolean salir = false;
+                    if (visibilityUsername) {
+                        usernameEditText.setVisibility(View.VISIBLE);
+                        boton.setVisibility(View.VISIBLE);
+                        salir = true;
+                    }
+                    if (visibilityContrasena) {
+                        contrasenaEditText.setVisibility(View.VISIBLE);
+                        boton.setVisibility(View.VISIBLE);
+                        salir = true;
+                    }
+                    if (visibilityNombre) {
+                        nombreEditText.setVisibility(View.VISIBLE);
+                        boton.setVisibility(View.VISIBLE);
+                        salir = true;
+                    }
+                    if (visibilityApellido) {
+                        apellidoEditText.setVisibility(View.VISIBLE);
+                        boton.setVisibility(View.VISIBLE);
+                        salir = true;
+                    }
+                    if (salir) {
+                        paramsUsernameTextView.leftMargin = 200;
+                        usernameTextView.setLayoutParams(paramsUsernameTextView);
+                        paramsContrasenaTextView.leftMargin = 200;
+                        contrasenaTextView.setLayoutParams(paramsContrasenaTextView);
+                        paramsNombreTextView.leftMargin = 200;
+                        nombreTextView.setLayoutParams(paramsNombreTextView);
+                        paramsApellidoTextView.leftMargin = 200;
+                        apellidoTextView.setLayoutParams(paramsApellidoTextView);
+                        return;
+                    }
+                } else {
+                    // Definimos los textos de los TextViews
+                    usernameTextView.setText(getString(R.string.usernameActual) + ": " + username);
+                    contrasenaTextView.setText(getString(R.string.contrasenaActual));
+                    nombreTextView.setText(getString(R.string.nombreActual) + ": " + json.getString("Nombre"));
+                    apellidoTextView.setText(getString(R.string.apellidoActual) + ": " + json.getString("Apellido"));
 
-
+                    // Cambiamos el margen izquierdo de los TextViews
+                    paramsUsernameTextView.leftMargin = 800;
+                    usernameTextView.setLayoutParams(paramsUsernameTextView);
+                    paramsContrasenaTextView.leftMargin = 800;
+                    contrasenaTextView.setLayoutParams(paramsContrasenaTextView);
+                    paramsNombreTextView.leftMargin = 800;
+                    nombreTextView.setLayoutParams(paramsNombreTextView);
+                    paramsApellidoTextView.leftMargin = 800;
+                    apellidoTextView.setLayoutParams(paramsApellidoTextView);
+                }
             } catch (Exception e) {
                 Toast aviso = Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
                 aviso.show();
             }
 
         }
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+
+        TextView usernameTextView = (TextView) findViewById(R.id.textUsername);
+        TextView contrasenaTextView = (TextView) findViewById(R.id.textContrasena);
+        TextView nombreTextView = (TextView) findViewById(R.id.textNombre);
+        TextView apellidoTextView = (TextView) findViewById(R.id.textApellido);
+
+        if (usernameTextView.getText().toString().equals(getString(R.string.cambiarUsername))) { // Si se estaba editando el username
+            savedInstanceState.putBoolean("VisibilityUsername", true);
+        }
+        if (contrasenaTextView.getText().toString().equals(getString(R.string.cambiarUsername))) { // Si se estaba editando la contraseña
+            savedInstanceState.putBoolean("VisibilityContrasena", true);
+        }
+        if (nombreTextView.getText().toString().equals(getString(R.string.cambiarUsername))) { // Si se estaba editando el nombre
+            savedInstanceState.putBoolean("VisibilityNombre", true);
+        }
+        if (apellidoTextView.getText().toString().equals(getString(R.string.cambiarUsername))) { // Si se estaba editando el apellido
+            savedInstanceState.putBoolean("VisibilityApellido", true);
+        }
+        super.onRestoreInstanceState(savedInstanceState);
+
     }
 
     @Override
@@ -103,6 +165,9 @@ public class MyAccount_Activity extends AppCompatActivity {
     public void onClickUsername(View v) {
         EditText usernameEditText = (EditText) findViewById(R.id.editarUsername);
         TextView usernameTextView = (TextView) findViewById(R.id.textUsername);
+        ConstraintLayout.LayoutParams paramsUsernameTextView = (ConstraintLayout.LayoutParams) usernameTextView.getLayoutParams();
+        paramsUsernameTextView.leftMargin = 100;
+        usernameTextView.setLayoutParams(paramsUsernameTextView);
         usernameTextView.setText(getString(R.string.cambiarUsername));
         Button boton = (Button) findViewById(R.id.buttonGuardar);
         boton.setVisibility(View.VISIBLE);
@@ -113,6 +178,9 @@ public class MyAccount_Activity extends AppCompatActivity {
     public void onClickContrasena(View v) {
         EditText contrasenaEditText = (EditText) findViewById(R.id.editarContrasena);
         TextView contrasenaTextView = (TextView) findViewById(R.id.textContrasena);
+        ConstraintLayout.LayoutParams paramsContrasenaTextView = (ConstraintLayout.LayoutParams) contrasenaTextView.getLayoutParams();
+        paramsContrasenaTextView.leftMargin = 100;
+        contrasenaTextView.setLayoutParams(paramsContrasenaTextView);
         contrasenaTextView.setText(getString(R.string.cambiarContraseña));
         Button boton = (Button) findViewById(R.id.buttonGuardar);
         boton.setVisibility(View.VISIBLE);
@@ -122,6 +190,9 @@ public class MyAccount_Activity extends AppCompatActivity {
     public void onClickNombre(View v) {
         EditText nombreEditText = (EditText) findViewById(R.id.editarNombre);
         TextView nombreTextView = (TextView) findViewById(R.id.textNombre);
+        ConstraintLayout.LayoutParams paramsNombreTextView = (ConstraintLayout.LayoutParams) nombreTextView.getLayoutParams();
+        paramsNombreTextView.leftMargin = 100;
+        nombreTextView.setLayoutParams(paramsNombreTextView);
         nombreTextView.setText(getString(R.string.cambiarNombre));
         Button boton = (Button) findViewById(R.id.buttonGuardar);
         boton.setVisibility(View.VISIBLE);
@@ -131,6 +202,9 @@ public class MyAccount_Activity extends AppCompatActivity {
     public void onClickApellido(View v) {
         EditText apellidoEditText = (EditText) findViewById(R.id.editarApellido);
         TextView apellidoTextView = (TextView) findViewById(R.id.textApellido);
+        ConstraintLayout.LayoutParams paramsApellidoTextView = (ConstraintLayout.LayoutParams) apellidoTextView.getLayoutParams();
+        paramsApellidoTextView.leftMargin = 100;
+        apellidoTextView.setLayoutParams(paramsApellidoTextView);
         apellidoTextView.setText(getString(R.string.cambiarApellido));
         Button boton = (Button) findViewById(R.id.buttonGuardar);
         boton.setVisibility(View.VISIBLE);
@@ -147,7 +221,7 @@ public class MyAccount_Activity extends AppCompatActivity {
         Boolean error = false;
 
         if (!usernameEditText.getText().toString().equals("")) {
-            if(db.existeUsuario(usernameEditText.getText().toString())){ // Si ya existe un usuario con ese username
+            if (db.existeUsuario(usernameEditText.getText().toString())) { // Si ya existe un usuario con ese username
                 usernameEditText.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
                 Toast aviso = Toast.makeText(this, "Ese nombre de usuario ya está en uso", Toast.LENGTH_SHORT);
                 aviso.show();
@@ -209,52 +283,5 @@ public class MyAccount_Activity extends AppCompatActivity {
         } catch (Exception e) {
             return null;
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.opcion1: { //Si selecciona cambiar idioma
-                cambiarIdioma();
-                break;
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void actualizarIdioma(int index) {
-
-        // Cambiar el idioma
-        String[] languages = {"es", "en"};
-        Locale locale = new Locale(languages[index]);
-        Locale.setDefault(locale);
-        Configuration conf = getBaseContext().getResources().getConfiguration();
-        conf.setLocale(locale);
-        conf.setLayoutDirection(locale);
-        Context context = getBaseContext().createConfigurationContext(conf);
-        getBaseContext().getResources().updateConfiguration(conf, context.getResources().getDisplayMetrics());
-
-        // Mantener el texto introducido en los EditText
-        Intent i = new Intent(this, this.getClass());
-        i.putExtra("username", username);
-        // Reiniciamos la actividad
-        startActivity(i);
-        finish();
-    }
-
-    private void cambiarIdioma() {
-        // Creamos un diálogo para elegir el idioma
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.cambiarIdioma);
-        String[] languages = {"Castellano", "English"};
-        builder.setSingleChoiceItems(languages, -1, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                actualizarIdioma(i);
-            }
-        });
-        builder.setCancelable(false);
-        builder.show();
     }
 }

@@ -14,6 +14,7 @@
             android:exported="true" />
         <activity
             android:name=".MyAccount_Activity"
+            android:configChanges="orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".Principal_Activity"
