@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Reviews de Películas</string>
+    <string name="boton_login">Iniciar sesion</string>
+    <string name="boton_logup">Crear cuenta</string>
+    <string name="hintUsuario">Nombre de usuario</string>
+    <string name="hintContraseña">Contraseña</string>
+    <string name="inciarsesion">Iniciar Sesión</string>
+    <string name="tituloCrearCuenta">Rellena los siguientes apartados para crear la cuenta</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellido">Apellido</string>
+    <string name="usuario">Nombre de usuario</string>
+    <string name="cambiarIdioma">Cambiar idioma</string>
+    <string name="seleccIdioma">Selecciona un idioma</string>
+    <string name="perfil">Mi cuenta</string>
+    <string name="misreviews">Mis Reviews</string>
+    <string name="misdatos">Mis datos</string>
+    <string name="micuenta">Mi cuenta</string>
+    <string name="Guardar">Guardar</string>
+    <string name="title_activity_my_account">MyAccount_Activity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="usernameActual">Username actual</string>
+    <string name="contrasenaActual">Contraseña</string>
+    <string name="nombreActual">Nombre actual</string>
+    <string name="apellidoActual">Apellido actual</string>
+    <string name="cambiarUsername">Cambiar username</string>
+    <string name="cambiarContraseña">Cambiar contraseña</string>
+    <string name="cambiarNombre">Cambiar nombre</string>
+    <string name="cambiarApellido">Cambiar apellido</string>
+    <string name="instruccionesMyAccount">Presione sobre los datos que quiera cambiar</string>
+</resources>

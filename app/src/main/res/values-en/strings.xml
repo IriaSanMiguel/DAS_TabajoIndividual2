@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movie Reviews</string>
+    <string name="boton_login">Log in</string>
+    <string name="boton_logup">Create account</string>
+    <string name="hintUsuario">Username</string>
+    <string name="hintContraseña">Password</string>
+    <string name="inciarsesion">Log in</string>
+    <string name="tituloCrearCuenta">Fill in the following sections in order to create the account</string>
+    <string name="nombre">Name</string>
+    <string name="apellido">Surname</string>
+    <string name="usuario">Username</string>
+    <string name="cambiarIdioma">Change lenguage</string>
+    <string name="seleccIdioma">Choose  a lenguage</string>
+    <string name="perfil">My account</string>
+    <string name="misreviews">My Reviews</string>
+    <string name="misdatos">My data</string>
+    <string name="micuenta">My profile</string>
+    <string name="Guardar">Save</string>
+    <string name="usernameActual">Current username</string>
+    <string name="contrasenaActual">Password</string>
+    <string name="nombreActual">Current name</string>
+    <string name="apellidoActual">Current lastname</string>
+    <string name="cambiarUsername">Change username</string>
+    <string name="cambiarContraseña">Change password</string>
+    <string name="cambiarNombre">Change name</string>
+    <string name="cambiarApellido">Change surname</string>
+    <string name="instruccionesMyAccount">Click on the data you want to change</string>
+</resources>

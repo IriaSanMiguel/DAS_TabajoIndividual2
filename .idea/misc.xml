@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/drawable/baseline_account_circle_18.xml" value="0.1" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/drawable/baseline_account_circle_24.xml" value="0.1" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/drawable/baseline_article_24.xml" value="0.1" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/drawable/baseline_description_24.xml" value="0.131" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/drawable/baseline_rate_review_24.xml" value="0.1" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/drawable/baseline_thumb_up_24.xml" value="0.2755" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/drawable/dark.xml" value="0.1775" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2815" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/layout-land/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/layout-land/activity_my_account.xml" value="0.2821869488536155" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/layout-land/createaccount.xml" value="0.25" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/layout-land/login_principal.xml" value="0.25" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/layout-land/micuenta.xml" value="0.2292768959435626" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/layout-land/misdatos.xml" value="0.29541446208112876" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/layout/activity_my_account.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/layout/content_my_account.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/layout/createaccount.xml" value="0.33" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/layout/listview_peliculas.xml" value="0.33" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/layout/login_principal.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/layout/micuenta.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/layout/misdatos.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/layout/misreviews.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/menu/main_menu.xml" value="0.22" />
+        <entry key="..\:/Users/Iria San Miguel/AndroidStudioProjects/TrabajoIndividual_1/app/src/main/res/menu/principal_menu.xml" value="0.3489583333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
