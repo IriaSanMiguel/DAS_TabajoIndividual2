@@ -26,4 +26,7 @@
     <string name="cambiarNombre">Change name</string>
     <string name="cambiarApellido">Change surname</string>
     <string name="instruccionesMyAccount">Click on the data you want to change</string>
+    <string name="publicar">Publish</string>
+    <string name="escribeAqui">Write here your review</string>
+    <string name="review">"Write a review for the movie "</string>
 </resources>

@@ -99,15 +99,15 @@ public class miDB extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("INSERT INTO Usuarios VALUES ('58ana_', 'Ana', 'Martinez', '81dc9bdb52d04dc20036dbd8313ed055')");
 
         // Creamos algunas reviews
-        sqLiteDatabase.execSQL("INSERT INTO Reviews VALUES ('isanmiguel', 'The Batman', 'Esta bien, aunque Bruce Wayne es u poco emo.', 3)");
-        sqLiteDatabase.execSQL("INSERT INTO Reviews VALUES ('PLATASSON', 'The Batman', 'Muy buen Batman, un Bruce wayne muy flojo.', 3)");
+        sqLiteDatabase.execSQL("INSERT INTO Reviews VALUES ('isanmiguel', 'The Batman', 'Esta bien, aunque Bruce Wayne es un poco emo.', 3)");
+        sqLiteDatabase.execSQL("INSERT INTO Reviews VALUES ('PLATASSON', 'The Batman', 'Muy buen Batman, un Bruce Wayne muy flojo.', 3)");
         sqLiteDatabase.execSQL("INSERT INTO Reviews VALUES ('iker0610', 'The Batman', 'Pese a ser la característica principal del villano a priori principal, " +
                 "los acertijos quedan muy en tercer plano y son muy simplones. Alfred podría haber sido bastante mejor... P.D. Hasta los bots de fortnite " +
                 "tienen mejor puntería que los guardas del pinguino.', 3)");
         sqLiteDatabase.execSQL("INSERT INTO Reviews VALUES ('pepe125', 'Uncharted', 'Mala, genérica, sin alma, predecible, no destaca enabsolutamente nada, " +
                 "es como una lista de clichés uno detrás de otro de lo que una película típica de aventuras debe tener.', 1)");
         sqLiteDatabase.execSQL("INSERT INTO Reviews VALUES ('58ana_', 'Uncharted', 'A mis hijas de menos de 12 años les gustó. Mi opinión es pésima. No hay guión y se nota a los 5 minutos de empezar.', 1)");
-        sqLiteDatabase.execSQL("INSERT INTO Reviews VALUES ('christian', 'Dune', 'Profunda, Impactante y bien trabajada.', 5)");
+        sqLiteDatabase.execSQL("INSERT INTO Reviews VALUES ('christian', 'Dune', 'Profunda, impactante y bien trabajada.', 5)");
         sqLiteDatabase.execSQL("INSERT INTO Reviews VALUES ('aitorjus', 'Dune', 'Literal el 98% de lo que dura la película es arena, y el % restante créditos.', 1)");
         sqLiteDatabase.execSQL("INSERT INTO Reviews VALUES ('58ana_', 'Clifford', 'Para los niños está bien. Se van a divertir un montón con el perro rojo gigante.', 3)");
 
@@ -207,7 +207,7 @@ public class miDB extends SQLiteOpenHelper {
     }
 
 
-    public boolean addReview(String nombreUsuario, String titulo, String review, int puntuacion) {
+    public boolean addReview(String nombreUsuario, String titulo, String review, float puntuacion) {
         try {
             SQLiteDatabase db = getWritableDatabase();
             ContentValues datos = new ContentValues();

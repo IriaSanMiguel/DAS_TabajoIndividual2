@@ -1,5 +1,6 @@
 package com.example.trabajoindividual_1;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -7,7 +8,11 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -20,6 +25,7 @@ import java.util.Locale;
 public class Principal_Activity extends AppCompatActivity {
     miDB db;
     String username;
+    String[] lTitulos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +49,16 @@ public class Principal_Activity extends AppCompatActivity {
             startActivity(intent);
         } else {
             try {
-                String[] lTitulos = (String[]) json.get("lTitulos");
+                lTitulos = (String[]) json.get("lTitulos");
                 int[] lPosters = (int[]) json.get("lPosters");
                 float[] lPuntuacionMedia = (float[]) json.get("lPuntuacionMedia");
                 // Completamos la ListView
-                ListView listView = (ListView) findViewById(R.id.listView);
+
                 AdaptorListView eladap = new AdaptorListView(getApplicationContext(), lTitulos, lPosters, lPuntuacionMedia);
+                ListView listView = (ListView) findViewById(R.id.listView);
                 listView.setAdapter(eladap);
+
+
             } catch (Exception e) {
                 Toast aviso = Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
                 aviso.show();
@@ -60,6 +69,7 @@ public class Principal_Activity extends AppCompatActivity {
         }
     }
 
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.principal_menu, menu);
@@ -138,7 +148,17 @@ public class Principal_Activity extends AppCompatActivity {
         // Reiniciamos la actividad
         finish();
         startActivity(i);
+    }
 
+    public void onClickReview(View v){
+        View parentRow = (View) v.getParent();
+        ListView listView = (ListView) parentRow.getParent();
+        int position = listView.getPositionForView(parentRow);
 
+        Intent intent = new Intent(v.getContext(), Review_Activity.class);
+        intent.putExtra("tituloPelicula", lTitulos[position]);
+        intent.putExtra("usuario", username);
+        finish();
+        startActivity(intent);
     }
 }

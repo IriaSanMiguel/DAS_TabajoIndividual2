@@ -1,10 +1,15 @@
 package com.example.trabajoindividual_1;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -17,12 +22,14 @@ public class AdaptorListView extends BaseAdapter {
     private float[] puntuaciones;
     private LayoutInflater inflater;
     private Context contexto;
-    public AdaptorListView(Context pcontext, String[] nombresPeliculas, int[] imagenesPeliculas, float[] ppuntuaciones){
+
+    public AdaptorListView(Context pcontext, String[] nombresPeliculas, int[] imagenesPeliculas, float[] ppuntuaciones) {
         contexto = pcontext;
         peliculas = nombresPeliculas;
         posters = imagenesPeliculas;
         puntuaciones = ppuntuaciones;
         inflater = (LayoutInflater) contexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
     }
 
     @Override
@@ -42,6 +49,7 @@ public class AdaptorListView extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+
         view = inflater.inflate(R.layout.listview_peliculas, null);
 
         // Nombre de la película
@@ -55,6 +63,19 @@ public class AdaptorListView extends BaseAdapter {
         // Puntuación de la película
         RatingBar ratingBar = (RatingBar) view.findViewById(R.id.ratingBar_listView);
         ratingBar.setRating(puntuaciones[i]);
+
+        Button boton = (Button) view.findViewById(R.id.button_review);
+        boton.setOnClickListener(new AdapterView.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = ((Activity) viewGroup.getContext()).getIntent();
+                String sdf = intent.getStringExtra("username");
+                Intent intent_reviews = new Intent(viewGroup.getContext(), Review_Activity.class);
+                intent_reviews.putExtra("username", sdf);
+                intent_reviews.putExtra("titulo", peliculas[i]);
+                viewGroup.getContext().startActivity(intent_reviews);
+            }
+        });
 
         return view;
     }
