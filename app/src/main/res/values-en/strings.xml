@@ -28,5 +28,7 @@
     <string name="instruccionesMyAccount">Click on the data you want to change</string>
     <string name="publicar">Publish</string>
     <string name="escribeAqui">Write here your review</string>
-    <string name="review">"Write a review for the movie "</string>
+    <string name="review">Write a review for the movie %1$s</string>
+    <string name="hacerReview">Write a review</string>
+    <string name="verReviews">Movie reviews</string>
 </resources>

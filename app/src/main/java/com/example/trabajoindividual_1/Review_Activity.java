@@ -15,6 +15,7 @@ import android.widget.Toast;
 public class Review_Activity extends AppCompatActivity {
     String username;
     String pelicula;
+    String reviewText;
     miDB db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,15 @@ public class Review_Activity extends AppCompatActivity {
 
         // Asignar texto al TextView
         TextView textView = (TextView) findViewById(R.id.textViewReview);
-        textView.setText(R.string.review + pelicula);
+        textView.setText(getString(R.string.review,pelicula));
+
+        // Comprobamos si el usuario ya ha hecho una review a esa película
+        reviewText = db.yaHaHechoReview(username, pelicula);
+        if (reviewText!=null){
+            EditText editText = (EditText) findViewById(R.id.editText_Resena);
+            editText.setText(reviewText);
+        }
+
     }
 
     public void onClick(View v){
@@ -38,15 +47,28 @@ public class Review_Activity extends AppCompatActivity {
         RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         if (!editText.getText().toString().equals("")){
             if (ratingBar.getRating() != 0){
-                if(db.addReview(username, pelicula, editText.getText().toString(),ratingBar.getRating())){
-                    Intent intent = new Intent(this, Principal_Activity.class);
-                    intent.putExtra("usuario", username);
-                    finish();
-                    startActivity(intent);
-                }else{
-                    Toast aviso = Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
-                    aviso.show();
+                if(reviewText!=null){ // Si ya existía una review de ese usuario para esa película
+                    if(db.actualizarReview(username,pelicula,editText.getText().toString(),ratingBar.getRating())){
+                        Intent intent = new Intent(this, Principal_Activity.class);
+                        intent.putExtra("username", username);
+                        finish();
+                        startActivity(intent);
+                    }else{
+                        Toast aviso = Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
+                        aviso.show();
+                    }
+                }else { // Si es la primera review que hace el usuario a esa película
+                    if(db.addReview(username, pelicula, editText.getText().toString(),ratingBar.getRating())){
+                        Intent intent = new Intent(this, Principal_Activity.class);
+                        intent.putExtra("username", username);
+                        finish();
+                        startActivity(intent);
+                    }else{
+                        Toast aviso = Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
+                        aviso.show();
+                    }
                 }
+
             }else{
                 ratingBar.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
                 Toast aviso = Toast.makeText(this, "Por favor dele una puntacióna  la película", Toast.LENGTH_SHORT);

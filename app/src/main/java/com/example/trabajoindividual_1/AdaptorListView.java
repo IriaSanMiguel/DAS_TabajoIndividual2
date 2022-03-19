@@ -64,15 +64,28 @@ public class AdaptorListView extends BaseAdapter {
         RatingBar ratingBar = (RatingBar) view.findViewById(R.id.ratingBar_listView);
         ratingBar.setRating(puntuaciones[i]);
 
-        Button boton = (Button) view.findViewById(R.id.button_review);
-        boton.setOnClickListener(new AdapterView.OnClickListener(){
+        Button botonReview = (Button) view.findViewById(R.id.button_review);
+        botonReview.setOnClickListener(new AdapterView.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = ((Activity) viewGroup.getContext()).getIntent();
                 String sdf = intent.getStringExtra("username");
                 Intent intent_reviews = new Intent(viewGroup.getContext(), Review_Activity.class);
                 intent_reviews.putExtra("username", sdf);
-                intent_reviews.putExtra("titulo", peliculas[i]);
+                intent_reviews.putExtra("tituloPelicula", peliculas[i]);
+                viewGroup.getContext().startActivity(intent_reviews);
+            }
+        });
+
+        Button botonDescripcion = (Button) view.findViewById(R.id.button_descripcion);
+        botonDescripcion.setOnClickListener(new AdapterView.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = ((Activity) viewGroup.getContext()).getIntent();
+                String sdf = intent.getStringExtra("username");
+                Intent intent_reviews = new Intent(viewGroup.getContext(), Pelicula_Activity.class);
+                intent_reviews.putExtra("username", sdf);
+                intent_reviews.putExtra("tituloPelicula", peliculas[i]);
                 viewGroup.getContext().startActivity(intent_reviews);
             }
         });

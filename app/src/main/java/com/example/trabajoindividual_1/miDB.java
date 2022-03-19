@@ -170,6 +170,39 @@ public class miDB extends SQLiteOpenHelper {
 
     }
 
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Usuarios");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Peliculas");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Reviews");
+        onCreate(sqLiteDatabase);
+    }
+
+    public JSONObject getReviewsDePelicula(String titulo) {
+        SQLiteDatabase db = getReadableDatabase();
+        String[] columnas = new String[]{"Usuario", "Review", "Puntuacion"};
+        String[] param = new String[]{titulo};
+        Cursor cu = db.query("Reviews", columnas, "Pelicula=?", param, null, null, null);
+
+        String[] lUsers = new String[cu.getCount()];
+        String[] lReviews = new String[cu.getCount()];
+        float[] lRatings = new float[cu.getCount()];
+        try {
+            JSONObject json = new JSONObject();
+            while (cu.moveToNext()) {
+                lUsers[cu.getPosition()] = cu.getString(0);
+                lReviews[cu.getPosition()] = cu.getString(1);
+                lRatings[cu.getPosition()] = cu.getFloat(2);
+            }
+            json.put("lUsers", lUsers);
+            json.put("lReviews", lReviews);
+            json.put("lRatings", lRatings);
+            return json;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     public boolean addUsuario(String nombreUsuario, String nombre, String apellido, String contrasena) {
         try {
             SQLiteDatabase db = getWritableDatabase();
@@ -236,7 +269,7 @@ public class miDB extends SQLiteOpenHelper {
         }
         ContentValues datos = new ContentValues();
         String[] argumentos = new String[]{pelicula};
-        datos.put("PuntuacionMedia", totalStars / cont);
+        datos.put("PuntuacionMedia", (float) totalStars / cont);
         db.update("Peliculas", datos, "Titulo = ?", argumentos);
         db.close();
     }
@@ -267,13 +300,6 @@ public class miDB extends SQLiteOpenHelper {
         }
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Usuarios");
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Peliculas");
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Reviews");
-        onCreate(sqLiteDatabase);
-    }
 
     public JSONObject getDatosUsuario(String username) {
         SQLiteDatabase db = getReadableDatabase();
@@ -284,6 +310,23 @@ public class miDB extends SQLiteOpenHelper {
             JSONObject json = new JSONObject();
             cu.moveToNext();
             for (int i = 0; i < 2; i++) {
+                json.put(cu.getColumnName(i), cu.getString(i));
+            }
+            return json;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public JSONObject getDatosPelicula(String titulo) {
+        SQLiteDatabase db = getReadableDatabase();
+        String[] columnas = new String[]{"Director", "Anio", "Poster", "PuntuacionMedia"};
+        String[] param = new String[]{titulo};
+        Cursor cu = db.query("Peliculas", columnas, "Titulo=?", param, null, null, null);
+        try {
+            JSONObject json = new JSONObject();
+            cu.moveToNext();
+            for (int i = 0; i < 4; i++) {
                 json.put(cu.getColumnName(i), cu.getString(i));
             }
             return json;
@@ -348,15 +391,15 @@ public class miDB extends SQLiteOpenHelper {
         }
     }
 
-    public JSONObject getInfoPeliculas(){
+    public JSONObject getInfoPeliculas() {
         JSONObject json = new JSONObject();
         SQLiteDatabase db = getReadableDatabase();
-        String[] columnas = new String[]{"Titulo", "Poster","PuntuacionMedia"};
+        String[] columnas = new String[]{"Titulo", "Poster", "PuntuacionMedia"};
         Cursor cu = db.query("Peliculas", columnas, null, null, null, null, null);
 
         String[] lTitulos = new String[cu.getCount()];
-        int[] lPosters= new int[cu.getCount()];
-        float[] lPuntuacionMedia= new float[cu.getCount()];
+        int[] lPosters = new int[cu.getCount()];
+        float[] lPuntuacionMedia = new float[cu.getCount()];
 
         while (cu.moveToNext()) {
             lTitulos[cu.getPosition()] = cu.getString(0);
@@ -368,9 +411,37 @@ public class miDB extends SQLiteOpenHelper {
             json.put("lPosters", lPosters);
             json.put("lPuntuacionMedia", lPuntuacionMedia);
             return json;
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
 
+    public String yaHaHechoReview(String usuario, String pelicula) {
+        // Si el usuario no ha hceho una review a esa película se devolverá null, en caso contrario se devolverá el texto de la review
+
+        SQLiteDatabase db = getReadableDatabase();
+        String[] columnas = new String[]{"Review"};
+        String[] param = new String[]{usuario, pelicula};
+        Cursor cu = db.query("Reviews", columnas, "Usuario=? AND Pelicula=?", param, null, null, null);
+        if (!cu.moveToNext()) {
+            return null;
+        } else {
+            return cu.getString(0);
+        }
+    }
+
+    public boolean actualizarReview(String usuario, String pelicula, String review, float puntuacion) {
+        try {
+            SQLiteDatabase db = getWritableDatabase();
+            ContentValues datos = new ContentValues();
+            String[] argumentos = new String[]{usuario, pelicula};
+            datos.put("Review", review);
+            datos.put("Puntuacion", puntuacion);
+            db.update("Reviews", datos, "Usuario=? AND Pelicula=?", argumentos);
+            db.close();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

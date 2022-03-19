@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PeliculasFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/posterPelicula"
+            android:layout_width="141dp"
+            android:layout_height="204dp"
+            android:src="@drawable/dune"
+            app:layout_constraintBottom_toTopOf="@+id/ratingBar_Pelicula"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_Titulo" />
+
+        <TextView
+            android:id="@+id/textView_Titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/posterPelicula"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RatingBar
+            android:id="@+id/ratingBar_Pelicula"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:isIndicator="true"
+            android:mirrorForRtl="true"
+            app:layout_constraintBottom_toTopOf="@+id/textView_Director"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/posterPelicula" />
+
+        <TextView
+            android:id="@+id/textView_Director"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toTopOf="@id/buttom_hacerResena"
+            app:layout_constraintEnd_toStartOf="@+id/textView_Anio"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar_Pelicula" />
+
+        <TextView
+            android:id="@+id/textView_Anio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="18dp"
+            app:layout_constraintBottom_toTopOf="@+id/button_verResenas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView_Director"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar_Pelicula" />
+
+        <Button
+            android:id="@+id/button_verResenas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/verReviews"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buttom_hacerResena"
+            app:layout_constraintTop_toBottomOf="@+id/textView_Anio" />
+
+        <Button
+            android:id="@+id/buttom_hacerResena"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hacerReview"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_verResenas"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_Director" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

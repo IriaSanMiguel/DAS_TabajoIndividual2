@@ -36,5 +36,9 @@
     <string name="instruccionesMyAccount">Presione sobre los datos que quiera cambiar</string>
     <string name="publicar">Publicar</string>
     <string name="escribeAqui">Escribe aquí tu reseña</string>
-    <string name="review">Escriba una review para la película</string>
+    <string name="review">Escriba una review para la película %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hacerReview">Escribir una review</string>
+    <string name="verReviews">Reviews de la película</string>
 </resources>

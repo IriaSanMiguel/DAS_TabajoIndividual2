@@ -1,0 +1,89 @@
+package com.example.trabajoindividual_1;
+
+import android.content.Intent;
+import android.os.Bundle;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.ListFragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.RatingBar;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link ListaReviewsFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class ListaReviewsFragment extends ListFragment{
+    private String[] lUsers;
+    private String[] lReviews;
+    private float[] lRatings;
+
+    public ListaReviewsFragment() {
+        // Required empty public constructor
+    }
+
+    // TODO: Rename and change types and number of parameters
+    public static ListaReviewsFragment newInstance(String param1, String param2) {
+        ListaReviewsFragment fragment = new ListaReviewsFragment();
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        miDB db = new miDB(getActivity(), 1);
+        JSONObject json = db.getReviewsDePelicula(getActivity().getIntent().getStringExtra("tituloPelicula"));
+        if (json != null) {
+            try {
+                lUsers = (String[]) json.get("lUsers");
+                lReviews = (String[]) json.get("lReviews");
+                lRatings = (float[]) json.get("lRatings");
+            } catch (JSONException e) {
+                Toast aviso = Toast.makeText(getActivity(), "Ha ocurrido un error", Toast.LENGTH_SHORT);
+                aviso.show();
+                Intent intent = new Intent(getActivity(), Principal_Activity.class);
+                getActivity().finish();
+                startActivity(intent);
+            }
+        } else {
+            Toast aviso = Toast.makeText(getActivity(), "Ha ocurrido un error", Toast.LENGTH_SHORT);
+            aviso.show();
+            Intent intent = new Intent(getActivity(), Principal_Activity.class);
+            getActivity().finish();
+            startActivity(intent);
+        }
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_reviews, container, false);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setListAdapter(new AdapterListViewReviews(getContext(),lUsers, lReviews, lRatings));
+
+    }
+}

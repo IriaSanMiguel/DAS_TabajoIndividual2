@@ -52,8 +52,8 @@ public class Principal_Activity extends AppCompatActivity {
                 lTitulos = (String[]) json.get("lTitulos");
                 int[] lPosters = (int[]) json.get("lPosters");
                 float[] lPuntuacionMedia = (float[]) json.get("lPuntuacionMedia");
-                // Completamos la ListView
 
+                // Completamos la ListView
                 AdaptorListView eladap = new AdaptorListView(getApplicationContext(), lTitulos, lPosters, lPuntuacionMedia);
                 ListView listView = (ListView) findViewById(R.id.listView);
                 listView.setAdapter(eladap);

@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".ListaReviews_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Pelicula_Activity"
+            android:exported="false" />
+        <activity
             android:name=".CrearCuentaActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true" />
