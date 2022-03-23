@@ -2,19 +2,34 @@ package com.example.trabajoindividual_1;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.AbstractWindowedCursor;
 import android.database.Cursor;
+import android.database.CursorWindow;
+import android.database.sqlite.SQLiteBlobTooBigException;
+import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.lang.reflect.Field;
+
 public class miDB extends SQLiteOpenHelper {
     private static final String nombre_DB = "ReviewsPeliculasUsuarios";
+    private Context pcontext;
 
     public miDB(@Nullable Context context, int version) {
         super(context, nombre_DB, null, version);
+        pcontext = context;
+
     }
 
     @Override
@@ -25,7 +40,7 @@ public class miDB extends SQLiteOpenHelper {
                 " VARCHAR(255) NOT NULL, 'Apellido' VARCHAR(255) NOT NULL, 'Contrasena' VARCHAR(255) NOT NULL)");
 
         sqLiteDatabase.execSQL("CREATE TABLE Peliculas ('Titulo' VARCHAR(255) PRIMARY KEY NOT NULL, 'Director'" +
-                " VARCHAR(255) NOT NULL, 'Anio' INTEGER NOT NULL, 'Poster' INT NOT NULL, 'PuntuacionMedia' FLOAT NOT NULL)");
+                " VARCHAR(255) NOT NULL, 'Anio' INTEGER NOT NULL, 'Poster' BLOB NOT NULL, 'PuntuacionMedia' FLOAT NOT NULL)");
 
         sqLiteDatabase.execSQL("CREATE TABLE Reviews ('Usuario' VARCHAR(255) NOT NULL, 'Pelicula'" +
                 " VARCHAR(255) NOT NULL, 'Review' LONGTEXT NOT NULL, 'Puntuacion' INTEGER NOT NULL," +
@@ -38,7 +53,7 @@ public class miDB extends SQLiteOpenHelper {
         datos_batman.put("Titulo", "The Batman");
         datos_batman.put("Director", "Matt Reeves");
         datos_batman.put("Anio", 2022);
-        datos_batman.put("Poster", R.drawable.the_batman);
+        datos_batman.put("Poster", getByteArray(R.drawable.the_batman));
         datos_batman.put("PuntuacionMedia", 0);
         sqLiteDatabase.insert("Peliculas", null, datos_batman);
 
@@ -47,7 +62,7 @@ public class miDB extends SQLiteOpenHelper {
         datos_uncharted.put("Titulo", "Uncharted");
         datos_uncharted.put("Director", "Ruben Fleischer");
         datos_uncharted.put("Anio", 2022);
-        datos_uncharted.put("Poster", R.drawable.uncharted);
+        datos_uncharted.put("Poster", getByteArray(R.drawable.uncharted));
         datos_uncharted.put("PuntuacionMedia", 0);
         sqLiteDatabase.insert("Peliculas", null, datos_uncharted);
 
@@ -56,7 +71,7 @@ public class miDB extends SQLiteOpenHelper {
         datos_dune.put("Titulo", "Dune");
         datos_dune.put("Director", "Denis Villeneuve");
         datos_dune.put("Anio", 2022);
-        datos_dune.put("Poster", R.drawable.dune);
+        datos_dune.put("Poster", getByteArray(R.drawable.dune));
         datos_dune.put("PuntuacionMedia", 0);
         sqLiteDatabase.insert("Peliculas", null, datos_dune);
 
@@ -65,7 +80,7 @@ public class miDB extends SQLiteOpenHelper {
         datos_richard.put("Titulo", "King Richard");
         datos_richard.put("Director", "Reinaldo Marcus Green");
         datos_richard.put("Anio", 2021);
-        datos_richard.put("Poster", R.drawable.king_richard);
+        datos_richard.put("Poster", getByteArray(R.drawable.king_richard));
         datos_richard.put("PuntuacionMedia", 0);
         sqLiteDatabase.insert("Peliculas", null, datos_richard);
 
@@ -74,7 +89,7 @@ public class miDB extends SQLiteOpenHelper {
         datos_clifford.put("Titulo", "Clifford");
         datos_clifford.put("Director", "Walt Becker");
         datos_clifford.put("Anio", 2021);
-        datos_clifford.put("Poster", R.drawable.clifford);
+        datos_clifford.put("Poster", getByteArray(R.drawable.clifford));
         datos_clifford.put("PuntuacionMedia", 0);
         sqLiteDatabase.insert("Peliculas", null, datos_clifford);
 
@@ -83,7 +98,7 @@ public class miDB extends SQLiteOpenHelper {
         datos_bladerunner.put("Titulo", "Blade Runner");
         datos_bladerunner.put("Director", "Ridley Scott");
         datos_bladerunner.put("Anio", 1982);
-        datos_bladerunner.put("Poster", R.drawable.blade);
+        datos_bladerunner.put("Poster", getByteArray(R.drawable.blade));
         datos_bladerunner.put("PuntuacionMedia", 0);
         sqLiteDatabase.insert("Peliculas", null, datos_bladerunner);
 
@@ -170,6 +185,14 @@ public class miDB extends SQLiteOpenHelper {
 
     }
 
+    private byte[] getByteArray(int drawable) {
+        // Conseguimos el Bitmap del drawable
+        Bitmap bitmapimage = BitmapFactory.decodeResource(pcontext.getResources(), drawable);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmapimage.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        return byteArrayOutputStream.toByteArray();
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Usuarios");
@@ -220,7 +243,7 @@ public class miDB extends SQLiteOpenHelper {
 
     }
 
-    public boolean addPelicula(String titulo, String director, int anio, int poster) {
+    public boolean addPelicula(String titulo, String director, int anio, byte[] poster) {
         try {
 
             SQLiteDatabase db = getWritableDatabase();
@@ -320,15 +343,16 @@ public class miDB extends SQLiteOpenHelper {
 
     public JSONObject getDatosPelicula(String titulo) {
         SQLiteDatabase db = getReadableDatabase();
-        String[] columnas = new String[]{"Director", "Anio", "Poster", "PuntuacionMedia"};
+        String[] columnas = new String[]{"Director", "Anio", "PuntuacionMedia"};
         String[] param = new String[]{titulo};
         Cursor cu = db.query("Peliculas", columnas, "Titulo=?", param, null, null, null);
         try {
             JSONObject json = new JSONObject();
             cu.moveToNext();
-            for (int i = 0; i < 4; i++) {
-                json.put(cu.getColumnName(i), cu.getString(i));
-            }
+            json.put(cu.getColumnName(0), cu.getString(0));
+            json.put(cu.getColumnName(1), cu.getString(1));
+            json.put("Poster", getPosterDePeliculas(titulo));
+            json.put(cu.getColumnName(2), cu.getString(2));
             return json;
         } catch (Exception e) {
             return null;
@@ -394,17 +418,17 @@ public class miDB extends SQLiteOpenHelper {
     public JSONObject getInfoPeliculas() {
         JSONObject json = new JSONObject();
         SQLiteDatabase db = getReadableDatabase();
-        String[] columnas = new String[]{"Titulo", "Poster", "PuntuacionMedia"};
+        String[] columnas = new String[]{"Titulo", "PuntuacionMedia"};
         Cursor cu = db.query("Peliculas", columnas, null, null, null, null, null);
 
         String[] lTitulos = new String[cu.getCount()];
-        int[] lPosters = new int[cu.getCount()];
         float[] lPuntuacionMedia = new float[cu.getCount()];
+        byte[][] lPosters = new byte[cu.getCount()][500];
 
         while (cu.moveToNext()) {
             lTitulos[cu.getPosition()] = cu.getString(0);
-            lPosters[cu.getPosition()] = cu.getInt(1);
-            lPuntuacionMedia[cu.getPosition()] = cu.getFloat(2);
+            lPuntuacionMedia[cu.getPosition()] = cu.getFloat(1);
+            lPosters[cu.getPosition()] = getPosterDePeliculas(cu.getString(0));
         }
         try {
             json.put("lTitulos", lTitulos);
@@ -414,6 +438,18 @@ public class miDB extends SQLiteOpenHelper {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    private byte[] getPosterDePeliculas(String titulo) {
+        SQLiteDatabase db = getReadableDatabase();
+        String[] columnas = new String[]{"Poster"};
+        String[] param = new String[]{titulo};
+        Cursor cu = db.query("Peliculas", columnas, "Titulo=?", param, null, null, null);
+        if (cu instanceof SQLiteCursor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            ((SQLiteCursor) cu).setWindow(new CursorWindow(null, 1024 * 1024 * 10));
+        }
+        cu.moveToNext();
+        return cu.getBlob(0);
     }
 
     public String yaHaHechoReview(String usuario, String pelicula) {

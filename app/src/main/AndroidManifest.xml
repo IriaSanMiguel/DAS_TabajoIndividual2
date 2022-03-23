@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".NuevaPelicula_Activity"
+            android:exported="false" />
+        <activity
             android:name=".ListaReviews_Activity"
             android:exported="false" />
         <activity
@@ -25,6 +28,7 @@
             android:exported="true" />
         <activity
             android:name=".Principal_Activity"
+            android:configChanges="orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".Review_Activity"

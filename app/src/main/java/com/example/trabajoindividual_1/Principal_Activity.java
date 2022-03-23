@@ -5,7 +5,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.database.CursorWindow;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +24,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONObject;
 
+import java.io.File;
+import java.lang.reflect.Field;
 import java.util.Locale;
 
 public class Principal_Activity extends AppCompatActivity {
@@ -50,7 +56,7 @@ public class Principal_Activity extends AppCompatActivity {
         } else {
             try {
                 lTitulos = (String[]) json.get("lTitulos");
-                int[] lPosters = (int[]) json.get("lPosters");
+                byte[][] lPosters = (byte[][]) json.get("lPosters");
                 float[] lPuntuacionMedia = (float[]) json.get("lPuntuacionMedia");
 
                 // Completamos la ListView
@@ -66,6 +72,17 @@ public class Principal_Activity extends AppCompatActivity {
                 finish();
                 startActivity(intent);
             }
+        }
+
+        // Creamos la carpeta para guardar los posters
+        Context thethis = this.getBaseContext();
+
+        String file_path = "/posters";
+
+        File dir = new File(file_path);
+
+        if(!dir.exists()){
+            dir.mkdirs();
         }
     }
 

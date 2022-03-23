@@ -3,6 +3,8 @@ package com.example.trabajoindividual_1;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,14 +18,16 @@ import android.widget.TextView;
 
 import androidx.annotation.DrawableRes;
 
+import java.io.ByteArrayInputStream;
+
 public class AdaptorListView extends BaseAdapter {
     private String[] peliculas;
-    private int[] posters;
+    private byte[][] posters;
     private float[] puntuaciones;
     private LayoutInflater inflater;
     private Context contexto;
 
-    public AdaptorListView(Context pcontext, String[] nombresPeliculas, int[] imagenesPeliculas, float[] ppuntuaciones) {
+    public AdaptorListView(Context pcontext, String[] nombresPeliculas, byte[][] imagenesPeliculas, float[] ppuntuaciones) {
         contexto = pcontext;
         peliculas = nombresPeliculas;
         posters = imagenesPeliculas;
@@ -58,7 +62,7 @@ public class AdaptorListView extends BaseAdapter {
 
         // Póster de la película
         ImageView image = (ImageView) view.findViewById(R.id.imageView);
-        image.setImageResource(posters[i]);
+        image.setImageBitmap(BitmapFactory.decodeByteArray(posters[i], 0, posters[i].length));
 
         // Puntuación de la película
         RatingBar ratingBar = (RatingBar) view.findViewById(R.id.ratingBar_listView);

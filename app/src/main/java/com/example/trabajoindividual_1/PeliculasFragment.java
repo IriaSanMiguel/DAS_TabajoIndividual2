@@ -3,6 +3,7 @@ package com.example.trabajoindividual_1;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -75,7 +76,8 @@ public class PeliculasFragment extends Fragment {
                 textViewTitulo.setText(titulo);
                 textView_Anio.setText(json.getString("Anio"));
                 textViewDirector.setText(json.getString("Director"));
-                posterPelicula.setImageResource(json.getInt("Poster"));
+                byte[] poster = (byte[]) json.get("Poster");
+                posterPelicula.setImageBitmap(BitmapFactory.decodeByteArray(poster, 0, poster.length));
                 ratingBar.setRating(Float.valueOf(json.getString("PuntuacionMedia")));
             } catch (Exception e) {
                 Toast aviso = Toast.makeText(getActivity(), "Ha ocurrido un error", Toast.LENGTH_SHORT);
@@ -85,7 +87,7 @@ public class PeliculasFragment extends Fragment {
                 getActivity().finish();
                 startActivity(intent);
             }
-        }else {
+        } else {
             Toast aviso = Toast.makeText(getActivity(), "Ha ocurrido un error", Toast.LENGTH_SHORT);
             aviso.show();
             Intent intent = new Intent(getActivity(), MainActivity.class);
@@ -95,7 +97,7 @@ public class PeliculasFragment extends Fragment {
         }
         // Asignamos las funciones onClick de los botones
         Button botonReview = (Button) getView().findViewById(R.id.buttom_hacerResena);
-        botonReview.setOnClickListener(new AdapterView.OnClickListener(){
+        botonReview.setOnClickListener(new AdapterView.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onClickEscribirReview();
@@ -103,7 +105,7 @@ public class PeliculasFragment extends Fragment {
         });
 
         Button botonVerReviews = (Button) getView().findViewById(R.id.button_verResenas);
-        botonVerReviews.setOnClickListener(new AdapterView.OnClickListener(){
+        botonVerReviews.setOnClickListener(new AdapterView.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onClickVerReviews();
@@ -119,8 +121,8 @@ public class PeliculasFragment extends Fragment {
         startActivity(i);
     }
 
-    private void onClickEscribirReview(){
-        Intent i= new Intent(getActivity(), Review_Activity.class);
+    private void onClickEscribirReview() {
+        Intent i = new Intent(getActivity(), Review_Activity.class);
         i.putExtra("username", username);
         i.putExtra("tituloPelicula", titulo);
         startActivity(i);

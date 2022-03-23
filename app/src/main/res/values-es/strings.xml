@@ -31,4 +31,9 @@
     <string name="review">Escriba una review para la película %1$s</string>
     <string name="hacerReview">Escribir una review</string>
     <string name="verReviews">Reviews de la película</string>
+    <string name="tituloPeli">Título de la película</string>
+    <string name="poster">Póster</string>
+    <string name="director">Director</string>
+    <string name="anio">Anio</string>
+    <string name="nuevapelicula">Crear nueva película</string>
 </resources>
