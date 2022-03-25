@@ -1,0 +1,13 @@
+¡Welcome to Movie Reviews!
+In order to use the app it is necessary log in first, you can do that by introducing your username and
+password in the indicated fields and pressing the log in button, in case you don't have an account, you can create
+on by pressing the "Create account" button and filling the required fields, once that's done just follow the previous instructions.
+Once logged in the app you could see all the available movies, if you want to add a new one just press the "Create new movie"
+button and fill the indicated fields (movie title, director, year and poster) and press the button, once that's done the movie should be
+in the catalogue.
+In case of wanting to  see the movie information and it's reviews you just press the "Description" button, in this new
+screen you can see the movie information, it's reviews or write one of your own. In order to see the reviews without losing
+the data of the movie you can rotate the phone.
+Back to the main screen, in case of wanting to do a review you can just press the "Write review" button of the movie.
+In other hand, in the toolbar, in the upper part of the screen you can change your personal data and the language.
+¡Hope you enjoy the app!

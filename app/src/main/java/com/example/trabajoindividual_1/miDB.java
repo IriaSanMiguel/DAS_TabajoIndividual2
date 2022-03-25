@@ -311,6 +311,18 @@ public class miDB extends SQLiteOpenHelper {
 
     }
 
+    public boolean existePelicula(String titulo){
+        SQLiteDatabase db = getReadableDatabase();
+        String[] columnas = new String[]{"Titulo"};
+        String[] param = new String[]{"Titulo"};
+        Cursor cu = db.query("Peliculas", columnas, "Titulo=?", param, null, null, null);
+        if (!cu.moveToNext()) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public boolean existeUsuario(String nombreUsuario) {
         SQLiteDatabase db = getReadableDatabase();
         String[] columnas = new String[]{"NombreUsuario"};

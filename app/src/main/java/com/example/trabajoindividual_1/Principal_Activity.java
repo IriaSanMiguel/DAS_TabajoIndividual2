@@ -167,15 +167,10 @@ public class Principal_Activity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void onClickReview(View v){
-        View parentRow = (View) v.getParent();
-        ListView listView = (ListView) parentRow.getParent();
-        int position = listView.getPositionForView(parentRow);
-
-        Intent intent = new Intent(v.getContext(), Review_Activity.class);
-        intent.putExtra("tituloPelicula", lTitulos[position]);
-        intent.putExtra("usuario", username);
+    public void onClickNuevaPeli(View v){
+        Intent i = new Intent(this, NuevaPelicula_Activity.class);
+        i.putExtra("username",username);
         finish();
-        startActivity(intent);
+        startActivity(i);
     }
 }

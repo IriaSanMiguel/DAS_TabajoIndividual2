@@ -46,4 +46,10 @@
     <string name="director">Director</string>
     <string name="anio">Año</string>
     <string name="nuevapelicula">Crear nueva película</string>
+    <string name="introducirImagen">Por favor, selecciona el poster de la película</string>
+    <string name="peliculaCreada">Película creada correctamente</string>
+    <string name="error">Ha ocurrido un error</string>
+    <string name="peliculayaexiste">Esa película ya existe</string>
+    <string name="introducirimagen">Por favor, introduce una imagen</string>
+    <string name="intrucciones">Instrucciones</string>
 </resources>

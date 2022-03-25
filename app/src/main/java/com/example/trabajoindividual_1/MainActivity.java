@@ -13,9 +13,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Locale;
@@ -45,16 +50,65 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch (id){
-            case R.id.opcion1:{ //Si selecciona cambiar idioma
+        switch (id) {
+            case R.id.opcion1: { // Si selecciona cambiar idioma
                 cambiarIdioma();
+                break;
+            }
+            case R.id.opcion2: { // Si se seleccionan las instrucciones
+                String instrucciones = getString(R.string.boton_login);
+                switch (instrucciones){
+                    case ("Iniciar sesión"):{
+                        verInstrucciones("es");
+                        break;
+                    } case ("Log in"):{
+                        verInstrucciones("en");
+                        break;
+                    }
+                }
+
                 break;
             }
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void cambiarIdioma(){
+    private void verInstrucciones(String idioma) {
+        // Creamos un diálogo para mostrar las instrucciones
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.intrucciones);
+
+        InputStream fich;
+        switch (idioma) {
+            case ("es"): {
+                fich = getResources().openRawResource(R.raw.instrucciones_es);
+                break;
+            }
+            case ("en"): {
+                fich = getResources().openRawResource(R.raw.instrucciones_en);
+                break;
+            }
+            default:
+                throw new IllegalStateException("Unexpected value: " + idioma);
+        }
+        BufferedReader buff = new BufferedReader(new InputStreamReader(fich));
+        try {
+            String text = "";
+            String linea;
+            while ((linea = buff.readLine()) != null) {
+                text =  text + linea + "\n";
+            }
+            fich.close();
+            builder.setMessage(text);
+            builder.show();
+        } catch (Exception e) {
+            Toast aviso = Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT);
+            aviso.show();
+        }
+
+    }
+
+    private void cambiarIdioma() {
         // Creamos un diálogo para elegir el idioma
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.cambiarIdioma);
@@ -119,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
     }
 
-        public void onClickCrearCuenta(View v) {
+    public void onClickCrearCuenta(View v) {
         Intent i = new Intent(this, CrearCuentaActivity.class);
         finish();
         startActivity(i);

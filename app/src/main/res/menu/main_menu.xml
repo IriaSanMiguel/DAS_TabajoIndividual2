@@ -5,4 +5,8 @@
         android:id="@+id/opcion1"
         android:title="@string/cambiarIdioma"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/opcion2"
+        android:title="@string/intrucciones"
+        app:showAsAction="never" />
 </menu>

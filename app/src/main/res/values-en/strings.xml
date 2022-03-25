@@ -36,4 +36,10 @@
     <string name="director">Director</string>
     <string name="anio">Year</string>
     <string name="nuevapelicula">Create new movie</string>
+    <string name="introducirImagen">Please, pick  the movie poster</string>
+    <string name="peliculaCreada">Movie created successfully</string>
+    <string name="error">An error has occurred</string>
+    <string name="peliculayaexiste">That movie already exists</string>
+    <string name="introducirimagen">Please, pick a image</string>
+    <string name="intrucciones">Instructions</string>
 </resources>

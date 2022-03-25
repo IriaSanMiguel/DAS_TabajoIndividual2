@@ -2,9 +2,14 @@ package com.example.trabajoindividual_1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -13,11 +18,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 
 public class NuevaPelicula_Activity extends AppCompatActivity {
     private miDB db;
     private String username;
     private static final int SELECT_FILE = 1;
+    private Bitmap poster;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,13 +42,33 @@ public class NuevaPelicula_Activity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.imageView2);
         if (imageView.getDrawable() != null) { // Si se ha cargado una foto
             if (textViewDirector.getText().toString() != "" && textViewTitulo.getText().toString() != "" && textViewAnio.getText().toString() != "") { // Si se han introducido los datos para el resto de campos
-                db.addPelicula(textViewTitulo.getText().toString(), textViewDirector.getText().toString(), Integer.getInteger(textViewAnio.getText().toString()), getByteArray(imageView));
-            }else {
+                if (db.existePelicula(textViewTitulo.getText().toString())) {
+                    textViewTitulo.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+                    Toast aviso = Toast.makeText(this, getString(R.string.peliculayaexiste), Toast.LENGTH_SHORT);
+                    aviso.show();
+                    return;
+                } else {
+                    if (db.addPelicula(textViewTitulo.getText().toString(), textViewDirector.getText().toString(), Integer.parseInt(textViewAnio.getText().toString()), getByteArray(imageView))) { // Si ya existe una película con ese nombre
+                        Toast aviso = Toast.makeText(this, getString(R.string.peliculaCreada), Toast.LENGTH_SHORT);
+                        aviso.show();
+                    } else { // Si no existe la película
+                        Toast aviso = Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT);
+                        aviso.show();
+                        Intent intentError = new Intent(this, Principal_Activity.class);
+                        intentError.putExtra("usename", username);
+                        finish();
+                        startActivity(intentError);
+                    }
+                }
+            } else {
                 Toast aviso = Toast.makeText(this, "Por favor rellene todos los campos", Toast.LENGTH_SHORT);
                 aviso.show();
+                return;
             }
-            Toast aviso = Toast.makeText(this, "Por favor introduzca una imagen", Toast.LENGTH_SHORT);
+        }else{
+            Toast aviso = Toast.makeText(this, getString(R.string.introducirimagen), Toast.LENGTH_SHORT);
             aviso.show();
+            return;
         }
         Intent i = new Intent(this, Principal_Activity.class);
         i.putExtra("username", username);
@@ -56,11 +83,40 @@ public class NuevaPelicula_Activity extends AppCompatActivity {
         return byteArrayOutputStream.toByteArray();
     }
 
-    public void saveImage(View v){
+    public void saveImage(View v) {
         // Abrimos la galería
         Intent intentGaleria = new Intent();
         intentGaleria.setType("image/*");
         intentGaleria.setAction(Intent.ACTION_GET_CONTENT);
-        startActiv
+        startActivityForResult(Intent.createChooser(intentGaleria, getString(R.string.introducirImagen)), SELECT_FILE);
+    }
+
+    protected void onActivityResult(int codeReq, int codeRes, Intent intent) {
+        // Este método se utiliza para obtener la salida de cualquier actividad que se llame desde aquí
+        // sólo se cogerá la que sea
+        super.onActivityResult(codeReq, codeRes, intent);
+        Uri image;
+        if (codeReq == SELECT_FILE) {
+            if (codeRes == Activity.RESULT_OK) {
+                image = intent.getData();
+                if (image.getPath() != null) {
+                    InputStream inputStream = null;
+                    try {
+                        inputStream = getContentResolver().openInputStream(image);
+                    } catch (Exception e) {
+                        Toast aviso = Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
+                        aviso.show();
+                        Intent intentError = new Intent(this, Principal_Activity.class);
+                        intentError.putExtra("usename", username);
+                        finish();
+                        startActivity(intentError);
+                    }
+                    // Transformamos la URI de la imagen a bitmap
+                    poster = BitmapFactory.decodeStream(inputStream);
+                    ImageView imageView = (ImageView) findViewById(R.id.imageView2);
+                    imageView.setImageBitmap(poster);
+                }
+            }
+        }
     }
 }
