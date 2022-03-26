@@ -160,7 +160,7 @@ public class NuevaPelicula_Activity extends AppCompatActivity {
                     try {
                         inputStream = getContentResolver().openInputStream(image);
                     } catch (Exception e) {
-                        Toast aviso = Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
+                        Toast aviso = Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT);
                         aviso.show();
                         Intent intentError = new Intent(this, Principal_Activity.class);
                         intentError.putExtra("usename", username);
@@ -179,13 +179,13 @@ public class NuevaPelicula_Activity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("¿Seguro que quieres salir sin crear la película?")
-                .setPositiveButton("Cancelar", new DialogInterface.OnClickListener() {
+        builder.setMessage(getString(R.string.salirsinguardar))
+                .setPositiveButton(getString(R.string.cancelar), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         builder.create().dismiss();
                     }
                 })
-                .setNegativeButton("Salir", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.salir), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Intent intent_salir = new Intent(getBaseContext(), Principal_Activity.class);
                         intent_salir.putExtra("username", username);

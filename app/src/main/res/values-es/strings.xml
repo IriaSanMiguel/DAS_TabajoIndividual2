@@ -42,4 +42,20 @@
     <string name="peliculayaexiste">Esa película ya existe</string>
     <string name="introducirimagen">Por favor, introduce una imagen</string>
     <string name="intrucciones">Instrucciones</string>
+    <string name="preguntasalir">¿Seguro que quieres salir?</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="salir">Salir</string>
+    <string name="rellenarcampos">Por favor, rellene todos los campos</string>
+    <string name="usuarioyaenuso">El nombre de usuario ya está en uso, por favor escoja uno nuevo</string>
+    <string name="contrasenasnocoinciden">Las contraseñas no coinciden</string>
+    <string name="cuentacreada">Cuenta creada</string>
+    <string name="cuentacreadacorrectamente">La cuenta se ha creado correctamente</string>
+    <string name="errorencriptar">Ha ocurrido un error al encriptar la contraseña</string>
+    <string name="nousuario">No existe ningún usuario con ese nombre</string>
+    <string name="incorrecto">Nombre de usuario o contraseña incorrecto</string>
+    <string name="rellenaralguncampo">Por favor, rellene algún campo antes de guardar</string>
+    <string name="datosactualizados">Datos actualizados correctamente</string>
+    <string name="salirsinguardar">¿Seguro que quieres salir sin crear una nueva película?</string>
+    <string name="puntuacion">Por favor, dé una puntuación a la película</string>
+    <string name="resena">Por favor, escriba una reseña</string>
 </resources>

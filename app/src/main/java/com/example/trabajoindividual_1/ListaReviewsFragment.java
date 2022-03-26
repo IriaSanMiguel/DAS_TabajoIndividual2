@@ -62,14 +62,14 @@ public class ListaReviewsFragment extends ListFragment {
                 lReviews = (String[]) json.get("lReviews");
                 lRatings = (float[]) json.get("lRatings");
             } catch (JSONException e) {
-                Toast aviso = Toast.makeText(getActivity(), "Ha ocurrido un error", Toast.LENGTH_SHORT);
+                Toast aviso = Toast.makeText(getActivity(), getString(R.string.error), Toast.LENGTH_SHORT);
                 aviso.show();
                 Intent intent = new Intent(getActivity(), Principal_Activity.class);
                 getActivity().finish();
                 startActivity(intent);
             }
         } else {
-            Toast aviso = Toast.makeText(getActivity(), "Ha ocurrido un error", Toast.LENGTH_SHORT);
+            Toast aviso = Toast.makeText(getActivity(), getString(R.string.error), Toast.LENGTH_SHORT);
             aviso.show();
             Intent intent = new Intent(getActivity(), Principal_Activity.class);
             getActivity().finish();

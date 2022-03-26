@@ -109,7 +109,7 @@ public class Review_Activity extends AppCompatActivity {
                         finish();
                         startActivity(intent);
                     }else{
-                        Toast aviso = Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
+                        Toast aviso = Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT);
                         aviso.show();
                     }
                 }else { // Si es la primera review que hace el usuario a esa película
@@ -119,19 +119,19 @@ public class Review_Activity extends AppCompatActivity {
                         finish();
                         startActivity(intent);
                     }else{
-                        Toast aviso = Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
+                        Toast aviso = Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT);
                         aviso.show();
                     }
                 }
 
             }else{
                 ratingBar.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-                Toast aviso = Toast.makeText(this, "Por favor dele una puntacióna  la película", Toast.LENGTH_SHORT);
+                Toast aviso = Toast.makeText(this, getString(R.string.puntuacion), Toast.LENGTH_SHORT);
                 aviso.show();
             }
         }else{
             editText.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-            Toast aviso = Toast.makeText(this, "Por favor escriba una reseña", Toast.LENGTH_SHORT);
+            Toast aviso = Toast.makeText(this, getString(R.string.resena), Toast.LENGTH_SHORT);
             aviso.show();
         }
     }

@@ -121,13 +121,13 @@ public class CrearCuentaActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("¿Seguro que quieres salir?")
-                .setPositiveButton("Cancelar", new DialogInterface.OnClickListener() {
+        builder.setMessage(getString(R.string.preguntasalir))
+                .setPositiveButton(getString(R.string.cancelar), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         builder.create().dismiss();
                     }
                 })
-                .setNegativeButton("Salir", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.salir), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Intent intent_salir = new Intent(getBaseContext(), MainActivity.class);
                         finish();
@@ -236,15 +236,15 @@ public class CrearCuentaActivity extends AppCompatActivity {
 
         // Comprobamos si hay algún campo vacío
         if (hayVacios(username.getText().toString(), password1.getText().toString(), password2.getText().toString(), nombre.getText().toString(), apellido.getText().toString())) {
-            Toast aviso = Toast.makeText(this, "Por favor rellene todos los campos", Toast.LENGTH_SHORT);
+            Toast aviso = Toast.makeText(this, getString(R.string.rellenarcampos), Toast.LENGTH_SHORT);
             aviso.show();
         } else if (db.existeUsuario(username.getText().toString())) { // Comprobamos que no exista un usuario con ese nombre
             username.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-            Toast aviso = Toast.makeText(this, "El nombre de usuario ya está en uso, por favor escoja uno nuevo", Toast.LENGTH_SHORT);
+            Toast aviso = Toast.makeText(this, getString(R.string.usuarioyaenuso), Toast.LENGTH_SHORT);
             aviso.show();
         } else if (!password1.getText().toString().equals(password2.getText().toString())) { // Comprobamos que las dos contraseñas coincidan
             password2.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-            Toast aviso = Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT);
+            Toast aviso = Toast.makeText(this, getString(R.string.contrasenasnocoinciden), Toast.LENGTH_SHORT);
             aviso.show();
         } else {
             // Obtenemos la contraseña ya encritada
@@ -269,8 +269,8 @@ public class CrearCuentaActivity extends AppCompatActivity {
                 elManager.createNotificationChannel(elCanal);
                 elBuilder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.baseline_thumb_up_24))
                         .setSmallIcon(R.drawable.baseline_thumb_up_24)
-                        .setContentTitle("Cuenta creada")
-                        .setContentText("Se ha creado la cuenta correctamente")
+                        .setContentTitle(getString(R.string.cuentacreada))
+                        .setContentText(getString(R.string.cuentacreadacorrectamente))
                         .setVibrate(new long[]{0, 1000, 500, 1000})
                         .setAutoCancel(true);
                 elManager.notify(1, elBuilder.build());
@@ -280,7 +280,7 @@ public class CrearCuentaActivity extends AppCompatActivity {
                 finish();
                 startActivity(i);
             } else {
-                Toast avisoError = Toast.makeText(this, "Ha ocurrido un error al momento de encriptar la contraseña", Toast.LENGTH_SHORT);
+                Toast avisoError = Toast.makeText(this, getString(R.string.errorencriptar), Toast.LENGTH_SHORT);
                 avisoError.show();
             }
 

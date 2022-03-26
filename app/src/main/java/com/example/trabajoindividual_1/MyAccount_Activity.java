@@ -43,7 +43,7 @@ public class MyAccount_Activity extends AppCompatActivity {
         username = i.getStringExtra("username");
         JSONObject json = db.getDatosUsuario(username);
         if (json == null) { //Si ha ocurrido un error
-            Toast aviso = Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
+            Toast aviso = Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT);
             aviso.show();
         } else {
             try {
@@ -114,19 +114,7 @@ public class MyAccount_Activity extends AppCompatActivity {
                     contrasenaTextView.setText(getString(R.string.contrasenaActual));
                     nombreTextView.setText(getString(R.string.nombreActual) + ": " + json.getString("Nombre"));
                     apellidoTextView.setText(getString(R.string.apellidoActual) + ": " + json.getString("Apellido"));
-                    /*
-                    // Cambiamos el margen izquierdo de los TextViews según la orientación de la pantalla
-                    if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){ // Si está en orizontal
-                        paramsUsernameTextView.leftMargin = 200;
-                        paramsContrasenaTextView.leftMargin = 200;
-                        paramsNombreTextView.leftMargin = 200;
-                        paramsApellidoTextView.leftMargin = 200;
-                    }else{ // Si está en vertical
-                        paramsUsernameTextView.leftMargin = 400;
-                        paramsContrasenaTextView.leftMargin = 400;
-                        paramsNombreTextView.leftMargin = 400;
-                        paramsApellidoTextView.leftMargin = 400;
-                    }*/
+                    // Cambiamos el margen izquierdo de los TextViews
                     paramsUsernameTextView.leftMargin = 400;
                     paramsContrasenaTextView.leftMargin = 400;
                     paramsNombreTextView.leftMargin = 400;
@@ -138,12 +126,10 @@ public class MyAccount_Activity extends AppCompatActivity {
                     apellidoTextView.setLayoutParams(paramsApellidoTextView);
                 }
             } catch (Exception e) {
-                Toast aviso = Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
+                Toast aviso = Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT);
                 aviso.show();
             }
-
         }
-
         // Cargar preferencias
         cargarPreferencias();
     }
@@ -285,7 +271,7 @@ public class MyAccount_Activity extends AppCompatActivity {
         if (!usernameEditText.getText().toString().equals("")) {
             if (db.existeUsuario(usernameEditText.getText().toString())) { // Si ya existe un usuario con ese username
                 usernameEditText.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-                Toast aviso = Toast.makeText(this, "Ese nombre de usuario ya está en uso", Toast.LENGTH_SHORT);
+                Toast aviso = Toast.makeText(this, getString(R.string.usuarioyaenuso), Toast.LENGTH_SHORT);
                 aviso.show();
                 return;
             }
@@ -307,16 +293,16 @@ public class MyAccount_Activity extends AppCompatActivity {
             error = !db.updateUsuarioApellido(username, apellidoEditText.getText().toString());
         }
         if (error) { // Si no se ha actualizado algo bien
-            Toast aviso = Toast.makeText(this, "Ha ocurrido un error, por favor vuelva a introducir los datos", Toast.LENGTH_SHORT);
+            Toast aviso = Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT);
             aviso.show();
             return;
         }
         if (!hayAlgoEscrito) { // Si no hay nada escrito
-            Toast aviso = Toast.makeText(this, "Por favor rellene los campos antes de guardarlos", Toast.LENGTH_SHORT);
+            Toast aviso = Toast.makeText(this, getString(R.string.rellenaralguncampo), Toast.LENGTH_SHORT);
             aviso.show();
             return;
         }
-        Toast aviso = Toast.makeText(this, "Datos actualizados correctamente", Toast.LENGTH_SHORT);
+        Toast aviso = Toast.makeText(this, getString(R.string.datosactualizados), Toast.LENGTH_SHORT);
         aviso.show();
         Intent i = new Intent(this, this.getClass());
         i.putExtra("username", username);
@@ -339,7 +325,6 @@ public class MyAccount_Activity extends AppCompatActivity {
             for (int i = 0; i < bytes.length; i++) {
                 stringBuilder.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
             }
-
             // Devolvemos la contraseña ya encritada
             return stringBuilder.toString();
         } catch (Exception e) {

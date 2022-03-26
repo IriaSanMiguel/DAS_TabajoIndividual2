@@ -73,9 +73,9 @@ public class AdaptorListView extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Intent intent = ((Activity) viewGroup.getContext()).getIntent();
-                String sdf = intent.getStringExtra("username");
+                String username = intent.getStringExtra("username");
                 Intent intent_reviews = new Intent(viewGroup.getContext(), Review_Activity.class);
-                intent_reviews.putExtra("username", sdf);
+                intent_reviews.putExtra("username", username);
                 intent_reviews.putExtra("tituloPelicula", peliculas[i]);
                 viewGroup.getContext().startActivity(intent_reviews);
             }

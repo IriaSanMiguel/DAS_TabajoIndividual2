@@ -42,4 +42,20 @@
     <string name="peliculayaexiste">That movie already exists</string>
     <string name="introducirimagen">Please, pick a image</string>
     <string name="intrucciones">Instructions</string>
+    <string name="preguntasalir">Are you sure you want to exit?</string>
+    <string name="cancelar">Cancel</string>
+    <string name="salir">Exit</string>
+    <string name="rellenarcampos">Please, fill in all the fields</string>
+    <string name="usuarioyaenuso">The username has already  been used</string>
+    <string name="contrasenasnocoinciden">The passwords don\'t match</string>
+    <string name="cuentacreada">Account created</string>
+    <string name="cuentacreadacorrectamente">The account has been created succesfully</string>
+    <string name="errorencriptar">An error has ocurred while encrypting the password</string>
+    <string name="nousuario">There\'s no username with that name</string>
+    <string name="incorrecto">Username or password incorrect</string>
+    <string name="rellenaralguncampo">Please, fill in at leadt one field before saving</string>
+    <string name="datosactualizados">Data updated correctly</string>
+    <string name="salirsinguardar">Are you sure you want to exit without creating a new movie?</string>
+    <string name="puntuacion">Please, rate the movie</string>
+    <string name="resena">Please write a review</string>
 </resources>

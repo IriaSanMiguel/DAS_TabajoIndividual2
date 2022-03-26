@@ -54,17 +54,18 @@ public class MainActivity extends AppCompatActivity {
         cargarPreferencias();
     }
 
-    private void cargarPreferencias(){
+    private void cargarPreferencias() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String idioma = prefs.getString("Idioma","es");
+        String idioma = prefs.getString("Idioma", "es");
         Boolean yaCargadas = prefs.getBoolean("PrefsCargadas", false);
-        if (!yaCargadas){
+        if (!yaCargadas) {
             Locale locale;
-            switch (idioma){
-                case "es":{
+            switch (idioma) {
+                case "es": {
                     locale = new Locale("es");
                     break;
-                } case "en":{
+                }
+                case "en": {
                     locale = new Locale("en");
                     break;
                 }
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             }
             case R.id.opcion2: { // Si se seleccionan las instrucciones
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-                verInstrucciones(prefs.getString("Idioma","es"));
+                verInstrucciones(prefs.getString("Idioma", "es"));
             }
         }
         return super.onOptionsItemSelected(item);
@@ -143,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
             String text = "";
             String linea;
             while ((linea = buff.readLine()) != null) {
-                text =  text + linea + "\n";
+                text = text + linea + "\n";
             }
             fich.close();
             builder.setMessage(text);
@@ -173,17 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void actualizarIdioma(int index) {
         String[] languages = {"es", "en"};
-/*
-        // Cambiar el idioma
-        String[] languages = {"es", "en"};
-        Locale locale = new Locale(languages[index]);
-        Locale.setDefault(locale);
-        Configuration conf = getBaseContext().getResources().getConfiguration();
-        conf.setLocale(locale);
-        conf.setLayoutDirection(locale);
-        Context context = getBaseContext().createConfigurationContext(conf);
-        getBaseContext().getResources().updateConfiguration(conf, context.getResources().getDisplayMetrics());
-*/
+
         // Mantener el texto introducido en los EditText
         EditText username = (EditText) findViewById(R.id.editText_nombreUsuario);
         EditText contrasena = (EditText) findViewById(R.id.editText_contrasena);
@@ -211,13 +202,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("¿Seguro que quieres salir?")
-                .setPositiveButton("Cancelar", new DialogInterface.OnClickListener() {
+        builder.setMessage(getString(R.string.preguntasalir))
+                .setPositiveButton(getString(R.string.cancelar), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         builder.create().dismiss();
                     }
                 })
-                .setNegativeButton("Salir", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.salir), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Intent intent_finalizar = new Intent(Intent.ACTION_MAIN);
                         finish();
@@ -235,8 +226,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickLogIn(View v) {
-
-
         EditText username = (EditText) findViewById(R.id.editText_nombreUsuario);
         EditText contrasena = (EditText) findViewById(R.id.editText_contrasena);
         String usernameText = username.getText().toString();
@@ -245,15 +234,15 @@ public class MainActivity extends AppCompatActivity {
         // Comprobar que no estén vacíos
         if (usernameText.equals("")) {
             username.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-            Toast aviso = Toast.makeText(this, "Por favor rellene todos los campos", Toast.LENGTH_SHORT);
+            Toast aviso = Toast.makeText(this, getString(R.string.rellenarcampos), Toast.LENGTH_SHORT);
             aviso.show();
         } else if (contrasenaText.equals("")) {
             contrasena.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-            Toast aviso = Toast.makeText(this, "Por favor rellene todos los campos", Toast.LENGTH_SHORT);
+            Toast aviso = Toast.makeText(this, getString(R.string.rellenarcampos), Toast.LENGTH_SHORT);
             aviso.show();
         } else if (!db.existeUsuario(usernameText)) { // Comprobamos si existe un usuario con ese nombre
             username.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-            Toast aviso = Toast.makeText(this, "No existe ningún usuario con ese nombre", Toast.LENGTH_SHORT);
+            Toast aviso = Toast.makeText(this, getString(R.string.nousuario), Toast.LENGTH_SHORT);
             aviso.show();
         } else {
             //Encriptamos la contraseña
@@ -268,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 contrasena.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
                 username.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-                Toast aviso = Toast.makeText(this, "Nombre de usuario o contraseña incorrecta", Toast.LENGTH_SHORT);
+                Toast aviso = Toast.makeText(this, getString(R.string.incorrecto), Toast.LENGTH_SHORT);
                 aviso.show();
             }
         }
@@ -288,7 +277,6 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < bytes.length; i++) {
                 stringBuilder.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
             }
-
             // Devolvemos la contraseña ya encritada
             return stringBuilder.toString();
         } catch (Exception e) {

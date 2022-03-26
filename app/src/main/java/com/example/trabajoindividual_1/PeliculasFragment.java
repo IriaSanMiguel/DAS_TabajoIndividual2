@@ -84,7 +84,7 @@ public class PeliculasFragment extends Fragment {
                 posterPelicula.setImageBitmap(BitmapFactory.decodeByteArray(poster, 0, poster.length));
                 ratingBar.setRating(Float.valueOf(json.getString("PuntuacionMedia")));
             } catch (Exception e) {
-                Toast aviso = Toast.makeText(getActivity(), "Ha ocurrido un error", Toast.LENGTH_SHORT);
+                Toast aviso = Toast.makeText(getActivity(), getString(R.string.error), Toast.LENGTH_SHORT);
                 aviso.show();
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 intent.putExtra("username", username);
@@ -92,7 +92,7 @@ public class PeliculasFragment extends Fragment {
                 startActivity(intent);
             }
         } else {
-            Toast aviso = Toast.makeText(getActivity(), "Ha ocurrido un error", Toast.LENGTH_SHORT);
+            Toast aviso = Toast.makeText(getActivity(), getString(R.string.error), Toast.LENGTH_SHORT);
             aviso.show();
             Intent intent = new Intent(getActivity(), MainActivity.class);
             intent.putExtra("username", username);
