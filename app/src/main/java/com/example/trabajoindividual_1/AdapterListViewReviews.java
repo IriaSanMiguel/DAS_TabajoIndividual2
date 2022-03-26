@@ -16,6 +16,10 @@ public class AdapterListViewReviews extends BaseAdapter {
     private Context contexto;
 
     public AdapterListViewReviews(Context pcontext, String[] pUsers, String[] pReviews, float[] pRatings) {
+        /*
+        Pre: Un contexto, una lista de los nombres de los usuarios, de las reviews y de las puntuaciones
+        Post: Se ha creado el ListView con las reviews de cada usuario y su puntuación
+        */
         contexto = pcontext;
         lUsers = pUsers;
         lReviews = pReviews;
@@ -40,8 +44,14 @@ public class AdapterListViewReviews extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+        /*
+        Pre: El índice de la review, la view y la viewGroup
+        Post: Se ha creado correctamente el listView
+        */
 
         view = inflater.inflate(R.layout.listview_review, null);
+
+        //Escribimos los datos
 
         // Nombre del usuario
         TextView textView_username = (TextView) view.findViewById(R.id.textView_username);
@@ -54,8 +64,6 @@ public class AdapterListViewReviews extends BaseAdapter {
         // Puntuación rating bar
         RatingBar ratingBar = (RatingBar) view.findViewById(R.id.ratinfBar_reviews);
         ratingBar.setRating(lRatings[i]);
-
-
 
         return view;
     }

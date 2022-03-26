@@ -76,55 +76,6 @@ public class ListaReviewsFragment extends ListFragment {
             startActivity(intent);
         }
 
-        // Cargar preferencias
-        cargarPreferencias();
-    }
-
-    private void cargarPreferencias() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
-        String idioma = prefs.getString("Idioma", "es");
-        Boolean yaCargadas = prefs.getBoolean("PrefsCargadas", false);
-        if (!yaCargadas) {
-            Locale locale;
-            switch (idioma) {
-                case "es": {
-                    locale = new Locale("es");
-                    break;
-                }
-                case "en": {
-                    locale = new Locale("en");
-                    break;
-                }
-                default:
-                    throw new IllegalStateException("Unexpected value: " + idioma);
-            }
-
-            // Actualizamos las preferencias
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putBoolean("PrefsCargadas", true);
-            editor.apply();
-
-            Locale.setDefault(locale);
-            Configuration conf = getActivity().getBaseContext().getResources().getConfiguration();
-            conf.setLocale(locale);
-            conf.setLayoutDirection(locale);
-            Context context = getActivity().getBaseContext().createConfigurationContext(conf);
-            getActivity().getBaseContext().getResources().updateConfiguration(conf, context.getResources().getDisplayMetrics());
-            Intent i = new Intent(getActivity(), ListaReviews_Activity.class);
-            i.putExtra("tituloPelicula", pelicula);
-            getActivity().finish();
-            startActivity(i);
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        // Cuando se cierre la actividad indicamos que las preferencias no están cargadas
-        super.onDestroy();
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("PrefsCargadas", false);
-        editor.apply();
     }
 
     @Override
