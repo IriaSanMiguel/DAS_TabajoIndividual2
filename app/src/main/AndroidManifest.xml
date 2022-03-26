@@ -11,6 +11,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".NuevaPelicula_Activity"
+            android:configChanges="orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".ListaReviews_Activity"

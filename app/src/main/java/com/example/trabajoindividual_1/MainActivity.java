@@ -2,10 +2,12 @@ package com.example.trabajoindividual_1;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -41,10 +43,65 @@ public class MainActivity extends AppCompatActivity {
         Intent i = getIntent();
         EditText username = (EditText) findViewById(R.id.editText_nombreUsuario);
         EditText contrasena = (EditText) findViewById(R.id.editText_contrasena);
+        String textUsername = i.getStringExtra("usernameText");
+        String textCon = i.getStringExtra("contrasenaText");
         username.setText(i.getStringExtra("usernameText"));
         contrasena.setText(i.getStringExtra("contrasenaText"));
 
         db = new miDB(this, 1);
+
+        // Cargar preferencias
+        cargarPreferencias();
+    }
+
+    private void cargarPreferencias(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String idioma = prefs.getString("Idioma","es");
+        Boolean yaCargadas = prefs.getBoolean("PrefsCargadas", false);
+        if (!yaCargadas){
+            Locale locale;
+            switch (idioma){
+                case "es":{
+                    locale = new Locale("es");
+                    break;
+                } case "en":{
+                    locale = new Locale("en");
+                    break;
+                }
+                default:
+                    throw new IllegalStateException("Unexpected value: " + idioma);
+            }
+
+            // Actualizamos las preferencias
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("PrefsCargadas", true);
+            editor.apply();
+
+            Locale.setDefault(locale);
+            Configuration conf = getBaseContext().getResources().getConfiguration();
+            conf.setLocale(locale);
+            conf.setLayoutDirection(locale);
+            Context context = getBaseContext().createConfigurationContext(conf);
+            getBaseContext().getResources().updateConfiguration(conf, context.getResources().getDisplayMetrics());
+            Intent i = new Intent(this, MainActivity.class);
+            // Mantener el texto introducido en los EditText
+            EditText username = (EditText) findViewById(R.id.editText_nombreUsuario);
+            EditText contrasena = (EditText) findViewById(R.id.editText_contrasena);
+            i.putExtra("usernameText", username.getText().toString());
+            i.putExtra("contrasenaText", contrasena.getText().toString());
+            finish();
+            startActivity(i);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        // Cuando se cierre la actividad indicamos que las preferencias no están cargadas
+        super.onDestroy();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("PrefsCargadas", false);
+        editor.apply();
     }
 
     @Override
@@ -56,18 +113,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
             case R.id.opcion2: { // Si se seleccionan las instrucciones
-                String instrucciones = getString(R.string.boton_login);
-                switch (instrucciones){
-                    case ("Iniciar sesión"):{
-                        verInstrucciones("es");
-                        break;
-                    } case ("Log in"):{
-                        verInstrucciones("en");
-                        break;
-                    }
-                }
-
-                break;
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+                verInstrucciones(prefs.getString("Idioma","es"));
             }
         }
         return super.onOptionsItemSelected(item);
@@ -119,12 +166,14 @@ public class MainActivity extends AppCompatActivity {
                 actualizarIdioma(i);
             }
         });
+
         builder.setCancelable(false);
         builder.show();
     }
 
     private void actualizarIdioma(int index) {
-
+        String[] languages = {"es", "en"};
+/*
         // Cambiar el idioma
         String[] languages = {"es", "en"};
         Locale locale = new Locale(languages[index]);
@@ -134,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
         conf.setLayoutDirection(locale);
         Context context = getBaseContext().createConfigurationContext(conf);
         getBaseContext().getResources().updateConfiguration(conf, context.getResources().getDisplayMetrics());
-
+*/
         // Mantener el texto introducido en los EditText
         EditText username = (EditText) findViewById(R.id.editText_nombreUsuario);
         EditText contrasena = (EditText) findViewById(R.id.editText_contrasena);
@@ -142,9 +191,15 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("usernameText", username.getText().toString());
         i.putExtra("contrasenaText", contrasena.getText().toString());
 
+        // Actualizamos las preferencias
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("Idioma", languages[index]);
+        editor.apply();
+
         // Reiniciamos la actividad
-        startActivity(i);
         finish();
+        startActivity(i);
     }
 
     @Override

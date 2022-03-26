@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.database.CursorWindow;
 import android.graphics.Bitmap;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import org.json.JSONObject;
 
@@ -84,6 +86,54 @@ public class Principal_Activity extends AppCompatActivity {
         if(!dir.exists()){
             dir.mkdirs();
         }
+        // Cargar preferencias
+        cargarPreferencias();
+    }
+
+    private void cargarPreferencias(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String idioma = prefs.getString("Idioma","es");
+        Boolean yaCargadas = prefs.getBoolean("PrefsCargadas", false);
+        if (!yaCargadas){
+            Locale locale;
+            switch (idioma){
+                case "es":{
+                    locale = new Locale("es");
+                    break;
+                } case "en":{
+                    locale = new Locale("en");
+                    break;
+                }
+                default:
+                    throw new IllegalStateException("Unexpected value: " + idioma);
+            }
+
+            // Actualizamos las preferencias
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("PrefsCargadas", true);
+            editor.apply();
+
+            Locale.setDefault(locale);
+            Configuration conf = getBaseContext().getResources().getConfiguration();
+            conf.setLocale(locale);
+            conf.setLayoutDirection(locale);
+            Context context = getBaseContext().createConfigurationContext(conf);
+            getBaseContext().getResources().updateConfiguration(conf, context.getResources().getDisplayMetrics());
+            Intent i = new Intent(this, Principal_Activity.class);
+            i.putExtra("username", username);
+            finish();
+            startActivity(i);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        // Cuando se cierre la actividad indicamos que las preferencias no están cargadas
+        super.onDestroy();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("PrefsCargadas", false);
+        editor.apply();
     }
 
     
@@ -147,9 +197,9 @@ public class Principal_Activity extends AppCompatActivity {
     }
 
     private void actualizarIdioma(int index) {
-
-        // Cambiar el idioma
         String[] languages = {"es", "en"};
+        /*// Cambiar el idioma
+
         Locale locale = new Locale(languages[index]);
         Locale.setDefault(locale);
         Configuration conf = getBaseContext().getResources().getConfiguration();
@@ -157,10 +207,16 @@ public class Principal_Activity extends AppCompatActivity {
         conf.setLayoutDirection(locale);
         Context context = getBaseContext().createConfigurationContext(conf);
         getBaseContext().getResources().updateConfiguration(conf, context.getResources().getDisplayMetrics());
-
+*/
         // Mantener el texto introducido en los EditText
         Intent i = new Intent(this, this.getClass());
         i.putExtra("username", username);
+
+        // Actualizamos las preferencias
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("Idioma", languages[index]);
+        editor.apply();
 
         // Reiniciamos la actividad
         finish();

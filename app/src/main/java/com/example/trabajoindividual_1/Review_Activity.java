@@ -1,9 +1,13 @@
 package com.example.trabajoindividual_1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +15,8 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Locale;
 
 public class Review_Activity extends AppCompatActivity {
     String username;
@@ -40,6 +46,55 @@ public class Review_Activity extends AppCompatActivity {
             editText.setText(reviewText);
         }
 
+        // Cargar preferencias
+        cargarPreferencias();
+    }
+
+    private void cargarPreferencias(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String idioma = prefs.getString("Idioma","es");
+        Boolean yaCargadas = prefs.getBoolean("PrefsCargadas", false);
+        if (!yaCargadas){
+            Locale locale;
+            switch (idioma){
+                case "es":{
+                    locale = new Locale("es");
+                    break;
+                } case "en":{
+                    locale = new Locale("en");
+                    break;
+                }
+                default:
+                    throw new IllegalStateException("Unexpected value: " + idioma);
+            }
+
+            // Actualizamos las preferencias
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("PrefsCargadas", true);
+            editor.apply();
+
+            Locale.setDefault(locale);
+            Configuration conf = getBaseContext().getResources().getConfiguration();
+            conf.setLocale(locale);
+            conf.setLayoutDirection(locale);
+            Context context = getBaseContext().createConfigurationContext(conf);
+            getBaseContext().getResources().updateConfiguration(conf, context.getResources().getDisplayMetrics());
+            Intent i = new Intent(this, Review_Activity.class);
+            i.putExtra("username", username);
+            i.putExtra("tituloPelicula", pelicula);
+            finish();
+            startActivity(i);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        // Cuando se cierre la actividad indicamos que las preferencias no están cargadas
+        super.onDestroy();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("PrefsCargadas", false);
+        editor.apply();
     }
 
     public void onClick(View v){

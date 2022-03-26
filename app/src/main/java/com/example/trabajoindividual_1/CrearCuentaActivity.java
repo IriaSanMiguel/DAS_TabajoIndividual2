@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
+import androidx.preference.PreferenceManager;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -50,6 +52,64 @@ public class CrearCuentaActivity extends AppCompatActivity {
         contrasena2.setText(i.getStringExtra("contrasena2Text"));
         nombre.setText(i.getStringExtra("nombreText"));
         apellido.setText(i.getStringExtra("apellidoText"));
+        // Cargar preferencias
+        cargarPreferencias();
+    }
+
+    private void cargarPreferencias(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String idioma = prefs.getString("Idioma","es");
+        Boolean yaCargadas = prefs.getBoolean("PrefsCargadas", false);
+        if (!yaCargadas){
+            Locale locale;
+            switch (idioma){
+                case "es":{
+                    locale = new Locale("es");
+                    break;
+                } case "en":{
+                    locale = new Locale("en");
+                    break;
+                }
+                default:
+                    throw new IllegalStateException("Unexpected value: " + idioma);
+            }
+
+            // Actualizamos las preferencias
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("PrefsCargadas", true);
+            editor.apply();
+
+            Locale.setDefault(locale);
+            Configuration conf = getBaseContext().getResources().getConfiguration();
+            conf.setLocale(locale);
+            conf.setLayoutDirection(locale);
+            Context context = getBaseContext().createConfigurationContext(conf);
+            getBaseContext().getResources().updateConfiguration(conf, context.getResources().getDisplayMetrics());
+            Intent i = new Intent(this, CrearCuentaActivity.class);
+            // Mantener el texto introducido en los EditText
+            EditText username = (EditText) findViewById(R.id.editText_username);
+            EditText contrasena1 = (EditText) findViewById(R.id.editText_password1);
+            EditText contrasena2 = (EditText) findViewById(R.id.editText_password2);
+            EditText nombre = (EditText) findViewById(R.id.editText_nombre);
+            EditText apellido = (EditText) findViewById(R.id.editText_apellido);
+            i.putExtra("usernameText", username.getText().toString());
+            i.putExtra("contrasena1Text", contrasena1.getText().toString());
+            i.putExtra("contrasena2Text", contrasena2.getText().toString());
+            i.putExtra("nombreText", nombre.getText().toString());
+            i.putExtra("apellidoText", apellido.getText().toString());
+            finish();
+            startActivity(i);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        // Cuando se cierre la actividad indicamos que las preferencias no están cargadas
+        super.onDestroy();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("PrefsCargadas", false);
+        editor.apply();
     }
 
     @Override
@@ -91,16 +151,12 @@ public class CrearCuentaActivity extends AppCompatActivity {
     }
 
     private void actualizarIdioma(int index) {
-
-        // Cambiar el idioma
         String[] languages = {"es", "en"};
-        Locale locale = new Locale(languages[index]);
-        Locale.setDefault(locale);
-        Configuration conf = getBaseContext().getResources().getConfiguration();
-        conf.setLocale(locale);
-        conf.setLayoutDirection(locale);
-        Context context = getBaseContext().createConfigurationContext(conf);
-        getBaseContext().getResources().updateConfiguration(conf, context.getResources().getDisplayMetrics());
+        // Actualizamos las preferencias
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("Idioma", languages[index]);
+        editor.apply();
 
         // Mantener el texto introducido en los EditText
         EditText username = (EditText) findViewById(R.id.editText_username);
@@ -108,7 +164,7 @@ public class CrearCuentaActivity extends AppCompatActivity {
         EditText contrasena2 = (EditText) findViewById(R.id.editText_password2);
         EditText nombre = (EditText) findViewById(R.id.editText_nombre);
         EditText apellido = (EditText) findViewById(R.id.editText_apellido);
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, CrearCuentaActivity.class);
         i.putExtra("usernameText", username.getText().toString());
         i.putExtra("contrasena1Text", contrasena1.getText().toString());
         i.putExtra("contrasena2Text", contrasena2.getText().toString());
@@ -116,8 +172,8 @@ public class CrearCuentaActivity extends AppCompatActivity {
         i.putExtra("apellidoText", apellido.getText().toString());
 
         // Reiniciamos la actividad
-        startActivity(i);
         finish();
+        startActivity(i);
     }
 
     private void cambiarIdioma() {

@@ -3,10 +3,12 @@ package com.example.trabajoindividual_1;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.preference.PreferenceManager;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -112,15 +114,27 @@ public class MyAccount_Activity extends AppCompatActivity {
                     contrasenaTextView.setText(getString(R.string.contrasenaActual));
                     nombreTextView.setText(getString(R.string.nombreActual) + ": " + json.getString("Nombre"));
                     apellidoTextView.setText(getString(R.string.apellidoActual) + ": " + json.getString("Apellido"));
-
-                    // Cambiamos el margen izquierdo de los TextViews
-                    paramsUsernameTextView.leftMargin = 800;
+                    /*
+                    // Cambiamos el margen izquierdo de los TextViews según la orientación de la pantalla
+                    if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){ // Si está en orizontal
+                        paramsUsernameTextView.leftMargin = 200;
+                        paramsContrasenaTextView.leftMargin = 200;
+                        paramsNombreTextView.leftMargin = 200;
+                        paramsApellidoTextView.leftMargin = 200;
+                    }else{ // Si está en vertical
+                        paramsUsernameTextView.leftMargin = 400;
+                        paramsContrasenaTextView.leftMargin = 400;
+                        paramsNombreTextView.leftMargin = 400;
+                        paramsApellidoTextView.leftMargin = 400;
+                    }*/
+                    paramsUsernameTextView.leftMargin = 400;
+                    paramsContrasenaTextView.leftMargin = 400;
+                    paramsNombreTextView.leftMargin = 400;
+                    paramsApellidoTextView.leftMargin = 400;
+                    // Aplicamos los cambios
                     usernameTextView.setLayoutParams(paramsUsernameTextView);
-                    paramsContrasenaTextView.leftMargin = 800;
                     contrasenaTextView.setLayoutParams(paramsContrasenaTextView);
-                    paramsNombreTextView.leftMargin = 800;
                     nombreTextView.setLayoutParams(paramsNombreTextView);
-                    paramsApellidoTextView.leftMargin = 800;
                     apellidoTextView.setLayoutParams(paramsApellidoTextView);
                 }
             } catch (Exception e) {
@@ -130,6 +144,54 @@ public class MyAccount_Activity extends AppCompatActivity {
 
         }
 
+        // Cargar preferencias
+        cargarPreferencias();
+    }
+
+    private void cargarPreferencias(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String idioma = prefs.getString("Idioma","es");
+        Boolean yaCargadas = prefs.getBoolean("PrefsCargadas", false);
+        if (!yaCargadas){
+            Locale locale;
+            switch (idioma){
+                case "es":{
+                    locale = new Locale("es");
+                    break;
+                } case "en":{
+                    locale = new Locale("en");
+                    break;
+                }
+                default:
+                    throw new IllegalStateException("Unexpected value: " + idioma);
+            }
+
+            // Actualizamos las preferencias
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("PrefsCargadas", true);
+            editor.apply();
+
+            Locale.setDefault(locale);
+            Configuration conf = getBaseContext().getResources().getConfiguration();
+            conf.setLocale(locale);
+            conf.setLayoutDirection(locale);
+            Context context = getBaseContext().createConfigurationContext(conf);
+            getBaseContext().getResources().updateConfiguration(conf, context.getResources().getDisplayMetrics());
+            Intent i = new Intent(this, MyAccount_Activity.class);
+            i.putExtra("username", username);
+            finish();
+            startActivity(i);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        // Cuando se cierre la actividad indicamos que las preferencias no están cargadas
+        super.onDestroy();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("PrefsCargadas", false);
+        editor.apply();
     }
 
     @Override

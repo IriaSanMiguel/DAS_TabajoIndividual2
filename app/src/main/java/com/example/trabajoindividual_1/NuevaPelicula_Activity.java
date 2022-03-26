@@ -1,10 +1,16 @@
 package com.example.trabajoindividual_1;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -19,6 +25,7 @@ import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.util.Locale;
 
 public class NuevaPelicula_Activity extends AppCompatActivity {
     private miDB db;
@@ -33,6 +40,55 @@ public class NuevaPelicula_Activity extends AppCompatActivity {
         db = new miDB(this, 1);
         Intent i = getIntent();
         username = i.getStringExtra("username");
+        // Cargar preferencias
+        cargarPreferencias();
+    }
+
+    private void cargarPreferencias() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String idioma = prefs.getString("Idioma", "es");
+        Boolean yaCargadas = prefs.getBoolean("PrefsCargadas", false);
+        if (!yaCargadas) {
+            Locale locale;
+            switch (idioma) {
+                case "es": {
+                    locale = new Locale("es");
+                    break;
+                }
+                case "en": {
+                    locale = new Locale("en");
+                    break;
+                }
+                default:
+                    throw new IllegalStateException("Unexpected value: " + idioma);
+            }
+
+            // Actualizamos las preferencias
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("PrefsCargadas", true);
+            editor.apply();
+
+            Locale.setDefault(locale);
+            Configuration conf = getBaseContext().getResources().getConfiguration();
+            conf.setLocale(locale);
+            conf.setLayoutDirection(locale);
+            Context context = getBaseContext().createConfigurationContext(conf);
+            getBaseContext().getResources().updateConfiguration(conf, context.getResources().getDisplayMetrics());
+            Intent i = new Intent(this, NuevaPelicula_Activity.class);
+            i.putExtra("username", username);
+            finish();
+            startActivity(i);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        // Cuando se cierre la actividad indicamos que las preferencias no están cargadas
+        super.onDestroy();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("PrefsCargadas", false);
+        editor.apply();
     }
 
     public void onClickCrearNuevaPeli(View v) {
@@ -65,7 +121,7 @@ public class NuevaPelicula_Activity extends AppCompatActivity {
                 aviso.show();
                 return;
             }
-        }else{
+        } else {
             Toast aviso = Toast.makeText(this, getString(R.string.introducirimagen), Toast.LENGTH_SHORT);
             aviso.show();
             return;
@@ -118,5 +174,26 @@ public class NuevaPelicula_Activity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("¿Seguro que quieres salir sin crear la película?")
+                .setPositiveButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        builder.create().dismiss();
+                    }
+                })
+                .setNegativeButton("Salir", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent_salir = new Intent(getBaseContext(), Principal_Activity.class);
+                        intent_salir.putExtra("username", username);
+                        finish();
+                        startActivity(intent_salir);
+                    }
+                });
+        builder.setCancelable(false);
+        builder.show();
     }
 }
