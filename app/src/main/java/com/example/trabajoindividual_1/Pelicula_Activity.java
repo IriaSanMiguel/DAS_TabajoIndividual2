@@ -21,7 +21,10 @@ public class Pelicula_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pelicula);
 
+        // Obtenemos la base de datos
         db = new miDB(this, 1);
+
+        // Obtenemos los datos del intent
         Intent i = getIntent();
         username = i.getStringExtra("username");
         titulo = i.getStringExtra("tituloPelicula");

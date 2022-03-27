@@ -50,13 +50,23 @@ public class Review_Activity extends AppCompatActivity {
         cargarPreferencias();
     }
 
+    /*############################################################################################################################
+    ######################################################## PREFERENCIAS ########################################################
+    ##############################################################################################################################*/
+
     private void cargarPreferencias(){
+        /*
+        Pre:
+        Post: Se han cargado las preferencias
+        */
+
+        // Obtenemos las preferencias
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String idioma = prefs.getString("Idioma","es");
         Boolean yaCargadas = prefs.getBoolean("PrefsCargadas", false);
-        if (!yaCargadas){
+        if (!yaCargadas){ // Si no se habían cargado antes
             Locale locale;
-            switch (idioma){
+            switch (idioma){ // Cambiamos el idioma
                 case "es":{
                     locale = new Locale("es");
                     break;
@@ -73,6 +83,7 @@ public class Review_Activity extends AppCompatActivity {
             editor.putBoolean("PrefsCargadas", true);
             editor.apply();
 
+            // Cambiamos el idioma
             Locale.setDefault(locale);
             Configuration conf = getBaseContext().getResources().getConfiguration();
             conf.setLocale(locale);
@@ -89,6 +100,11 @@ public class Review_Activity extends AppCompatActivity {
 
     @Override
     public void onDestroy() {
+        /*
+        Pre: Se ha cerrado la actividad
+        Post: Se han actualizado las preferencias
+        */
+
         // Cuando se cierre la actividad indicamos que las preferencias no están cargadas
         super.onDestroy();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -98,12 +114,19 @@ public class Review_Activity extends AppCompatActivity {
     }
 
     public void onClick(View v){
+        /*
+        Pre: Se ha pulsado en "Publicar"
+        Post: Se ha creado una nueva review para la película seleccionada
+        */
+
+        // Obtenemos los elementos
         EditText editText = (EditText) findViewById(R.id.editText_Resena);
         RatingBar ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-        if (!editText.getText().toString().equals("")){
-            if (ratingBar.getRating() != 0){
+
+        if (!editText.getText().toString().equals("")){ // Si se ha escrito una reseña
+            if (ratingBar.getRating() != 0){ // Si se le hya dado una puntuación
                 if(reviewText!=null){ // Si ya existía una review de ese usuario para esa película
-                    if(db.actualizarReview(username,pelicula,editText.getText().toString(),ratingBar.getRating())){
+                    if(db.actualizarReview(username,pelicula,editText.getText().toString(),ratingBar.getRating())){ // Si se actualiza correctamente la review
                         Intent intent = new Intent(this, Principal_Activity.class);
                         intent.putExtra("username", username);
                         finish();
@@ -113,7 +136,7 @@ public class Review_Activity extends AppCompatActivity {
                         aviso.show();
                     }
                 }else { // Si es la primera review que hace el usuario a esa película
-                    if(db.addReview(username, pelicula, editText.getText().toString(),ratingBar.getRating())){
+                    if(db.addReview(username, pelicula, editText.getText().toString(),ratingBar.getRating())){ // Si se añade correctamente la review
                         Intent intent = new Intent(this, Principal_Activity.class);
                         intent.putExtra("username", username);
                         finish();

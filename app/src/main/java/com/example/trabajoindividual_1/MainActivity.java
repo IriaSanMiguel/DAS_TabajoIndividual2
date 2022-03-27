@@ -54,13 +54,24 @@ public class MainActivity extends AppCompatActivity {
         cargarPreferencias();
     }
 
+    /*############################################################################################################################
+    ######################################################## PREFERENCIAS #########################################################
+    ##############################################################################################################################*/
+
     private void cargarPreferencias() {
+         /*
+        Pre:
+        Post: Se han cargado las preferencias
+        */
+
+        // Obtenemos las preferencias
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String idioma = prefs.getString("Idioma", "es");
         Boolean yaCargadas = prefs.getBoolean("PrefsCargadas", false);
-        if (!yaCargadas) {
+
+        if (!yaCargadas) { // Si no se habían cargado antes
             Locale locale;
-            switch (idioma) {
+            switch (idioma) { // Cambiamos el idioma
                 case "es": {
                     locale = new Locale("es");
                     break;
@@ -78,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
             editor.putBoolean("PrefsCargadas", true);
             editor.apply();
 
+            // Cambiamos el idioma
             Locale.setDefault(locale);
             Configuration conf = getBaseContext().getResources().getConfiguration();
             conf.setLocale(locale);
@@ -85,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
             Context context = getBaseContext().createConfigurationContext(conf);
             getBaseContext().getResources().updateConfiguration(conf, context.getResources().getDisplayMetrics());
             Intent i = new Intent(this, MainActivity.class);
+
             // Mantener el texto introducido en los EditText
             EditText username = (EditText) findViewById(R.id.editText_nombreUsuario);
             EditText contrasena = (EditText) findViewById(R.id.editText_contrasena);
@@ -105,8 +118,17 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    /*############################################################################################################################
+      ######################################################## TOOLBAR #############################################################
+      ##############################################################################################################################*/
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        /*
+        Pre: Se ha seleccionado una de las opciones de la toolbar
+        Post: Se ha ejecutado la acción adecuada
+        */
         int id = item.getItemId();
         switch (id) {
             case R.id.opcion1: { // Si selecciona cambiar idioma
@@ -122,10 +144,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void verInstrucciones(String idioma) {
+        /*
+        Pre: Se ha seleccionado mostrar las instrucciones
+        Post: Se muestran las instrucciones mediante un diálogo
+        */
+
         // Creamos un diálogo para mostrar las instrucciones
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.intrucciones);
 
+        // Abrimos el fichero correcto según el idioma
         InputStream fich;
         switch (idioma) {
             case ("es"): {
@@ -141,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
         }
         BufferedReader buff = new BufferedReader(new InputStreamReader(fich));
         try {
+            // Leemos el fichero
             String text = "";
             String linea;
             while ((linea = buff.readLine()) != null) {
@@ -173,6 +202,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void actualizarIdioma(int index) {
+        /*
+        Pre: Se ha seleccionado "Cambiar idioma"
+        Post: Se ha cambiado el idioma al seleccionado
+        */
         String[] languages = {"es", "en"};
 
         // Mantener el texto introducido en los EditText
@@ -195,12 +228,23 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // Indicamos la toolbar que se va a usar
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
+    /*############################################################################################################################
+    ######################################################## ATRÁS #############################################################
+    ##############################################################################################################################*/
+
     @Override
     public void onBackPressed() {
+        /*
+        Pre: Se ha pulsado el botón "hacia atrás"
+        Post: Sale un diálogo preguntando al usuario si quiere salir de esa pantalla
+        */
+
+        // Creamos el diálogo
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(getString(R.string.preguntasalir))
                 .setPositiveButton(getString(R.string.cancelar), new DialogInterface.OnClickListener() {
@@ -219,13 +263,27 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
     }
 
+    /*############################################################################################################################
+    ######################################################## FUNCIONALES #########################################################
+    ##############################################################################################################################*/
+
+
     public void onClickCrearCuenta(View v) {
+        /*
+        Pre: Se ha pulsado en "Crear cuenta"
+        Post: Se cambiado a la actividad CrearCuentaActivity
+        */
         Intent i = new Intent(this, CrearCuentaActivity.class);
         finish();
         startActivity(i);
     }
 
     public void onClickLogIn(View v) {
+        /*
+        Pre: Se ha pulsado en "Inicial sesión"
+        Post: Si no hay ningún error se ha cambiado a la actividad Principal_Activity
+        */
+
         EditText username = (EditText) findViewById(R.id.editText_nombreUsuario);
         EditText contrasena = (EditText) findViewById(R.id.editText_contrasena);
         String usernameText = username.getText().toString();
@@ -264,6 +322,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String encriptarContrasena(String contrasena) {
+        /*
+        Pre: Una contraseña
+        Post: Se devuelve la contraseña encriptada
+        */
+
         try {
             // Encriptamos la contraseña
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");

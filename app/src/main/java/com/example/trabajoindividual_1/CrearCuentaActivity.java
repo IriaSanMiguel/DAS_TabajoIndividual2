@@ -35,6 +35,8 @@ public class CrearCuentaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.createaccount);
+
+        // Obtenemos la base de datos
         db = new miDB(this, 1);
 
         // Asignar ActionBar
@@ -56,17 +58,29 @@ public class CrearCuentaActivity extends AppCompatActivity {
         cargarPreferencias();
     }
 
-    private void cargarPreferencias(){
+    /*############################################################################################################################
+    ######################################################## PREFERENCIAS ########################################################
+    ##############################################################################################################################*/
+
+    private void cargarPreferencias() {
+        /*
+        Pre:
+        Post: Se han cargado las preferencias
+        */
+
+        // Obtenemos las preferencias
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String idioma = prefs.getString("Idioma","es");
+        String idioma = prefs.getString("Idioma", "es");
         Boolean yaCargadas = prefs.getBoolean("PrefsCargadas", false);
-        if (!yaCargadas){
+
+        if (!yaCargadas) { // Si no se habían cargado antes
             Locale locale;
-            switch (idioma){
-                case "es":{
+            switch (idioma) { // Cambiamos el idioma
+                case "es": {
                     locale = new Locale("es");
                     break;
-                } case "en":{
+                }
+                case "en": {
                     locale = new Locale("en");
                     break;
                 }
@@ -79,6 +93,7 @@ public class CrearCuentaActivity extends AppCompatActivity {
             editor.putBoolean("PrefsCargadas", true);
             editor.apply();
 
+            // Cambiamos el idioma
             Locale.setDefault(locale);
             Configuration conf = getBaseContext().getResources().getConfiguration();
             conf.setLocale(locale);
@@ -86,7 +101,8 @@ public class CrearCuentaActivity extends AppCompatActivity {
             Context context = getBaseContext().createConfigurationContext(conf);
             getBaseContext().getResources().updateConfiguration(conf, context.getResources().getDisplayMetrics());
             Intent i = new Intent(this, CrearCuentaActivity.class);
-            // Mantener el texto introducido en los EditText
+
+            // Mantenemos el texto introducido en los EditText
             EditText username = (EditText) findViewById(R.id.editText_username);
             EditText contrasena1 = (EditText) findViewById(R.id.editText_password1);
             EditText contrasena2 = (EditText) findViewById(R.id.editText_password2);
@@ -97,6 +113,7 @@ public class CrearCuentaActivity extends AppCompatActivity {
             i.putExtra("contrasena2Text", contrasena2.getText().toString());
             i.putExtra("nombreText", nombre.getText().toString());
             i.putExtra("apellidoText", apellido.getText().toString());
+
             finish();
             startActivity(i);
         }
@@ -104,6 +121,11 @@ public class CrearCuentaActivity extends AppCompatActivity {
 
     @Override
     public void onDestroy() {
+        /*
+        Pre: Se ha cerrado la actividad
+        Post: Se han actualizado las preferencias
+        */
+
         // Cuando se cierre la actividad indicamos que las preferencias no están cargadas
         super.onDestroy();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -112,14 +134,18 @@ public class CrearCuentaActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
+    /*############################################################################################################################
+    ######################################################## ATRÁS #############################################################
+    ##############################################################################################################################*/
 
     @Override
     public void onBackPressed() {
+        /*
+        Pre: Se ha pulsado el botón "hacia atrás"
+        Post: Sale un diálogo preguntando al usuario si quiere salir de esa pantalla
+        */
+
+        // Creamos el diálogo
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(getString(R.string.preguntasalir))
                 .setPositiveButton(getString(R.string.cancelar), new DialogInterface.OnClickListener() {
@@ -138,8 +164,24 @@ public class CrearCuentaActivity extends AppCompatActivity {
         builder.show();
     }
 
+    /*############################################################################################################################
+    ######################################################## TOOLBAR #############################################################
+    ##############################################################################################################################*/
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Indicamos la toolbar que se va a usar
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        /*
+        Pre: Se ha seleccionado una de las opciones de la toolbar
+        Post: Se ha ejecutado la acción adecuada
+        */
+
         int id = item.getItemId();
         switch (id) {
             case R.id.opcion1: { //Si selecciona cambiar idioma
@@ -150,8 +192,29 @@ public class CrearCuentaActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void cambiarIdioma() {
+        // Creamos un diálogo para elegir el idioma
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.cambiarIdioma);
+        String[] languages = {"Castellano", "English"};
+        builder.setSingleChoiceItems(languages, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                actualizarIdioma(i);
+            }
+        });
+        builder.setCancelable(false);
+        builder.show();
+    }
+
     private void actualizarIdioma(int index) {
+        /*
+        Pre: Se ha seleccionado "Cambiar idioma"
+        Post: Se ha cambiado el idioma al seleccionado
+        */
+
         String[] languages = {"es", "en"};
+
         // Actualizamos las preferencias
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
@@ -176,20 +239,10 @@ public class CrearCuentaActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    private void cambiarIdioma() {
-        // Creamos un diálogo para elegir el idioma
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.cambiarIdioma);
-        String[] languages = {"Castellano", "English"};
-        builder.setSingleChoiceItems(languages, -1, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                actualizarIdioma(i);
-            }
-        });
-        builder.setCancelable(false);
-        builder.show();
-    }
+    /*############################################################################################################################
+    ######################################################## FUNCIONALES #########################################################
+    ##############################################################################################################################*/
+
 
     private boolean hayVacios(String username, String password1, String password2, String nombre, String apellido) {
         //Pre:
@@ -202,6 +255,11 @@ public class CrearCuentaActivity extends AppCompatActivity {
     }
 
     private String encriptarContrasena(String contrasena) {
+        /*
+        Pre: Una contraseña
+        Post: Se devuelve la contraseña encriptada
+        */
+
         try {
             // Encriptamos la contraseña
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");

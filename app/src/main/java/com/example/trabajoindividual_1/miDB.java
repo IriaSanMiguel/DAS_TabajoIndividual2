@@ -35,7 +35,7 @@ public class miDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         //Pre:
-        //Post: Se han creado todas las tablas de la base de datos correctamente
+        //Post: Se han creado todas las tablas de la base de datos correctamente y se han introducido los datos
         sqLiteDatabase.execSQL("CREATE TABLE Usuarios ('NombreUsuario' VARCHAR(255) PRIMARY KEY NOT NULL, 'Nombre'" +
                 " VARCHAR(255) NOT NULL, 'Apellido' VARCHAR(255) NOT NULL, 'Contrasena' VARCHAR(255) NOT NULL)");
 
@@ -185,23 +185,39 @@ public class miDB extends SQLiteOpenHelper {
 
     }
 
-    private byte[] getByteArray(int drawable) {
-        // Conseguimos el Bitmap del drawable
-        Bitmap bitmapimage = BitmapFactory.decodeResource(pcontext.getResources(), drawable);
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmapimage.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        return byteArrayOutputStream.toByteArray();
-    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Usuarios");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Peliculas");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Reviews");
         onCreate(sqLiteDatabase);
     }
 
+    private byte[] getByteArray(int drawable) {
+        /*
+        Pre: El integer del drawable a convertir
+        Post: Se ha transformado el drawable a un byte[]
+        */
+
+        // Conseguimos el Bitmap del drawable
+        Bitmap bitmapimage = BitmapFactory.decodeResource(pcontext.getResources(), drawable);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmapimage.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+
+        // Devolvemos el byte[]
+        return byteArrayOutputStream.toByteArray();
+    }
+
     public JSONObject getReviewsDePelicula(String titulo) {
+        /*
+        Pre: El título de una película
+        Post: Se devuelven las reviews de esa película en formato JSON
+        */
+
+        // Hacemos la petición
         SQLiteDatabase db = getReadableDatabase();
         String[] columnas = new String[]{"Usuario", "Review", "Puntuacion"};
         String[] param = new String[]{titulo};
@@ -210,6 +226,8 @@ public class miDB extends SQLiteOpenHelper {
         String[] lUsers = new String[cu.getCount()];
         String[] lReviews = new String[cu.getCount()];
         float[] lRatings = new float[cu.getCount()];
+
+        // Cargamos los datos en el JSON
         try {
             JSONObject json = new JSONObject();
             while (cu.moveToNext()) {
@@ -227,6 +245,11 @@ public class miDB extends SQLiteOpenHelper {
     }
 
     public boolean addUsuario(String nombreUsuario, String nombre, String apellido, String contrasena) {
+        /*
+        Pre: El username, el nombre del usuario, su apellido y la contraseña
+        Post: Se ha creado el usuario correctamente
+        */
+
         try {
             SQLiteDatabase db = getWritableDatabase();
             ContentValues datos = new ContentValues();
@@ -244,6 +267,11 @@ public class miDB extends SQLiteOpenHelper {
     }
 
     public boolean addPelicula(String titulo, String director, int anio, byte[] poster) {
+        /*
+        Pre: El titulo, el director de la película, el año en el que se estrenó y el poster
+        Post: Se ha creado la película correctamente
+        */
+
         try {
 
             SQLiteDatabase db = getWritableDatabase();
@@ -264,6 +292,11 @@ public class miDB extends SQLiteOpenHelper {
 
 
     public boolean addReview(String nombreUsuario, String titulo, String review, float puntuacion) {
+        /*
+        Pre: El username del usuario que ha escrito la reseña, el título de la película, la review y la puntuación dada
+        Post: Se ha creado la review correctamente
+        */
+
         try {
             SQLiteDatabase db = getWritableDatabase();
             ContentValues datos = new ContentValues();
@@ -281,6 +314,11 @@ public class miDB extends SQLiteOpenHelper {
     }
 
     private void actualizarPuntuacionPelicula(String pelicula) {
+        /*
+        Pre: El título de la película
+        Post: Se ha actualizado la puntuación de la película correctamente
+        */
+
         SQLiteDatabase db = getReadableDatabase();
         String[] columnas = new String[]{"Puntuacion"};
         String[] param = new String[]{pelicula};
@@ -298,6 +336,11 @@ public class miDB extends SQLiteOpenHelper {
     }
 
     public boolean tieneEsaContrasena(String usuario, String contrasena) {
+        /*
+        Pre: Un username y su contraseña
+        Post: Devuelve true si ese usuario tiene esa contraseña, false en caso contrario
+        */
+
         SQLiteDatabase db = getReadableDatabase();
         String[] columnas = new String[]{"Contrasena"};
         String[] param = new String[]{usuario};
@@ -312,6 +355,11 @@ public class miDB extends SQLiteOpenHelper {
     }
 
     public boolean existePelicula(String titulo){
+        /*
+        Pre: El título de una película
+        Post: Devuelve true si existe una película con ese título, false en caso contrario
+        */
+
         SQLiteDatabase db = getReadableDatabase();
         String[] columnas = new String[]{"Titulo"};
         String[] param = new String[]{"Titulo"};
@@ -324,6 +372,11 @@ public class miDB extends SQLiteOpenHelper {
     }
 
     public boolean existeUsuario(String nombreUsuario) {
+        /*
+        Pre: Un username
+        Post: Devuelve true si existe ese usuario, false en caso contrario
+        */
+
         SQLiteDatabase db = getReadableDatabase();
         String[] columnas = new String[]{"NombreUsuario"};
         String[] param = new String[]{nombreUsuario};
@@ -337,6 +390,11 @@ public class miDB extends SQLiteOpenHelper {
 
 
     public JSONObject getDatosUsuario(String username) {
+        /*
+        Pre: Un username
+        Post: Devuelve los datos del usuario con ese username en formato JSON
+        */
+
         SQLiteDatabase db = getReadableDatabase();
         String[] columnas = new String[]{"Nombre", "Apellido"};
         String[] param = new String[]{username};
@@ -354,6 +412,11 @@ public class miDB extends SQLiteOpenHelper {
     }
 
     public JSONObject getDatosPelicula(String titulo) {
+        /*
+        Pre: El título de una película
+        Post: Devuelve los datos de la película con ese título en formato JSON
+        */
+
         SQLiteDatabase db = getReadableDatabase();
         String[] columnas = new String[]{"Director", "Anio", "PuntuacionMedia"};
         String[] param = new String[]{titulo};
@@ -372,6 +435,11 @@ public class miDB extends SQLiteOpenHelper {
     }
 
     public boolean updateUsuarioUsername(String username, String usernameNuevo) {
+        /*
+        Pre: El username antiguo de un usuario y el nuevo
+        Post: Devuelve true si se ha actualizado el nombre del usuario correctamente, false en caso contrario
+        */
+
         try {
             SQLiteDatabase db = getWritableDatabase();
             ContentValues datos = new ContentValues();
@@ -386,6 +454,11 @@ public class miDB extends SQLiteOpenHelper {
     }
 
     public boolean updateUsuarioContrasena(String username, String contrasena) {
+        /*
+        Pre: El username de un usuario y su nueva contraseña
+        Post: Devuelve true si se ha actualizado correctamente, false en caso contrario
+        */
+
         try {
             SQLiteDatabase db = getWritableDatabase();
             ContentValues datos = new ContentValues();
@@ -400,6 +473,11 @@ public class miDB extends SQLiteOpenHelper {
     }
 
     public boolean updateUsuarioNombre(String username, String nombre) {
+        /*
+        Pre: El username de un usuario y su nuevo nombre
+        Post: Devuelve true si se ha actualizado correctamente, false en caso contrario
+        */
+
         try {
             SQLiteDatabase db = getWritableDatabase();
             ContentValues datos = new ContentValues();
@@ -414,6 +492,11 @@ public class miDB extends SQLiteOpenHelper {
     }
 
     public boolean updateUsuarioApellido(String username, String apellido) {
+        /*
+        Pre: El username de un usuario y su nueva apellido
+        Post: Devuelve true si se ha actualizado correctamente, false en caso contrario
+        */
+
         try {
             SQLiteDatabase db = getWritableDatabase();
             ContentValues datos = new ContentValues();
@@ -428,6 +511,11 @@ public class miDB extends SQLiteOpenHelper {
     }
 
     public JSONObject getInfoPeliculas() {
+        /*
+        Pre:
+        Post: Devuelve toda la información de las películas almacenadas en formato JSON
+        */
+
         JSONObject json = new JSONObject();
         SQLiteDatabase db = getReadableDatabase();
         String[] columnas = new String[]{"Titulo", "PuntuacionMedia"};
@@ -453,6 +541,11 @@ public class miDB extends SQLiteOpenHelper {
     }
 
     private byte[] getPosterDePeliculas(String titulo) {
+        /*
+        Pre: El título de una película
+        Post: Devuelve el byte[] del poster de esa película
+        */
+
         SQLiteDatabase db = getReadableDatabase();
         String[] columnas = new String[]{"Poster"};
         String[] param = new String[]{titulo};
@@ -465,7 +558,10 @@ public class miDB extends SQLiteOpenHelper {
     }
 
     public String yaHaHechoReview(String usuario, String pelicula) {
-        // Si el usuario no ha hceho una review a esa película se devolverá null, en caso contrario se devolverá el texto de la review
+        /*
+        Pre: El username de un usuario y el título de la película a la que va a hacer la review
+        Post: Si el usuario no ha hecho una review a esa película se devolverá null, en caso contrario se devolverá el texto de la review
+        */
 
         SQLiteDatabase db = getReadableDatabase();
         String[] columnas = new String[]{"Review"};
@@ -479,6 +575,11 @@ public class miDB extends SQLiteOpenHelper {
     }
 
     public boolean actualizarReview(String usuario, String pelicula, String review, float puntuacion) {
+        /*
+        Pre: El username de un usuario, el título de la película a la que a hecho la review, la propia review y la puntuación que le ha dado
+        Post: Devuelve true si se ha actualizado correctamente, false en caso contrario
+        */
+
         try {
             SQLiteDatabase db = getWritableDatabase();
             ContentValues datos = new ContentValues();

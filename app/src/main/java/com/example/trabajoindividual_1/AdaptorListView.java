@@ -28,6 +28,10 @@ public class AdaptorListView extends BaseAdapter {
     private Context contexto;
 
     public AdaptorListView(Context pcontext, String[] nombresPeliculas, byte[][] imagenesPeliculas, float[] ppuntuaciones) {
+        /*
+        Pre: Un contexto, una lista de los nombres de las películas, sus posters y la puntuación que tienen
+        Post: Se ha creado el ListView con las películas disponibles
+        */
         contexto = pcontext;
         peliculas = nombresPeliculas;
         posters = imagenesPeliculas;
@@ -53,8 +57,14 @@ public class AdaptorListView extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+        /*
+        Pre: El índice de la pelicula, la view y la viewGroup
+        Post: Se ha creado correctamente el listView
+        */
 
         view = inflater.inflate(R.layout.listview_peliculas, null);
+
+        // Escribimos los datos
 
         // Nombre de la película
         TextView titulo = (TextView) view.findViewById(R.id.textViewTituloPeli);
@@ -68,10 +78,12 @@ public class AdaptorListView extends BaseAdapter {
         RatingBar ratingBar = (RatingBar) view.findViewById(R.id.ratingBar_listView);
         ratingBar.setRating(puntuaciones[i]);
 
+        // Asignamos las acciones a los botones
         Button botonReview = (Button) view.findViewById(R.id.button_review);
         botonReview.setOnClickListener(new AdapterView.OnClickListener(){
             @Override
             public void onClick(View view) {
+                // Cuando se clicke este botón se irá a la actividad Review_Activity para que el usuario escriba una reseña
                 Intent intent = ((Activity) viewGroup.getContext()).getIntent();
                 String username = intent.getStringExtra("username");
                 Intent intent_reviews = new Intent(viewGroup.getContext(), Review_Activity.class);
@@ -85,6 +97,7 @@ public class AdaptorListView extends BaseAdapter {
         botonDescripcion.setOnClickListener(new AdapterView.OnClickListener(){
             @Override
             public void onClick(View view) {
+                // Cuando se clcike en este botón se irá a la actividad Pelicula_Activity para que el usuario pueda ver la información de la película
                 Intent intent = ((Activity) viewGroup.getContext()).getIntent();
                 String sdf = intent.getStringExtra("username");
                 Intent intent_reviews = new Intent(viewGroup.getContext(), Pelicula_Activity.class);

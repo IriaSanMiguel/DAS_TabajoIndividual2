@@ -52,10 +52,16 @@ public class ListaReviewsFragment extends ListFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        /*
+        Pre: Un Bundle
+        Post: Se ha creado el fragment de la ListView
+        */
+
         super.onCreate(savedInstanceState);
         miDB db = new miDB(getActivity(), 1);
         pelicula = getActivity().getIntent().getStringExtra("tituloPelicula");
         JSONObject json = db.getReviewsDePelicula(pelicula);
+        // Obtenemos los datos necesarios
         if (json != null) {
             try {
                 lUsers = (String[]) json.get("lUsers");
@@ -81,8 +87,6 @@ public class ListaReviewsFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_reviews, container, false);
     }
@@ -90,7 +94,7 @@ public class ListaReviewsFragment extends ListFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        // Asignamos el ListView Adapter y le pasamos los datos necesarios para crear la ListView
         setListAdapter(new AdapterListViewReviews(getContext(), lUsers, lReviews, lRatings));
-
     }
 }

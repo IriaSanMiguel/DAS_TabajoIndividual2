@@ -51,7 +51,7 @@ public class AdapterListViewReviews extends BaseAdapter {
 
         view = inflater.inflate(R.layout.listview_review, null);
 
-        //Escribimos los datos
+        // Escribimos los datos
 
         // Nombre del usuario
         TextView textView_username = (TextView) view.findViewById(R.id.textView_username);
@@ -69,6 +69,7 @@ public class AdapterListViewReviews extends BaseAdapter {
     }
     @Override
     public boolean isEnabled(int position) {
+        // Bloqueamos el click en el elemento
         return false;
     }
 }

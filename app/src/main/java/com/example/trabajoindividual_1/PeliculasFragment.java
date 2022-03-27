@@ -47,6 +47,10 @@ public class PeliculasFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        /*
+        Pre: Un Bundle
+        Post: Se ha creado el fragment de la película
+        */
 
         super.onCreate(savedInstanceState);
     }
@@ -54,7 +58,15 @@ public class PeliculasFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        /*
+        Pre: Un LayoutInflater, un viewGroup y un Bundle
+        Post: Se ha creado el fragment de la película
+        */
+
+        // Obtenemos la base de datos
         db = new miDB(getActivity(), 1);
+
+        //Obtenemos los extras del intent
         Intent i = getActivity().getIntent();
         username = i.getStringExtra("username");
         titulo = i.getStringExtra("tituloPelicula");
@@ -65,7 +77,14 @@ public class PeliculasFragment extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        /*
+        Pre: Un Bundle
+        Post: Se ha creado la actividad correctamente
+        */
+
         super.onActivityCreated(savedInstanceState);
+
+        // Obtenemos todos los elementos
         TextView textViewTitulo = (TextView) getView().findViewById(R.id.textView_Titulo);
         TextView textViewDirector = (TextView) getView().findViewById(R.id.textView_Director);
         TextView textView_Anio = (TextView) getView().findViewById(R.id.textView_Anio);
@@ -77,6 +96,7 @@ public class PeliculasFragment extends Fragment {
 
         if (json != null) { // Si no ha habido ningún error
             try {
+                // Se asignan los datos correspondientes a cada elemento de la view
                 textViewTitulo.setText(titulo);
                 textView_Anio.setText(json.getString("Anio"));
                 textViewDirector.setText(json.getString("Director"));
@@ -119,17 +139,28 @@ public class PeliculasFragment extends Fragment {
         cargarPreferencias();
     }
 
-    private void cargarPreferencias(){
+    /*############################################################################################################################
+    ######################################################## PREFERENCIAS ########################################################
+    ##############################################################################################################################*/
+
+    private void cargarPreferencias() {
+        /*
+        Pre:
+        Post: Se han cargado las preferencias
+        */
+
+        // Obtenemos las preferencias
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
-        String idioma = prefs.getString("Idioma","es");
+        String idioma = prefs.getString("Idioma", "es");
         Boolean yaCargadas = prefs.getBoolean("PrefsCargadas", false);
-        if (!yaCargadas){
+        if (!yaCargadas) { // Si no se habían cargado antes
             Locale locale;
-            switch (idioma){
-                case "es":{
+            switch (idioma) { // Cambiamos el idioma
+                case "es": {
                     locale = new Locale("es");
                     break;
-                } case "en":{
+                }
+                case "en": {
                     locale = new Locale("en");
                     break;
                 }
@@ -142,6 +173,7 @@ public class PeliculasFragment extends Fragment {
             editor.putBoolean("PrefsCargadas", true);
             editor.apply();
 
+            // Cambiamos el idioma
             Locale.setDefault(locale);
             Configuration conf = getActivity().getBaseContext().getResources().getConfiguration();
             conf.setLocale(locale);
@@ -158,6 +190,11 @@ public class PeliculasFragment extends Fragment {
 
     @Override
     public void onDestroy() {
+        /*
+        Pre: Se ha cerrado la actividad
+        Post: Se han actualizado las preferencias
+        */
+
         // Cuando se cierre la actividad indicamos que las preferencias no están cargadas
         super.onDestroy();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
@@ -166,13 +203,27 @@ public class PeliculasFragment extends Fragment {
         editor.apply();
     }
 
+    /*############################################################################################################################
+    ######################################################## FUNCIONALES #########################################################
+    ##############################################################################################################################*/
+
     private void onClickVerReviews() {
+        /*
+        Pre: Se ha clickado en "Ver reviews"
+        Post: Se cambia de actividad a ListaReviews_Activity
+        */
+
         Intent i = new Intent(getActivity(), ListaReviews_Activity.class);
         i.putExtra("tituloPelicula", titulo);
         startActivity(i);
     }
 
     private void onClickEscribirReview() {
+        /*
+        Pre: Se ha clickado en "Escribir review"
+        Post: Se cambia de actividad a Review_Activity
+        */
+
         Intent i = new Intent(getActivity(), Review_Activity.class);
         i.putExtra("username", username);
         i.putExtra("tituloPelicula", titulo);
