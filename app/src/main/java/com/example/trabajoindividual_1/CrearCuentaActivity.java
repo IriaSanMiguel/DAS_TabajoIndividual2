@@ -23,6 +23,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.preference.PreferenceManager;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Locale;
@@ -188,8 +191,54 @@ public class CrearCuentaActivity extends AppCompatActivity {
                 cambiarIdioma();
                 break;
             }
+            case R.id.opcion2: { // Si se seleccionan las instrucciones
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+                verInstrucciones(prefs.getString("Idioma", "es"));
+            }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void verInstrucciones(String idioma) {
+        /*
+        Pre: Se ha seleccionado mostrar las instrucciones
+        Post: Se muestran las instrucciones mediante un diálogo
+        */
+
+        // Creamos un diálogo para mostrar las instrucciones
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.intrucciones);
+
+        // Abrimos el fichero correcto según el idioma
+        InputStream fich;
+        switch (idioma) {
+            case ("es"): {
+                fich = getResources().openRawResource(R.raw.instrucciones_es);
+                break;
+            }
+            case ("en"): {
+                fich = getResources().openRawResource(R.raw.instrucciones_en);
+                break;
+            }
+            default:
+                throw new IllegalStateException("Unexpected value: " + idioma);
+        }
+        BufferedReader buff = new BufferedReader(new InputStreamReader(fich));
+        try {
+            // Leemos el fichero
+            String text = "";
+            String linea;
+            while ((linea = buff.readLine()) != null) {
+                text = text + linea + "\n";
+            }
+            fich.close();
+            builder.setMessage(text);
+            builder.show();
+        } catch (Exception e) {
+            Toast aviso = Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT);
+            aviso.show();
+        }
+
     }
 
     private void cambiarIdioma() {
