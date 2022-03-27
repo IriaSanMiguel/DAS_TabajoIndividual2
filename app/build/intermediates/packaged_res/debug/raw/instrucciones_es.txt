@@ -1,0 +1,12 @@
+¡Bienvenido a Reviews Películas!
+Para poder usar la aplicación es necesario iniciar sesión primero, para ello puede introducir su nombre
+y contraseña en los campos indicados y darle al botón de iniciar sesión, en caso de que no tenga una cuenta puede hacerse una pulsando en
+el botón "Crear cuenta" y rellenando los campos indicados, una vez hecho es seguir las instrucciones indicadas anteriormente.
+Una vez dentro de la aplicación podrá ver todas las películas disponibles, en caso de que quiera añadir una simplemente tiene que pulsar al botón
+"Crear nueva película" y rellenar los campos indicados (nombre de la película, director, año y el poster) y pulsar el botón, una vez hecho esto la nueva película
+debería aparecer en el catálogo.
+En caso de querer ver la infromación y reseñas de una película, se pulsa en el botón "descripción" de la misma, en esa nueva pantalla se puede ver la infromación de la película,
+sus reviews o crear una propia. Para ver las reviews sin perder la información de la película basta con girar la pantalla.
+Volviendo a la pantalla principal, en caso de querer hacer una review directamente se pulsa el botón "hacer review" de la película directamente.
+Por otro lado, en la barra de herramientas en la pante superior de la pantalla podemos tanto cambiar nuestro datos personales como cambiar de idioma.
+¡Espero que disfrute de la aplicación!
