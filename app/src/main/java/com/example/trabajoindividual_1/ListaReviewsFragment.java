@@ -44,7 +44,7 @@ public class ListaReviewsFragment extends ListFragment {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
+
     public static ListaReviewsFragment newInstance(String param1, String param2) {
         ListaReviewsFragment fragment = new ListaReviewsFragment();
         return fragment;

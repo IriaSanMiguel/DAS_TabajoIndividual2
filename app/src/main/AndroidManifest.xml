@@ -36,7 +36,7 @@
             android:configChanges="orientation|screenSize"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LogIn_Activity"
             android:configChanges="orientation|screenSize"
             android:exported="true">
             <intent-filter>

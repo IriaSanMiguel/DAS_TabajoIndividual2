@@ -2,7 +2,6 @@ package com.example.trabajoindividual_1;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -158,7 +157,7 @@ public class CrearCuentaActivity extends AppCompatActivity {
                 })
                 .setNegativeButton(getString(R.string.salir), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Intent intent_salir = new Intent(getBaseContext(), MainActivity.class);
+                        Intent intent_salir = new Intent(getBaseContext(), LogIn_Activity.class);
                         finish();
                         startActivity(intent_salir);
                     }
@@ -383,7 +382,7 @@ public class CrearCuentaActivity extends AppCompatActivity {
                 elManager.notify(1, elBuilder.build());
 
                 // Volvemos a la pantalla de inicio
-                Intent i = new Intent(this, MainActivity.class);
+                Intent i = new Intent(this, LogIn_Activity.class);
                 finish();
                 startActivity(i);
             } else {

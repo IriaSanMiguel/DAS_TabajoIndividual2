@@ -15,8 +15,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,7 +25,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class LogIn_Activity extends AppCompatActivity {
 
     miDB db;
 
@@ -96,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             conf.setLayoutDirection(locale);
             Context context = getBaseContext().createConfigurationContext(conf);
             getBaseContext().getResources().updateConfiguration(conf, context.getResources().getDisplayMetrics());
-            Intent i = new Intent(this, MainActivity.class);
+            Intent i = new Intent(this, LogIn_Activity.class);
 
             // Mantener el texto introducido en los EditText
             EditText username = (EditText) findViewById(R.id.editText_nombreUsuario);
@@ -211,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
         // Mantener el texto introducido en los EditText
         EditText username = (EditText) findViewById(R.id.editText_nombreUsuario);
         EditText contrasena = (EditText) findViewById(R.id.editText_contrasena);
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, LogIn_Activity.class);
         i.putExtra("usernameText", username.getText().toString());
         i.putExtra("contrasenaText", contrasena.getText().toString());
 

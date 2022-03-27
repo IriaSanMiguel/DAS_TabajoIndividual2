@@ -1,23 +1,15 @@
 package com.example.trabajoindividual_1;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.database.CursorWindow;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -26,8 +18,6 @@ import androidx.preference.PreferenceManager;
 
 import org.json.JSONObject;
 
-import java.io.File;
-import java.lang.reflect.Field;
 import java.util.Locale;
 
 public class Principal_Activity extends AppCompatActivity {
@@ -52,7 +42,7 @@ public class Principal_Activity extends AppCompatActivity {
         if (json == null) {
             Toast aviso = Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
             aviso.show();
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, LogIn_Activity.class);
             finish();
             startActivity(intent);
         } else {
@@ -70,7 +60,7 @@ public class Principal_Activity extends AppCompatActivity {
             } catch (Exception e) {
                 Toast aviso = Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT);
                 aviso.show();
-                Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(this, LogIn_Activity.class);
                 finish();
                 startActivity(intent);
             }
@@ -237,7 +227,7 @@ public class Principal_Activity extends AppCompatActivity {
                 })
                 .setNegativeButton("Salir", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Intent intent_finalizar = new Intent(getBaseContext(), MainActivity.class);
+                        Intent intent_finalizar = new Intent(getBaseContext(), LogIn_Activity.class);
                         finish();
                         startActivity(intent_finalizar);
                     }

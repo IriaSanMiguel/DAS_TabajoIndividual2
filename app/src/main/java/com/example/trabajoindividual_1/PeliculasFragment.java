@@ -1,6 +1,5 @@
 package com.example.trabajoindividual_1;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,7 +23,6 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
-import java.nio.FloatBuffer;
 import java.util.Locale;
 
 /**
@@ -106,7 +104,7 @@ public class PeliculasFragment extends Fragment {
             } catch (Exception e) {
                 Toast aviso = Toast.makeText(getActivity(), getString(R.string.error), Toast.LENGTH_SHORT);
                 aviso.show();
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                Intent intent = new Intent(getActivity(), LogIn_Activity.class);
                 intent.putExtra("username", username);
                 getActivity().finish();
                 startActivity(intent);
@@ -114,7 +112,7 @@ public class PeliculasFragment extends Fragment {
         } else {
             Toast aviso = Toast.makeText(getActivity(), getString(R.string.error), Toast.LENGTH_SHORT);
             aviso.show();
-            Intent intent = new Intent(getActivity(), MainActivity.class);
+            Intent intent = new Intent(getActivity(), LogIn_Activity.class);
             intent.putExtra("username", username);
             getActivity().finish();
             startActivity(intent);
