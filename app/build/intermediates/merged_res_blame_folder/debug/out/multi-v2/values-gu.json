@@ -1,25 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TrabajoIndividual\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-gu\\values-gu.xml",
+            "outputFile": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TabajoIndividual2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-gu\\values-gu.xml",
             "map": [
-                {
-                    "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\3d009a9472caec2ed4a541e9b7d8caa3\\transformed\\core-1.5.0\\res\\values-gu\\values-gu.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "94",
-                        "startColumns": "4",
-                        "startOffsets": "7960",
-                        "endColumns": "100",
-                        "endOffsets": "8056"
-                    }
-                },
                 {
                     "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\bf8eecf50a31b54082a6f9e21d3a7e9f\\transformed\\material-1.4.0\\res\\values-gu\\values-gu.xml",
                     "from": {
@@ -37,6 +20,23 @@
                         "endLines": "5,33,34,35,36,38,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,91",
                         "endColumns": "12,81,98,119,83,62,90,66,58,89,64,63,68,61,53,114,57,60,53,72,126,85,83,102,74,75,85,66,65,72,79,84,70,75,78,68,95,77,94,95,73,74,98,50,66,86,89,61,63,62,101,104,96,105,77",
                         "endOffsets": "268,3033,3132,3252,3336,3471,3648,3715,3774,3864,3929,3993,4062,4124,4178,4293,4351,4412,4466,4539,4666,4752,4836,4939,5014,5090,5176,5243,5309,5382,5462,5547,5618,5694,5773,5842,5938,6016,6111,6207,6281,6356,6455,6506,6573,6660,6750,6812,6876,6939,7041,7146,7243,7349,7732"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\8f18d404b14ded5469b23b967bbaaed2\\transformed\\core-1.6.0\\res\\values-gu\\values-gu.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "94",
+                        "startColumns": "4",
+                        "startOffsets": "7960",
+                        "endColumns": "100",
+                        "endOffsets": "8056"
                     }
                 },
                 {

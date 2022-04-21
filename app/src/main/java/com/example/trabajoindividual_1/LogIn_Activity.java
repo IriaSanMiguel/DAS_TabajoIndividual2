@@ -21,13 +21,12 @@ import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.util.Locale;
 
 public class LogIn_Activity extends AppCompatActivity {
 
     miDB db;
+    BdRemota rdb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +46,7 @@ public class LogIn_Activity extends AppCompatActivity {
         contrasena.setText(i.getStringExtra("contrasenaText"));
 
         db = new miDB(this, 1);
+        rdb = new BdRemota();
 
         // Cargar preferencias
         cargarPreferencias();
@@ -296,16 +296,14 @@ public class LogIn_Activity extends AppCompatActivity {
             contrasena.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
             Toast aviso = Toast.makeText(this, getString(R.string.rellenarcampos), Toast.LENGTH_SHORT);
             aviso.show();
-        } else if (!db.existeUsuario(usernameText)) { // Comprobamos si existe un usuario con ese nombre
+        } else if (!rdb.existeUsuario(usernameText)) { // Comprobamos si existe un usuario con ese nombre
             username.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
             Toast aviso = Toast.makeText(this, getString(R.string.nousuario), Toast.LENGTH_SHORT);
             aviso.show();
         } else {
-            //Encriptamos la contraseña
-            String contrasenaEncriptada = encriptarContrasena(contrasenaText);
 
             // Comprobamos que el usuario tenga esa contraseña
-            if (db.tieneEsaContrasena(usernameText, contrasenaEncriptada)) {
+            if (rdb.tieneEsaContrasena(usernameText, contrasenaText)) {
                 Intent i = new Intent(this, Principal_Activity.class);
                 i.putExtra("username", usernameText);
                 finish();
@@ -316,32 +314,6 @@ public class LogIn_Activity extends AppCompatActivity {
                 Toast aviso = Toast.makeText(this, getString(R.string.incorrecto), Toast.LENGTH_SHORT);
                 aviso.show();
             }
-        }
-    }
-
-    private String encriptarContrasena(String contrasena) {
-        /*
-        Pre: Una contraseña
-        Post: Se devuelve la contraseña encriptada
-        */
-
-        try {
-            // Encriptamos la contraseña
-            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-            messageDigest.update(contrasena.getBytes(StandardCharsets.UTF_8));
-
-            // Pasamos a bytes
-            byte[] bytes = messageDigest.digest();
-
-            // Pasamos a formato hexadecimal
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i < bytes.length; i++) {
-                stringBuilder.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-            // Devolvemos la contraseña ya encritada
-            return stringBuilder.toString();
-        } catch (Exception e) {
-            return null;
         }
     }
 }

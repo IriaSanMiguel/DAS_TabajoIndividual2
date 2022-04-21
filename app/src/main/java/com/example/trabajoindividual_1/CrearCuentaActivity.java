@@ -32,14 +32,16 @@ import java.util.Locale;
 public class CrearCuentaActivity extends AppCompatActivity {
 
     miDB db;
+    BdRemota rdb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.createaccount);
 
-        // Obtenemos la base de datos
+        // Obtenemos la base de datos local y remota
         db = new miDB(this, 1);
+        rdb = new BdRemota();
 
         // Asignar ActionBar
         setSupportActionBar(findViewById(R.id.toolbar2));
@@ -302,33 +304,6 @@ public class CrearCuentaActivity extends AppCompatActivity {
         return false;
     }
 
-    private String encriptarContrasena(String contrasena) {
-        /*
-        Pre: Una contraseña
-        Post: Se devuelve la contraseña encriptada
-        */
-
-        try {
-            // Encriptamos la contraseña
-            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-            messageDigest.update(contrasena.getBytes(StandardCharsets.UTF_8));
-
-            // Pasamos a bytes
-            byte[] bytes = messageDigest.digest();
-
-            // Pasamos a formato hexadecimal
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i < bytes.length; i++) {
-                stringBuilder.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-
-            // Devolvemos la contraseña ya encritada
-            return stringBuilder.toString();
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
     public void onClickCrearCuenta(View v) {
         //Pre: Se ha pulsado el botón "Crear cuenta"
         //Post: Si están todos los campos correctamente se habrá creado un nuevo usuario
@@ -344,7 +319,7 @@ public class CrearCuentaActivity extends AppCompatActivity {
         if (hayVacios(username.getText().toString(), password1.getText().toString(), password2.getText().toString(), nombre.getText().toString(), apellido.getText().toString())) {
             Toast aviso = Toast.makeText(this, getString(R.string.rellenarcampos), Toast.LENGTH_SHORT);
             aviso.show();
-        } else if (db.existeUsuario(username.getText().toString())) { // Comprobamos que no exista un usuario con ese nombre
+        } else if (rdb.existeUsuario(username.getText().toString())) { // Comprobamos que no exista un usuario con ese nombre
             username.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
             Toast aviso = Toast.makeText(this, getString(R.string.usuarioyaenuso), Toast.LENGTH_SHORT);
             aviso.show();
@@ -353,44 +328,35 @@ public class CrearCuentaActivity extends AppCompatActivity {
             Toast aviso = Toast.makeText(this, getString(R.string.contrasenasnocoinciden), Toast.LENGTH_SHORT);
             aviso.show();
         } else {
-            // Obtenemos la contraseña ya encritada
-            String contrasena = encriptarContrasena(password1.getText().toString());
 
-            //Comprobamos que la contraseña se ha encriptado correctamente
-            if (!contrasena.equals(null)) {
+            // Añadimos el usuario a la base de datos
+            rdb.addUsuario(username.getText().toString(), nombre.getText().toString(), apellido.getText().toString(), password1.getText().toString());
 
-                // Añadimos el usuario a la base de datos
-                db.addUsuario(username.getText().toString(), nombre.getText().toString(), apellido.getText().toString(), contrasena);
+            // Creamos una notificación local indicándole al usuario que se ha creado correctamente su cuenta
+            NotificationManager elManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            NotificationCompat.Builder elBuilder = new NotificationCompat.Builder(this, "IdCanal");
+            NotificationChannel elCanal = new NotificationChannel("IdCanal", "NombreCanal", NotificationManager.IMPORTANCE_DEFAULT);
 
-                // Creamos una notificación local indicándole al usuario que se ha creado correctamente su cuenta
-                NotificationManager elManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-                NotificationCompat.Builder elBuilder = new NotificationCompat.Builder(this, "IdCanal");
-                NotificationChannel elCanal = new NotificationChannel("IdCanal", "NombreCanal", NotificationManager.IMPORTANCE_DEFAULT);
+            elCanal.setDescription("Canal por el que se notificará que se ha creado correctamente la cuenta");
+            elCanal.enableLights(true);
+            elCanal.setVibrationPattern(new long[]{0, 1000, 500, 1000});
+            elCanal.enableVibration(true);
 
-                elCanal.setDescription("Canal por el que se notificará que se ha creado correctamente la cuenta");
-                elCanal.enableLights(true);
-                elCanal.setVibrationPattern(new long[]{0, 1000, 500, 1000});
-                elCanal.enableVibration(true);
+            elManager.createNotificationChannel(elCanal);
+            elBuilder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.baseline_thumb_up_24))
+                    .setSmallIcon(R.drawable.baseline_thumb_up_24)
+                    .setContentTitle(getString(R.string.cuentacreada))
+                    .setContentText(getString(R.string.cuentacreadacorrectamente))
+                    .setVibrate(new long[]{0, 1000, 500, 1000})
+                    .setAutoCancel(true);
+            elManager.notify(1, elBuilder.build());
 
-                elManager.createNotificationChannel(elCanal);
-                elBuilder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.baseline_thumb_up_24))
-                        .setSmallIcon(R.drawable.baseline_thumb_up_24)
-                        .setContentTitle(getString(R.string.cuentacreada))
-                        .setContentText(getString(R.string.cuentacreadacorrectamente))
-                        .setVibrate(new long[]{0, 1000, 500, 1000})
-                        .setAutoCancel(true);
-                elManager.notify(1, elBuilder.build());
-
-                // Volvemos a la pantalla de inicio
-                Intent i = new Intent(this, LogIn_Activity.class);
-                finish();
-                startActivity(i);
-            } else {
-                Toast avisoError = Toast.makeText(this, getString(R.string.errorencriptar), Toast.LENGTH_SHORT);
-                avisoError.show();
-            }
-
-
+            // Volvemos a la pantalla de inicio
+            Intent i = new Intent(this, LogIn_Activity.class);
+            finish();
+            startActivity(i);
         }
+
+
     }
 }

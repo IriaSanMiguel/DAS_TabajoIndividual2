@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TrabajoIndividual\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-de\\values-de.xml",
+            "outputFile": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TabajoIndividual2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-de\\values-de.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\bf8eecf50a31b54082a6f9e21d3a7e9f\\transformed\\material-1.4.0\\res\\values-de\\values-de.xml",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\3d009a9472caec2ed4a541e9b7d8caa3\\transformed\\core-1.5.0\\res\\values-de\\values-de.xml",
+                    "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\8f18d404b14ded5469b23b967bbaaed2\\transformed\\core-1.6.0\\res\\values-de\\values-de.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -1,24 +1,19 @@
 package com.example.trabajoindividual_1;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.preference.PreferenceManager;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,17 +26,19 @@ import java.util.Locale;
 public class MyAccount_Activity extends AppCompatActivity {
     miDB db;
     String username;
+    BdRemota rdb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_account);
         db = new miDB(this, 1);
+        rdb = new BdRemota();
 
         //Obtenemos en nombre de usuario
         Intent i = getIntent();
         username = i.getStringExtra("username");
-        JSONObject json = db.getDatosUsuario(username);
+        JSONObject json = rdb.getDatosUsuario(username);
         if (json == null) { //Si ha ocurrido un error
             Toast aviso = Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT);
             aviso.show();
@@ -115,8 +112,8 @@ public class MyAccount_Activity extends AppCompatActivity {
                     // Definimos los textos de los TextViews
                     usernameTextView.setText(getString(R.string.usernameActual) + ": " + username);
                     contrasenaTextView.setText(getString(R.string.contrasenaActual));
-                    nombreTextView.setText(getString(R.string.nombreActual) + ": " + json.getString("Nombre"));
-                    apellidoTextView.setText(getString(R.string.apellidoActual) + ": " + json.getString("Apellido"));
+                    nombreTextView.setText(getString(R.string.nombreActual) + ": " + json.getString("nombre"));
+                    apellidoTextView.setText(getString(R.string.apellidoActual) + ": " + json.getString("apellido"));
                     // Cambiamos el margen izquierdo de los TextViews
                     paramsUsernameTextView.leftMargin = 400;
                     paramsContrasenaTextView.leftMargin = 400;
@@ -129,6 +126,7 @@ public class MyAccount_Activity extends AppCompatActivity {
                     apellidoTextView.setLayoutParams(paramsApellidoTextView);
                 }
             } catch (Exception e) {
+                e.printStackTrace();
                 Toast aviso = Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT);
                 aviso.show();
             }
@@ -246,28 +244,28 @@ public class MyAccount_Activity extends AppCompatActivity {
 
         // Se comprueban uno a uno los campos y si hay algo escrito en cualquiera se actualiza
         if (!usernameEditText.getText().toString().equals("")) {
-            if (db.existeUsuario(usernameEditText.getText().toString())) { // Si ya existe un usuario con ese username
+            if (rdb.existeUsuario(usernameEditText.getText().toString())) { // Si ya existe un usuario con ese username
                 usernameEditText.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
                 Toast aviso = Toast.makeText(this, getString(R.string.usuarioyaenuso), Toast.LENGTH_SHORT);
                 aviso.show();
                 return;
             }
             hayAlgoEscrito = true;
-            error = !db.updateUsuarioUsername(username, usernameEditText.getText().toString());
+            error = !rdb.updateUsuarioUsername(username, usernameEditText.getText().toString());
             username = usernameEditText.getText().toString();
         }
         if (!contrasenaEditText.getText().toString().equals("")) {
             String contrasena = encriptarContrasena(contrasenaEditText.getText().toString());
             hayAlgoEscrito = true;
-            error = !db.updateUsuarioContrasena(username, contrasena);
+            error = !rdb.updateUsuarioContrasena(username, contrasena);
         }
         if (!nombreEditText.getText().toString().equals("")) {
             hayAlgoEscrito = true;
-            error = !db.updateUsuarioNombre(username, nombreEditText.getText().toString());
+            error = !rdb.updateUsuarioNombre(username, nombreEditText.getText().toString());
         }
         if (!apellidoEditText.getText().toString().equals("")) {
             hayAlgoEscrito = true;
-            error = !db.updateUsuarioApellido(username, apellidoEditText.getText().toString());
+            error = !rdb.updateUsuarioApellido(username, apellidoEditText.getText().toString());
         }
         if (error) { // Si no se ha actualizado algo bien
             Toast aviso = Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT);

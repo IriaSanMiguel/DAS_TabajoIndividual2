@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TrabajoIndividual\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-af\\values-af.xml",
+            "outputFile": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TabajoIndividual2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-af\\values-af.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\bf8eecf50a31b54082a6f9e21d3a7e9f\\transformed\\material-1.4.0\\res\\values-af\\values-af.xml",
@@ -20,6 +20,23 @@
                         "endLines": "5,33,34,35,36,38,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,91",
                         "endColumns": "12,77,99,113,80,63,87,65,62,85,60,57,65,62,54,117,56,61,54,68,118,87,82,108,82,80,86,66,65,68,75,85,73,78,72,70,86,70,88,89,71,74,86,50,66,80,83,61,63,62,103,108,95,110,76",
                         "endOffsets": "274,3024,3124,3238,3319,3454,3630,3696,3759,3845,3906,3964,4030,4093,4148,4266,4323,4385,4440,4509,4628,4716,4799,4908,4991,5072,5159,5226,5292,5361,5437,5523,5597,5676,5749,5820,5907,5978,6067,6157,6229,6304,6391,6442,6509,6590,6674,6736,6800,6863,6967,7076,7172,7283,7659"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\8f18d404b14ded5469b23b967bbaaed2\\transformed\\core-1.6.0\\res\\values-af\\values-af.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "94",
+                        "startColumns": "4",
+                        "startOffsets": "7884",
+                        "endColumns": "100",
+                        "endOffsets": "7980"
                     }
                 },
                 {
@@ -71,23 +88,6 @@
                         "startOffsets": "7288,7390",
                         "endColumns": "101,116",
                         "endOffsets": "7385,7502"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\3d009a9472caec2ed4a541e9b7d8caa3\\transformed\\core-1.5.0\\res\\values-af\\values-af.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "94",
-                        "startColumns": "4",
-                        "startOffsets": "7884",
-                        "endColumns": "100",
-                        "endOffsets": "7980"
                     }
                 }
             ]

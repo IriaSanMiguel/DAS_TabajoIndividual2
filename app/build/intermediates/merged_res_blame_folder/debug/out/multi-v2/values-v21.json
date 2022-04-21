@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TrabajoIndividual\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
+            "outputFile": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TabajoIndividual2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\499cf10055ac10761ea4c590d82aa8dc\\transformed\\appcompat-1.3.0\\res\\values-v21\\values-v21.xml",
@@ -61,25 +61,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\3d009a9472caec2ed4a541e9b7d8caa3\\transformed\\core-1.5.0\\res\\values-v21\\values-v21.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,13",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,173,237,304,368,484,610,736,864,1036",
-                        "endLines": "2,3,4,5,6,7,8,9,12,17",
-                        "endColumns": "117,63,66,63,115,125,125,127,12,12",
-                        "endOffsets": "168,232,299,363,479,605,731,859,1031,1383"
-                    },
-                    "to": {
-                        "startLines": "2,13,14,15,336,337,344,348,395,398",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,1020,1084,1151,25011,25127,25584,25878,29272,29444",
-                        "endLines": "2,13,14,15,336,337,344,348,397,402",
-                        "endColumns": "117,63,66,63,115,125,125,127,12,12",
-                        "endOffsets": "168,1079,1146,1210,25122,25248,25705,26001,29439,29791"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\3496082e8371033f057f8e2051b70a92\\transformed\\preference-1.1.1\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,7",
@@ -96,6 +77,25 @@
                         "endLines": "16,332,335",
                         "endColumns": "64,12,12",
                         "endOffsets": "1275,24850,25006"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\8f18d404b14ded5469b23b967bbaaed2\\transformed\\core-1.6.0\\res\\values-v21\\values-v21.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,13",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,173,237,304,368,484,610,736,864,1036",
+                        "endLines": "2,3,4,5,6,7,8,9,12,17",
+                        "endColumns": "117,63,66,63,115,125,125,127,12,12",
+                        "endOffsets": "168,232,299,363,479,605,731,859,1031,1383"
+                    },
+                    "to": {
+                        "startLines": "2,13,14,15,336,337,344,348,395,398",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,1020,1084,1151,25011,25127,25584,25878,29272,29444",
+                        "endLines": "2,13,14,15,336,337,344,348,397,402",
+                        "endColumns": "117,63,66,63,115,125,125,127,12,12",
+                        "endOffsets": "168,1079,1146,1210,25122,25248,25705,26001,29439,29791"
                     }
                 }
             ]

@@ -16,6 +16,10 @@ import android.os.Build;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
 
 import org.json.JSONObject;
 
@@ -36,8 +40,6 @@ public class miDB extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         //Pre:
         //Post: Se han creado todas las tablas de la base de datos correctamente y se han introducido los datos
-        sqLiteDatabase.execSQL("CREATE TABLE Usuarios ('NombreUsuario' VARCHAR(255) PRIMARY KEY NOT NULL, 'Nombre'" +
-                " VARCHAR(255) NOT NULL, 'Apellido' VARCHAR(255) NOT NULL, 'Contrasena' VARCHAR(255) NOT NULL)");
 
         sqLiteDatabase.execSQL("CREATE TABLE Peliculas ('Titulo' VARCHAR(255) PRIMARY KEY NOT NULL, 'Director'" +
                 " VARCHAR(255) NOT NULL, 'Anio' INTEGER NOT NULL, 'Poster' BLOB NOT NULL, 'PuntuacionMedia' FLOAT NOT NULL)");
@@ -101,17 +103,6 @@ public class miDB extends SQLiteOpenHelper {
         datos_bladerunner.put("Poster", getByteArray(R.drawable.blade));
         datos_bladerunner.put("PuntuacionMedia", 0);
         sqLiteDatabase.insert("Peliculas", null, datos_bladerunner);
-
-
-        // Creamos algunos usuarios
-        // Todas las contraseñas son 1234
-        sqLiteDatabase.execSQL("INSERT INTO Usuarios VALUES ('isanmiguel', 'Iria', 'San Miguel', '81dc9bdb52d04dc20036dbd8313ed055')");
-        sqLiteDatabase.execSQL("INSERT INTO Usuarios VALUES ('aitorjus', 'Aitor', 'Perez', '81dc9bdb52d04dc20036dbd8313ed055')");
-        sqLiteDatabase.execSQL("INSERT INTO Usuarios VALUES ('iker0610', 'Iker', 'de la Iglesia', '81dc9bdb52d04dc20036dbd8313ed055')");
-        sqLiteDatabase.execSQL("INSERT INTO Usuarios VALUES ('PLATASSON', 'Alex', 'Platas', '81dc9bdb52d04dc20036dbd8313ed055')");
-        sqLiteDatabase.execSQL("INSERT INTO Usuarios VALUES ('christian', 'Christian', 'Berrocal', '81dc9bdb52d04dc20036dbd8313ed055')");
-        sqLiteDatabase.execSQL("INSERT INTO Usuarios VALUES ('pepe125', 'Pepe', 'Perez', '81dc9bdb52d04dc20036dbd8313ed055')");
-        sqLiteDatabase.execSQL("INSERT INTO Usuarios VALUES ('58ana_', 'Ana', 'Martinez', '81dc9bdb52d04dc20036dbd8313ed055')");
 
         // Creamos algunas reviews
         sqLiteDatabase.execSQL("INSERT INTO Reviews VALUES ('isanmiguel', 'The Batman', 'Esta bien, aunque Bruce Wayne es un poco emo.', 3)");
@@ -186,7 +177,6 @@ public class miDB extends SQLiteOpenHelper {
     }
 
 
-
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
@@ -242,28 +232,6 @@ public class miDB extends SQLiteOpenHelper {
         } catch (Exception e) {
             return null;
         }
-    }
-
-    public boolean addUsuario(String nombreUsuario, String nombre, String apellido, String contrasena) {
-        /*
-        Pre: El username, el nombre del usuario, su apellido y la contraseña
-        Post: Se ha creado el usuario correctamente
-        */
-
-        try {
-            SQLiteDatabase db = getWritableDatabase();
-            ContentValues datos = new ContentValues();
-            datos.put("NombreUsuario", nombreUsuario);
-            datos.put("Nombre", nombre);
-            datos.put("Apellido", apellido);
-            datos.put("Contrasena", contrasena);
-            db.insert("Usuarios", null, datos);
-            db.close();
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-
     }
 
     public boolean addPelicula(String titulo, String director, int anio, byte[] poster) {
@@ -335,26 +303,7 @@ public class miDB extends SQLiteOpenHelper {
         db.close();
     }
 
-    public boolean tieneEsaContrasena(String usuario, String contrasena) {
-        /*
-        Pre: Un username y su contraseña
-        Post: Devuelve true si ese usuario tiene esa contraseña, false en caso contrario
-        */
-
-        SQLiteDatabase db = getReadableDatabase();
-        String[] columnas = new String[]{"Contrasena"};
-        String[] param = new String[]{usuario};
-        Cursor cu = db.query("Usuarios", columnas, "NombreUsuario=?", param, null, null, null);
-        cu.moveToNext();
-        String contrasenaCorrecta = cu.getString(0);
-        if (contrasenaCorrecta.equals(contrasena)) {
-            return true;
-        }
-        return false;
-
-    }
-
-    public boolean existePelicula(String titulo){
+    public boolean existePelicula(String titulo) {
         /*
         Pre: El título de una película
         Post: Devuelve true si existe una película con ese título, false en caso contrario
@@ -371,45 +320,6 @@ public class miDB extends SQLiteOpenHelper {
         }
     }
 
-    public boolean existeUsuario(String nombreUsuario) {
-        /*
-        Pre: Un username
-        Post: Devuelve true si existe ese usuario, false en caso contrario
-        */
-
-        SQLiteDatabase db = getReadableDatabase();
-        String[] columnas = new String[]{"NombreUsuario"};
-        String[] param = new String[]{nombreUsuario};
-        Cursor cu = db.query("Usuarios", columnas, "NombreUsuario=?", param, null, null, null);
-        if (!cu.moveToNext()) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-
-    public JSONObject getDatosUsuario(String username) {
-        /*
-        Pre: Un username
-        Post: Devuelve los datos del usuario con ese username en formato JSON
-        */
-
-        SQLiteDatabase db = getReadableDatabase();
-        String[] columnas = new String[]{"Nombre", "Apellido"};
-        String[] param = new String[]{username};
-        Cursor cu = db.query("Usuarios", columnas, "NombreUsuario=?", param, null, null, null);
-        try {
-            JSONObject json = new JSONObject();
-            cu.moveToNext();
-            for (int i = 0; i < 2; i++) {
-                json.put(cu.getColumnName(i), cu.getString(i));
-            }
-            return json;
-        } catch (Exception e) {
-            return null;
-        }
-    }
 
     public JSONObject getDatosPelicula(String titulo) {
         /*
@@ -431,82 +341,6 @@ public class miDB extends SQLiteOpenHelper {
             return json;
         } catch (Exception e) {
             return null;
-        }
-    }
-
-    public boolean updateUsuarioUsername(String username, String usernameNuevo) {
-        /*
-        Pre: El username antiguo de un usuario y el nuevo
-        Post: Devuelve true si se ha actualizado el nombre del usuario correctamente, false en caso contrario
-        */
-
-        try {
-            SQLiteDatabase db = getWritableDatabase();
-            ContentValues datos = new ContentValues();
-            String[] argumentos = new String[]{username};
-            datos.put("NombreUsuario", usernameNuevo);
-            db.update("Usuarios", datos, "NombreUsuario = ?", argumentos);
-            db.close();
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    public boolean updateUsuarioContrasena(String username, String contrasena) {
-        /*
-        Pre: El username de un usuario y su nueva contraseña
-        Post: Devuelve true si se ha actualizado correctamente, false en caso contrario
-        */
-
-        try {
-            SQLiteDatabase db = getWritableDatabase();
-            ContentValues datos = new ContentValues();
-            String[] argumentos = new String[]{username};
-            datos.put("Contrasena", contrasena);
-            db.update("Usuarios", datos, "NombreUsuario = ?", argumentos);
-            db.close();
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    public boolean updateUsuarioNombre(String username, String nombre) {
-        /*
-        Pre: El username de un usuario y su nuevo nombre
-        Post: Devuelve true si se ha actualizado correctamente, false en caso contrario
-        */
-
-        try {
-            SQLiteDatabase db = getWritableDatabase();
-            ContentValues datos = new ContentValues();
-            String[] argumentos = new String[]{username};
-            datos.put("Nombre", nombre);
-            db.update("Usuarios", datos, "NombreUsuario = ?", argumentos);
-            db.close();
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    public boolean updateUsuarioApellido(String username, String apellido) {
-        /*
-        Pre: El username de un usuario y su nueva apellido
-        Post: Devuelve true si se ha actualizado correctamente, false en caso contrario
-        */
-
-        try {
-            SQLiteDatabase db = getWritableDatabase();
-            ContentValues datos = new ContentValues();
-            String[] argumentos = new String[]{username};
-            datos.put("Apellido", apellido);
-            db.update("Usuarios", datos, "NombreUsuario = ?", argumentos);
-            db.close();
-            return true;
-        } catch (Exception e) {
-            return false;
         }
     }
 

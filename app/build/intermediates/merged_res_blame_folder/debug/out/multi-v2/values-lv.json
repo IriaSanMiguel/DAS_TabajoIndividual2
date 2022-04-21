@@ -1,25 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TrabajoIndividual\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-lv\\values-lv.xml",
+            "outputFile": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TabajoIndividual2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-lv\\values-lv.xml",
             "map": [
-                {
-                    "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\3d009a9472caec2ed4a541e9b7d8caa3\\transformed\\core-1.5.0\\res\\values-lv\\values-lv.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "95",
-                        "startColumns": "4",
-                        "startOffsets": "8356",
-                        "endColumns": "100",
-                        "endOffsets": "8452"
-                    }
-                },
                 {
                     "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\bf8eecf50a31b54082a6f9e21d3a7e9f\\transformed\\material-1.4.0\\res\\values-lv\\values-lv.xml",
                     "from": {
@@ -37,6 +20,23 @@
                         "endLines": "6,34,35,36,37,39,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,92",
                         "endColumns": "12,80,100,133,82,64,93,72,60,124,67,60,71,59,53,119,59,61,53,76,129,86,81,110,79,84,90,66,65,73,80,83,72,76,76,73,92,74,89,90,71,77,90,53,67,83,86,61,63,62,109,112,102,111,76",
                         "endOffsets": "324,3289,3390,3524,3607,3741,3933,4006,4067,4192,4260,4321,4393,4453,4507,4627,4687,4749,4803,4880,5010,5097,5179,5290,5370,5455,5546,5613,5679,5753,5834,5918,5991,6068,6145,6219,6312,6387,6477,6568,6640,6718,6809,6863,6931,7015,7102,7164,7228,7291,7401,7514,7617,7729,8122"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\8f18d404b14ded5469b23b967bbaaed2\\transformed\\core-1.6.0\\res\\values-lv\\values-lv.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "95",
+                        "startColumns": "4",
+                        "startOffsets": "8356",
+                        "endColumns": "100",
+                        "endOffsets": "8452"
                     }
                 },
                 {

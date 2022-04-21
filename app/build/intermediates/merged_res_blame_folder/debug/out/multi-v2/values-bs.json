@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TrabajoIndividual\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-bs\\values-bs.xml",
+            "outputFile": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TabajoIndividual2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-bs\\values-bs.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\bf8eecf50a31b54082a6f9e21d3a7e9f\\transformed\\material-1.4.0\\res\\values-bs\\values-bs.xml",
@@ -20,6 +20,23 @@
                         "endLines": "6,34,35,36,37,39,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,92",
                         "endColumns": "12,81,95,125,80,65,91,76,62,107,65,55,70,59,53,118,56,61,53,74,123,87,82,114,84,85,87,66,65,73,77,86,71,76,72,69,92,71,91,95,73,75,95,52,66,86,86,61,63,62,107,101,100,104,79",
                         "endOffsets": "327,3134,3230,3356,3437,3574,3753,3830,3893,4001,4067,4123,4194,4254,4308,4427,4484,4546,4600,4675,4799,4887,4970,5085,5170,5256,5344,5411,5477,5551,5629,5716,5788,5865,5938,6008,6101,6173,6265,6361,6435,6511,6607,6660,6727,6814,6901,6963,7027,7090,7198,7300,7401,7506,7896"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\8f18d404b14ded5469b23b967bbaaed2\\transformed\\core-1.6.0\\res\\values-bs\\values-bs.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "95",
+                        "startColumns": "4",
+                        "startOffsets": "8126",
+                        "endColumns": "100",
+                        "endOffsets": "8222"
                     }
                 },
                 {
@@ -54,23 +71,6 @@
                         "startOffsets": "3442,3579,7739,7901,8227,8396,8483",
                         "endColumns": "70,86,81,137,168,86,82",
                         "endOffsets": "3508,3661,7816,8034,8391,8478,8561"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\3d009a9472caec2ed4a541e9b7d8caa3\\transformed\\core-1.5.0\\res\\values-bs\\values-bs.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "95",
-                        "startColumns": "4",
-                        "startOffsets": "8126",
-                        "endColumns": "100",
-                        "endOffsets": "8222"
                     }
                 },
                 {
