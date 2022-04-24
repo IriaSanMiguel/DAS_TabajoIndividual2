@@ -29,7 +29,7 @@ public class BdRemota {
         */
 
 
-        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/?accion=addUsuario&nombreUsuario=" + username + "&nombre=" + nombre + "&apellido=" + apellido + "&contrasena=" + contrasena;
+        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/usuarios.php?accion=addUsuario&nombreUsuario=" + username + "&nombre=" + nombre + "&apellido=" + apellido + "&contrasena=" + contrasena;
         try {
             URL destino = new URL(direccion);
             urlConnection = (HttpURLConnection) destino.openConnection();
@@ -69,7 +69,7 @@ public class BdRemota {
         GET: Se ha cambiado el username correctamente
         */
 
-        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/?accion=updateUsuarioUsername&nombreUsuario=" + nombreUsuario + "&nombreUsuarioNuevo=" + nombreUsuarioNuevo;
+        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/usuarios.php?accion=updateUsuarioUsername&nombreUsuario=" + nombreUsuario + "&nombreUsuarioNuevo=" + nombreUsuarioNuevo;
         try {
             URL destino = new URL(direccion);
             urlConnection = (HttpURLConnection) destino.openConnection();
@@ -108,7 +108,7 @@ public class BdRemota {
         GET: Se ha cambiado la contraseña correctamente
         */
 
-        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/?accion=updateUsuarioContrasena&nombreUsuario=" + nombreUsuario + "&updateUsuarioContrasena=" + contrasena;
+        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/usuarios.php?accion=updateUsuarioContrasena&nombreUsuario=" + nombreUsuario + "&updateUsuarioContrasena=" + contrasena;
         try {
             URL destino = new URL(direccion);
             urlConnection = (HttpURLConnection) destino.openConnection();
@@ -117,7 +117,6 @@ public class BdRemota {
             // Configuramos la petición
             urlConnection.setRequestMethod("GET");
             urlConnection.setDoOutput(true);
-            urlConnection.setRequestProperty("Content-Type", "application/x-ww-form-urlencoded");
 
             //Ejecutamos la llamada
             if (urlConnection.getResponseCode() == 200) { // Si ha salido bien
@@ -148,7 +147,7 @@ public class BdRemota {
         GET: Se ha cambiado el nombre correctamente
         */
 
-        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/?accion=updateUsuarioNombre&nombreUsuario=" + nombreUsuario + "&nombre=" + nombre;
+        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/usuarios.php?accion=updateUsuarioNombre&nombreUsuario=" + nombreUsuario + "&nombre=" + nombre;
         try {
             URL destino = new URL(direccion);
             urlConnection = (HttpURLConnection) destino.openConnection();
@@ -187,7 +186,7 @@ public class BdRemota {
         GET: Se ha cambiado el apellido correctamente
         */
 
-        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/?accion=updateUsuarioApellido&nombreUsuario=" + nombreUsuario + "&apellido=" + apellido;
+        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/usuarios.php?accion=updateUsuarioApellido&nombreUsuario=" + nombreUsuario + "&apellido=" + apellido;
 
         try {
             URL destino = new URL(direccion);
@@ -227,7 +226,7 @@ public class BdRemota {
         GET: Un JSON con todos los datos del usuario
         */
 
-        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/?accion=getDatosUsuario&nombreUsuario=" + nombreUsuario;
+        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/usuarios.php?accion=getDatosUsuario&nombreUsuario=" + nombreUsuario;
         try {
             URL destino = new URL(direccion);
             urlConnection = (HttpURLConnection) destino.openConnection();
@@ -267,7 +266,7 @@ public class BdRemota {
         GET: Si la contraseña de ese username coincide se devuelve true, false en caso contrario
         */
 
-        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/?accion=tieneEsaContrasena&nombreUsuario=" + nombreUsuario + "&contrasena=" + contrasena;
+        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/usuarios.php?accion=tieneEsaContrasena&nombreUsuario=" + nombreUsuario + "&contrasena=" + contrasena;
         try {
             URL destino = new URL(direccion);
             urlConnection = (HttpURLConnection) destino.openConnection();
@@ -311,7 +310,7 @@ public class BdRemota {
         */
 
 
-        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/?accion=existeUsuario&nombreUsuario=" + nombreUsuario;
+        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/usuarios.php?accion=existeUsuario&nombreUsuario=" + nombreUsuario;
         try {
             URL destino = new URL(direccion);
             urlConnection = (HttpURLConnection) destino.openConnection();

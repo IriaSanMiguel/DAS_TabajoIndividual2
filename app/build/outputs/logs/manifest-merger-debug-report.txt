@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-53:12
-INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-53:12
-INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-53:12
-INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-53:12
+ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-57:12
+INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-57:12
+INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-57:12
+INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-57:12
 MERGED from [androidx.databinding:viewbinding:7.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\30c979da1c15366759a254462c203160\transformed\viewbinding-7.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\e004a4d6663e90b6b129680549de4e02\transformed\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.preference:preference:1.1.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\3496082e8371033f057f8e2051b70a92\transformed\preference-1.1.1\AndroidManifest.xml:17:1-24:12
@@ -58,20 +58,20 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [androidx.print:print:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\c35deb218a42f6b1ccb34889e38f5e8d\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\00cc0f5b3215ee1f60046e4e5c8104d7\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\1addb8aa695ae2d100ec75645c6fad62\transformed\annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-53:12
-INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-53:12
-INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-53:12
+INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-57:12
+INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-57:12
+INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-57:12
 	package
 		ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:3:5-46
 		INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-53:12
+		ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-57:12
 		INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-53:12
+		ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-57:12
 		INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:11-69
@@ -181,6 +181,24 @@ uses-permission#android.permission.INTERNET
 ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:51:5-66
 	android:name
 		ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:51:22-64
+uses-feature#android.hardware.camera.any
+ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:52:5-87
+	android:required
+		ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:52:62-85
+	android:name
+		ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:52:19-61
+uses-permission#android.permission.CAMERA
+ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:53:5-64
+	android:name
+		ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:53:22-62
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:54:5-79
+	android:name
+		ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:54:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:55:5-80
+	android:name
+		ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:55:22-78
 uses-sdk
 INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml

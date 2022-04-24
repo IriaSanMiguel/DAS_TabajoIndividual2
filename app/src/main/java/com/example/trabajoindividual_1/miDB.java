@@ -25,6 +25,10 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Field;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class miDB extends SQLiteOpenHelper {
     private static final String nombre_DB = "ReviewsPeliculasUsuarios";
@@ -42,7 +46,7 @@ public class miDB extends SQLiteOpenHelper {
         //Post: Se han creado todas las tablas de la base de datos correctamente y se han introducido los datos
 
         sqLiteDatabase.execSQL("CREATE TABLE Peliculas ('Titulo' VARCHAR(255) PRIMARY KEY NOT NULL, 'Director'" +
-                " VARCHAR(255) NOT NULL, 'Anio' INTEGER NOT NULL, 'Poster' BLOB NOT NULL, 'PuntuacionMedia' FLOAT NOT NULL)");
+                " VARCHAR(255) NOT NULL, 'Anio' INTEGER NOT NULL, 'Poster' VARCHAR(255) NOT NULL, 'PuntuacionMedia' FLOAT NOT NULL)");
 
         sqLiteDatabase.execSQL("CREATE TABLE Reviews ('Usuario' VARCHAR(255) NOT NULL, 'Pelicula'" +
                 " VARCHAR(255) NOT NULL, 'Review' LONGTEXT NOT NULL, 'Puntuacion' INTEGER NOT NULL," +
@@ -55,7 +59,7 @@ public class miDB extends SQLiteOpenHelper {
         datos_batman.put("Titulo", "The Batman");
         datos_batman.put("Director", "Matt Reeves");
         datos_batman.put("Anio", 2022);
-        datos_batman.put("Poster", getByteArray(R.drawable.the_batman));
+        datos_batman.put("Poster", "the_batman");
         datos_batman.put("PuntuacionMedia", 0);
         sqLiteDatabase.insert("Peliculas", null, datos_batman);
 
@@ -64,7 +68,7 @@ public class miDB extends SQLiteOpenHelper {
         datos_uncharted.put("Titulo", "Uncharted");
         datos_uncharted.put("Director", "Ruben Fleischer");
         datos_uncharted.put("Anio", 2022);
-        datos_uncharted.put("Poster", getByteArray(R.drawable.uncharted));
+        datos_uncharted.put("Poster", "uncharted");
         datos_uncharted.put("PuntuacionMedia", 0);
         sqLiteDatabase.insert("Peliculas", null, datos_uncharted);
 
@@ -73,7 +77,7 @@ public class miDB extends SQLiteOpenHelper {
         datos_dune.put("Titulo", "Dune");
         datos_dune.put("Director", "Denis Villeneuve");
         datos_dune.put("Anio", 2022);
-        datos_dune.put("Poster", getByteArray(R.drawable.dune));
+        datos_dune.put("Poster", "dune");
         datos_dune.put("PuntuacionMedia", 0);
         sqLiteDatabase.insert("Peliculas", null, datos_dune);
 
@@ -82,7 +86,7 @@ public class miDB extends SQLiteOpenHelper {
         datos_richard.put("Titulo", "King Richard");
         datos_richard.put("Director", "Reinaldo Marcus Green");
         datos_richard.put("Anio", 2021);
-        datos_richard.put("Poster", getByteArray(R.drawable.king_richard));
+        datos_richard.put("Poster", "king_richard");
         datos_richard.put("PuntuacionMedia", 0);
         sqLiteDatabase.insert("Peliculas", null, datos_richard);
 
@@ -91,7 +95,7 @@ public class miDB extends SQLiteOpenHelper {
         datos_clifford.put("Titulo", "Clifford");
         datos_clifford.put("Director", "Walt Becker");
         datos_clifford.put("Anio", 2021);
-        datos_clifford.put("Poster", getByteArray(R.drawable.clifford));
+        datos_clifford.put("Poster", "clifford");
         datos_clifford.put("PuntuacionMedia", 0);
         sqLiteDatabase.insert("Peliculas", null, datos_clifford);
 
@@ -100,7 +104,7 @@ public class miDB extends SQLiteOpenHelper {
         datos_bladerunner.put("Titulo", "Blade Runner");
         datos_bladerunner.put("Director", "Ridley Scott");
         datos_bladerunner.put("Anio", 1982);
-        datos_bladerunner.put("Poster", getByteArray(R.drawable.blade));
+        datos_bladerunner.put("Poster", "blade");
         datos_bladerunner.put("PuntuacionMedia", 0);
         sqLiteDatabase.insert("Peliculas", null, datos_bladerunner);
 
@@ -234,7 +238,7 @@ public class miDB extends SQLiteOpenHelper {
         }
     }
 
-    public boolean addPelicula(String titulo, String director, int anio, byte[] poster) {
+    public boolean addPelicula(String titulo, String director, int anio, String poster) {
         /*
         Pre: El titulo, el director de la película, el año en el que se estrenó y el poster
         Post: Se ha creado la película correctamente
@@ -384,11 +388,30 @@ public class miDB extends SQLiteOpenHelper {
         String[] columnas = new String[]{"Poster"};
         String[] param = new String[]{titulo};
         Cursor cu = db.query("Peliculas", columnas, "Titulo=?", param, null, null, null);
-        if (cu instanceof SQLiteCursor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        /*if (cu instanceof SQLiteCursor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             ((SQLiteCursor) cu).setWindow(new CursorWindow(null, 1024 * 1024 * 10));
-        }
+        }*/
         cu.moveToNext();
-        return cu.getBlob(0);
+        String nombrePoster = cu.getString(0);
+
+        // Hacemos la petición al servidor
+        String direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/imagenes/" + nombrePoster + ".jpg";
+        try {
+            URL destino = new URL(direccion);
+            HttpURLConnection conn = (HttpURLConnection) destino.openConnection();
+            if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) { // Si ha salido bien la petición
+                // Conseguimos el Bitmap del poster
+                Bitmap bitmapimage = BitmapFactory.decodeStream(conn.getInputStream());
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                bitmapimage.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+
+                // Devolvemos el byte[]
+                return byteArrayOutputStream.toByteArray();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public String yaHaHechoReview(String usuario, String pelicula) {
