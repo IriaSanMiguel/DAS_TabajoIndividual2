@@ -36,6 +36,7 @@
     <string name="misreviews">My Reviews</string>
     <string name="nombre">Name</string>
     <string name="nombreActual">Current name</string>
+    <string name="notificacionFCM">We midd you!</string>
     <string name="nousuario">There\'s no username with that name</string>
     <string name="nuevapelicula">Create new movie</string>
     <string name="peliculaCreada">Movie created successfully</string>
@@ -58,4 +59,5 @@
     <string name="usuario">Username</string>
     <string name="usuarioyaenuso">The username has already  been used</string>
     <string name="verReviews">Movie reviews</string>
+    <string name="vistopelicula">Have you seen a new movie? Don\'t forget to write a new review</string>
 </resources>

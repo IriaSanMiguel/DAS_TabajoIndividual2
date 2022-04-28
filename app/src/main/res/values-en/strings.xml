@@ -58,4 +58,6 @@
     <string name="salirsinguardar">Are you sure you want to exit without creating a new movie?</string>
     <string name="puntuacion">Please, rate the movie</string>
     <string name="resena">Please write a review</string>
+    <string name="vistopelicula">Have you seen a new movie? Don\'t forget to write a new review</string>
+    <string name="notificacionFCM">We midd you!</string>
 </resources>

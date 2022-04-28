@@ -1,6 +1,13 @@
 package com.example.trabajoindividual_1;
 
 import android.os.StrictMode;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONObject;
 
@@ -16,7 +23,7 @@ public class BdRemota {
     private HttpURLConnection urlConnection;
     int responseCode;
 
-    public BdRemota(){
+    public BdRemota() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
     }
@@ -61,6 +68,66 @@ public class BdRemota {
             return false;
         }
 
+    }
+
+    public void getToken(String username) {
+        // Pre: El username de un usuario actual
+        // Post: Se ha obtenido el Token del dispositivo desde es cual se ha conectado el usuario y se ha actualizado en la base de datos
+
+
+        // Obtenemos el token del dispositivo
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            return;
+                        }
+                        // Actualizamos el token
+                        if (!updateToken(username, task.getResult())){
+                            Log.e("updateToke", "Ha ocurrido un error al actualizar el token");
+                        }
+                    }
+                });
+
+    }
+
+    private boolean updateToken(String username, String token){
+        /*
+        Pre: El username de un usuario actual y el token de su dispositivo
+        GET: Se ha cambiado el token correctamente
+        */
+        direccion = "http://ec2-52-56-170-196.eu-west-2.compute.amazonaws.com/isanmiguel008/WEB/usuarios.php?accion=updateToken&nombreUsuario=" + username + "&token=" + token;
+        try {
+            URL destino = new URL(direccion);
+            urlConnection = (HttpURLConnection) destino.openConnection();
+            urlConnection.setConnectTimeout(5000);
+            urlConnection.setReadTimeout(5000);
+            // Configuramos la petición
+            urlConnection.setRequestMethod("GET");
+            urlConnection.setDoOutput(true);
+
+            //Ejecutamos la llamada
+            if (urlConnection.getResponseCode() == 200) { // Si ha salido bien
+                BufferedInputStream inputStream = new BufferedInputStream(urlConnection.getInputStream());
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+                String line, result = "";
+                // Obtenemos el resultado
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                inputStream.close();
+                if (!result.contains("Ha ocurrido algún error:")) { // Si se ha actualizado correctamente
+                    return true;
+                }
+            }
+            // Si algo ha salido mal
+            return false;
+
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public boolean updateUsuarioUsername(String nombreUsuario, String nombreUsuarioNuevo) {

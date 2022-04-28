@@ -58,4 +58,6 @@
     <string name="salirsinguardar">¿Seguro que quieres salir sin crear una nueva película?</string>
     <string name="puntuacion">Por favor, dé una puntuación a la película</string>
     <string name="resena">Por favor, escriba una reseña</string>
+    <string name="vistopelicula">¿Has visto una nueva película? No te olvides de hacerle una reseña</string>
+    <string name="notificacionFCM">¡Te echamos de menos!</string>
 </resources>

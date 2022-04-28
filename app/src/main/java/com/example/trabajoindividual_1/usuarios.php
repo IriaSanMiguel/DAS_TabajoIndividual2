@@ -43,6 +43,24 @@ else{ // Si ha salido todo bien
             }
             break;
 
+        case "updateToken": // Cambiar el token de un usuario
+            // Obtenemos los parámetros necesarios para el update
+            $nombreUsuario = $_GET["nombreUsuario"];
+            $token = $_GET["token"];
+
+
+            // Hacemos el update
+            $res = mysqli_query($con, "UPDATE Usuarios SET Token = '$token' WHERE NombreUsuario = '$nombreUsuario'");
+
+            if (!$res){ // Si no se ha ejecutado la consulta correctamente
+                echo 'Ha ocurrido algún error: ' . mysqli_error($con);
+            }else{
+                $resultado -> ok = True;
+                // Devolvemos el resultadoo
+                echo json_encode($resultado);
+            }
+            break;
+
         case "updateUsuarioUsername": // Cambiar el username de un usuario
             // Obtenemos los parámetros necesarios para el update
             $nombreUsuario = $_GET["nombreUsuario"];
@@ -182,6 +200,78 @@ else{ // Si ha salido todo bien
                     // Devolvemos el resultadoo
                     echo json_encode($resultado);
                 }
+            }
+            break;
+        case "fcm": // Enviamos una notificación a todos los usuarios con un dispositivo en la base de datos remota
+
+            // Hacemos la consulta
+            $res = mysqli_query($con, "SELECT Token FROM Usuarios");
+            if (!$res){ // Si no se ha ejecutado la consulta correctamente
+               echo 'Ha ocurrido algún error: ' . mysqli_error($con);
+            }
+            else{ // Si se ha ejecutado la consulta correctamente
+
+                $tokens = array();
+
+                // Miramos si la query ha devuelto algo
+                while($fila =  $res->fetch_assoc()){ // Obtenemos todos los tokens
+                    $tokens[] = $fila["Token"];
+                }
+
+                // Eliminamos los valores repetidos del array de tokens
+                $tokens = array_unique($tokens);
+
+                // Creamos la petición HTTP POST con curl
+                $msg = array(
+                    "registration_ids" => $tokens,
+                    "notification" => array(
+                        "body" => "¿Has visto una nueva película? No te olvides de hacerle una reseña",
+                        "title" => "¡Te echamos de menos!"
+                    )
+                );
+
+                // Creamos las cabeceras
+                $cabecera = array(
+                    "Authorization: key=AAAAgajztQc:APA91bFticKNsQTxVhLuh65vlWWOCQm91OXStvUgGoiFCd3rGxiwzHHn5gokBjvawD6seUHbyKZgnaPth00dDy3K1N648-u6qslqeeF-YkDRkCAYXe0_Bz4ICiir7Hy62UqERJ736cRn",
+                    "Content-Type: application/json"
+                );
+
+                // Convertimos el mensaje a JSON
+                $msg = json_encode($msg);
+
+                // Hacemos la petición con curl
+                // Inicializamos el handler
+                $ch = curl_init();
+
+                // Indicamos que el destino de la petición es el servicio FCM de google
+                curl_setopt( $ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+
+                // Indicamos que la petición es un POST
+                curl_setopt( $ch, CURLOPT_POST, true);
+
+                // Añadimos las cabeceras
+                curl_setopt( $ch, CURLOPT_HTTPHEADER, $cabecera);
+
+                // Indicamos que la respuesta a la conexión se reciba en forma de string
+                curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+
+                // Añadimos los datos en formato JSON
+                curl_setopt( $ch, CURLOPT_POSTFIELDS, $msg);
+
+                // Ejecutamos la petición
+                $resultado= curl_exec( $ch);
+
+                // Depuramos los errores
+                if (curl_errno($ch)){
+                    echo "ha ocurrido un error";
+                    print curl_error($ch);
+                }
+
+                // Cerramos en handler
+                curl_close( $ch );
+
+
+                echo $resultado;
             }
             break;
    }

@@ -36,6 +36,7 @@
     <string name="misreviews">Mis reviews</string>
     <string name="nombre">Nombre</string>
     <string name="nombreActual">Nombre actual</string>
+    <string name="notificacionFCM">¡Te echamos de menos!</string>
     <string name="nousuario">No existe ningún usuario con ese nombre</string>
     <string name="nuevapelicula">Crear nueva película</string>
     <string name="peliculaCreada">Película creada correctamente</string>
@@ -58,4 +59,5 @@
     <string name="usuario">Nombre de usuario</string>
     <string name="usuarioyaenuso">El nombre de usuario ya está en uso, por favor escoja uno nuevo</string>
     <string name="verReviews">Reviews de la película</string>
+    <string name="vistopelicula">¿Has visto una nueva película? No te olvides de hacerle una reseña</string>
 </resources>

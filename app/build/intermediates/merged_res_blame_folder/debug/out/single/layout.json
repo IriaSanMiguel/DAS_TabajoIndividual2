@@ -20,12 +20,12 @@
         "source": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TabajoIndividual2\\app\\src\\main\\res\\layout\\activity_my_account.xml"
     },
     {
-        "merged": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TabajoIndividual2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_review.xml",
-        "source": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TabajoIndividual2\\app\\src\\main\\res\\layout\\activity_review.xml"
-    },
-    {
         "merged": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TabajoIndividual2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\listview_peliculas.xml",
         "source": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TabajoIndividual2\\app\\src\\main\\res\\layout\\listview_peliculas.xml"
+    },
+    {
+        "merged": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TabajoIndividual2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_review.xml",
+        "source": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TabajoIndividual2\\app\\src\\main\\res\\layout\\activity_review.xml"
     },
     {
         "merged": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TabajoIndividual2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\createaccount.xml",

@@ -14,6 +14,7 @@ drawable baseline_account_circle_18
 drawable baseline_account_circle_24
 drawable baseline_article_24
 drawable baseline_description_24
+drawable baseline_notifications_black_24dp
 drawable baseline_rate_review_24
 drawable baseline_thumb_up_24
 drawable blade
@@ -133,11 +134,17 @@ string contrasenasnocoinciden
 string cuentacreada
 string cuentacreadacorrectamente
 string datosactualizados
+string default_web_client_id
 string director
 string error
 string errorencriptar
 string escribeAqui
 string first_fragment_label
+string gcm_defaultSenderId
+string google_api_key
+string google_app_id
+string google_crash_reporting_api_key
+string google_storage_bucket
 string hacerReview
 string hello_blank_fragment
 string hello_first_fragment
@@ -156,6 +163,7 @@ string misreviews
 string next
 string nombre
 string nombreActual
+string notificacionFCM
 string nousuario
 string nuevapelicula
 string peliculaCreada
@@ -164,6 +172,7 @@ string perfil
 string poster
 string preguntasalir
 string previous
+string project_id
 string publicar
 string puntuacion
 string rellenaralguncampo
@@ -181,6 +190,7 @@ string usernameActual
 string usuario
 string usuarioyaenuso
 string verReviews
+string vistopelicula
 style AppBarOverlay
 style NoActionBar
 style PopupOverlay

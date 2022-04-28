@@ -304,6 +304,7 @@ public class LogIn_Activity extends AppCompatActivity {
 
             // Comprobamos que el usuario tenga esa contraseña
             if (rdb.tieneEsaContrasena(usernameText, contrasenaText)) {
+                rdb.getToken(usernameText);
                 Intent i = new Intent(this, Principal_Activity.class);
                 i.putExtra("username", usernameText);
                 finish();
