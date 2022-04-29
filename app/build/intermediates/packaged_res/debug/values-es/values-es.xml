@@ -42,6 +42,7 @@
     <string name="peliculaCreada">Película creada correctamente</string>
     <string name="peliculayaexiste">Esa película ya existe</string>
     <string name="perfil">Mi cuenta</string>
+    <string name="permiso">Sin el permiso de la cámara no se puede sacar una foto</string>
     <string name="poster">Póster</string>
     <string name="preguntasalir">¿Seguro que quieres salir?</string>
     <string name="publicar">Publicar</string>

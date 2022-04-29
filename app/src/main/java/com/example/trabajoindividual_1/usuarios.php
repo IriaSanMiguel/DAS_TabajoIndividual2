@@ -205,7 +205,7 @@ else{ // Si ha salido todo bien
         case "fcm": // Enviamos una notificación a todos los usuarios con un dispositivo en la base de datos remota
 
             // Hacemos la consulta
-            $res = mysqli_query($con, "SELECT Token FROM Usuarios");
+            $res = mysqli_query($con, "SELECT token FROM Usuarios");
             if (!$res){ // Si no se ha ejecutado la consulta correctamente
                echo 'Ha ocurrido algún error: ' . mysqli_error($con);
             }
@@ -215,63 +215,77 @@ else{ // Si ha salido todo bien
 
                 // Miramos si la query ha devuelto algo
                 while($fila =  $res->fetch_assoc()){ // Obtenemos todos los tokens
-                    $tokens[] = $fila["Token"];
+                    array_push($tokens, $fila["token"]);
                 }
 
                 // Eliminamos los valores repetidos del array de tokens
                 $tokens = array_unique($tokens);
+                $tokens = json_encode($tokens);
+                if (sizeOf($tokens)>0){
+                    // Creamos la petición HTTP POST con curl
+                    if(sizeOf($tokens)>1){ // Si hay más de un único token
+                        $msg = array(
+                            "registration_ids" => $tokens,
+                            "notification" => array(
+                                "body" => "¿Has visto una nueva película? No te olvides de hacerle una reseña",
+                                "title" => "¡Te echamos de menos!"
+                            )
+                        );
+                    }else{
+                        $msg = array(
+                            "to" => $tokens[0],
+                            "notification" => array(
+                                "body" => "¿Has visto una nueva película? No te olvides de hacerle una reseña",
+                                "title" => "¡Te echamos de menos!"
+                            )
+                        );
+                    }
 
-                // Creamos la petición HTTP POST con curl
-                $msg = array(
-                    "registration_ids" => $tokens,
-                    "notification" => array(
-                        "body" => "¿Has visto una nueva película? No te olvides de hacerle una reseña",
-                        "title" => "¡Te echamos de menos!"
-                    )
-                );
 
-                // Creamos las cabeceras
-                $cabecera = array(
-                    "Authorization: key=AAAAgajztQc:APA91bFticKNsQTxVhLuh65vlWWOCQm91OXStvUgGoiFCd3rGxiwzHHn5gokBjvawD6seUHbyKZgnaPth00dDy3K1N648-u6qslqeeF-YkDRkCAYXe0_Bz4ICiir7Hy62UqERJ736cRn",
-                    "Content-Type: application/json"
-                );
+                    // Creamos las cabeceras
+                    $cabecera = array(
+                        "Authorization: key=AAAACGL0DnM:APA91bF-51Wb5AzAu11Lb6V-Lzi1XZs5guT76Sew-nKW8_PFFDFjrdCobM2I8HO4Z1C47mgyChnQyn7Pc9lxcsmaoQFYr9EuA6AhPOG-HHM0Vfm8cMtHYb0wvs8PLUIv-gPKWvZ90m07",
+                        "Content-Type: application/json"
+                    );
 
-                // Convertimos el mensaje a JSON
-                $msg = json_encode($msg);
+                    // Convertimos el mensaje a JSON
+                    $msg = json_encode($msg);
 
-                // Hacemos la petición con curl
-                // Inicializamos el handler
-                $ch = curl_init();
+                    // Hacemos la petición con curl
+                    // Inicializamos el handler
+                    $ch = curl_init();
 
-                // Indicamos que el destino de la petición es el servicio FCM de google
-                curl_setopt( $ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+                    // Indicamos que el destino de la petición es el servicio FCM de google
+                    curl_setopt( $ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
 
-                // Indicamos que la petición es un POST
-                curl_setopt( $ch, CURLOPT_POST, true);
+                    // Indicamos que la petición es un POST
+                    curl_setopt( $ch, CURLOPT_POST, true);
 
-                // Añadimos las cabeceras
-                curl_setopt( $ch, CURLOPT_HTTPHEADER, $cabecera);
+                    // Añadimos las cabeceras
+                    curl_setopt( $ch, CURLOPT_HTTPHEADER, $cabecera);
 
-                // Indicamos que la respuesta a la conexión se reciba en forma de string
-                curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+                    // Indicamos que la respuesta a la conexión se reciba en forma de string
+                    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
 
-                // Añadimos los datos en formato JSON
-                curl_setopt( $ch, CURLOPT_POSTFIELDS, $msg);
+                    // Añadimos los datos en formato JSON
+                    curl_setopt( $ch, CURLOPT_POSTFIELDS, $msg);
 
-                // Ejecutamos la petición
-                $resultado= curl_exec( $ch);
+                    // Ejecutamos la petición
+                    $resultado= curl_exec( $ch);
 
-                // Depuramos los errores
-                if (curl_errno($ch)){
-                    echo "ha ocurrido un error";
-                    print curl_error($ch);
+                    // Depuramos los errores
+                    if (curl_errno($ch)){
+                        echo "ha ocurrido un error";
+                        print curl_error($ch);
+                    }
+
+                    // Cerramos en handler
+                    curl_close( $ch );
+
+
+                    echo $resultado;
                 }
 
-                // Cerramos en handler
-                curl_close( $ch );
-
-
-                echo $resultado;
             }
             break;
    }

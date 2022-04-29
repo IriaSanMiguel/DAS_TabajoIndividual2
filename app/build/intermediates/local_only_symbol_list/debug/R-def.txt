@@ -169,6 +169,7 @@ string nuevapelicula
 string peliculaCreada
 string peliculayaexiste
 string perfil
+string permiso
 string poster
 string preguntasalir
 string previous

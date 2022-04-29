@@ -42,6 +42,7 @@
     <string name="peliculaCreada">Movie created successfully</string>
     <string name="peliculayaexiste">That movie already exists</string>
     <string name="perfil">My account</string>
+    <string name="permiso">Without the camera permission the photo cannot be taken</string>
     <string name="poster">Poster</string>
     <string name="preguntasalir">Are you sure you want to exit?</string>
     <string name="publicar">Publish</string>

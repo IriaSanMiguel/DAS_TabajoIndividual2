@@ -27,17 +27,17 @@
     <string name="cuentacreada">Cuenta creada</string>
     <string name="cuentacreadacorrectamente">La cuenta se ha creado correctamente</string>
     <string name="datosactualizados">Datos actualizados correctamente</string>
-    <string name="default_web_client_id" translatable="false">556885325063-ilsbe808umiv1gjrobk7keetr0e1vhld.apps.googleusercontent.com</string>
+    <string name="default_web_client_id" translatable="false">36019900019-b2h0idd9r0v5rererhsscu7247gl21tu.apps.googleusercontent.com</string>
     <string name="director">Director</string>
     <string name="error">Ha ocurrido un error</string>
     <string name="errorencriptar">Ha ocurrido un error al encriptar la contraseña</string>
     <string name="escribeAqui">Escribe aquí tu reseña</string>
     <string name="first_fragment_label">First Fragment</string>
-    <string name="gcm_defaultSenderId" translatable="false">556885325063</string>
-    <string name="google_api_key" translatable="false">AIzaSyA0j0tN4nVfQ55yIY99QGyjjj5Jgkeqz-M</string>
-    <string name="google_app_id" translatable="false">1:556885325063:android:5b8dd1fa3bea0dd07301a2</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA0j0tN4nVfQ55yIY99QGyjjj5Jgkeqz-M</string>
-    <string name="google_storage_bucket" translatable="false">trabajoindividual-1.appspot.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">36019900019</string>
+    <string name="google_api_key" translatable="false">AIzaSyBSygbhLoHwmmjUU4kq7nLAPmUCM_BstK4</string>
+    <string name="google_app_id" translatable="false">1:36019900019:android:4aba09c751f8d16aa1e406</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBSygbhLoHwmmjUU4kq7nLAPmUCM_BstK4</string>
+    <string name="google_storage_bucket" translatable="false">trabajoindividual-2.appspot.com</string>
     <string name="hacerReview">Escribir una review</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_first_fragment">Hello first fragment</string>
@@ -62,10 +62,11 @@
     <string name="peliculaCreada">Película creada correctamente</string>
     <string name="peliculayaexiste">Esa película ya existe</string>
     <string name="perfil">Mi cuenta</string>
+    <string name="permiso">Sin el permiso de la cámara no se puede sacar una foto</string>
     <string name="poster">Póster</string>
     <string name="preguntasalir">¿Seguro que quieres salir?</string>
     <string name="previous">Previous</string>
-    <string name="project_id" translatable="false">trabajoindividual-1</string>
+    <string name="project_id" translatable="false">trabajoindividual-2</string>
     <string name="publicar">Publicar</string>
     <string name="puntuacion">Por favor, dé una puntuación a la película</string>
     <string name="rellenaralguncampo">Por favor, rellene algún campo antes de guardar</string>
@@ -91,16 +92,16 @@
     </style>
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
     <style name="Theme.TrabajoIndividual_1" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
+        
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
+        
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
+        
         <item name="android:statusBarColor" ns1:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        
     </style>
 </resources>

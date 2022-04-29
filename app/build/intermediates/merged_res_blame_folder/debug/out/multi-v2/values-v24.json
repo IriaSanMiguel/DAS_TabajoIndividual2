@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\Iria San Miguel\\Documents\\GitHub\\DAS_TabajoIndividual2\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\e4599743ce7bd4bfd7c71bdeca2b296a\\transformed\\media-1.0.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\f93f20484331776d3288b6ebefa8698d\\transformed\\media-1.0.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\0b754266f9b38446a890c87ab9c36d16\\transformed\\appcompat-1.3.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\Iria San Miguel\\.gradle\\caches\\transforms-3\\e4998826d562b2d199800cc20069f241\\transformed\\appcompat-1.3.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

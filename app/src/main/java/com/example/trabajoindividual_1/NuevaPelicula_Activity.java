@@ -1,14 +1,19 @@
 package com.example.trabajoindividual_1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -24,6 +29,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 
 import org.json.JSONObject;
 
@@ -56,6 +64,7 @@ public class NuevaPelicula_Activity extends AppCompatActivity {
     private String username;
     private static final int SELECT_FILE = 1;
     private static final int CAMERA = 2;
+    private static final int PERMISO_CAMERA = 10;
     private Bitmap poster;
     private String nombrePoster;
 
@@ -195,20 +204,6 @@ public class NuevaPelicula_Activity extends AppCompatActivity {
         startActivity(i);
     }
 
-    private byte[] getByteArray(ImageView imageView) {
-        /*
-        Pre: Un ImageView
-        Post: Devuelve un byte[] de la imagen del ImageView proporcionado
-        */
-
-        // Obtenemos el bitmap
-        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-
-        // Devolvemos el byte[]
-        return byteArrayOutputStream.toByteArray();
-    }
 
     public void selectImage(View v) {
         /*
@@ -249,6 +244,26 @@ public class NuevaPelicula_Activity extends AppCompatActivity {
         */
 
 
+
+    }
+
+    private boolean comprobarPlayServices(){
+        /*
+        Pre: Se ha seleccionado Google Drive para seleccionar una imagen
+        Post: True si Google Play Services está disponible, False en caso contrario
+        */
+
+        GoogleApiAvailability api = GoogleApiAvailability.getInstance();
+        int code = api.isGooglePlayServicesAvailable(this);
+        if (code == ConnectionResult.SUCCESS) {
+            return true;
+        }
+        else {
+            if (api.isUserResolvableError(code)){
+                api.getErrorDialog(this, code, 58).show();
+            }
+            return false;
+        }
     }
 
 
@@ -257,11 +272,37 @@ public class NuevaPelicula_Activity extends AppCompatActivity {
         Pre: Se ha pulsado sobre la ImageView y se ha seleccionado sacar una nueva imagen con la cámara
         Post: Se ha abierto la cámara para que el usuario saque una foto al póster de la película
         */
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) { // Si el permiso no está concedido
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) { // Si no nos ha dado el permiso
+                Toast aviso = Toast.makeText(this, getString(R.string.permiso), Toast.LENGTH_SHORT);
+                aviso.show();
+            }
+            // Pedimos el permiso
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, PERMISO_CAMERA);
+        } else { // Si tenemos permiso
+            // Creamos el intent
+            Intent intentCamara = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intentCamara, CAMERA);
+        }
 
-        // Creamos el intent
-        Intent intentCamara = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intentCamara, CAMERA);
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case PERMISO_CAMERA: {
+                // Si la petición se cancela, granResults estará vacío
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // PERMISO CONCEDIDO, EJECUTAR LA FUNCIONALIDAD
+                    // Creamos el intent
+                    Intent intentCamara = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intentCamara, CAMERA);
+                }
+                return;
+            }
+        }
     }
 
 
@@ -300,10 +341,10 @@ public class NuevaPelicula_Activity extends AppCompatActivity {
                             .build();
                     Request request = new Request.Builder().url(destino).post(formBody).build();
                     Response response = client.newCall(request).execute();
-                    if (response.isSuccessful()){ // Si la petición se ha ejecutado correctamento
-                        Log.d("http","OK");
-                    }else{ // Si algo ha salido mal
-                        Log.d("http","Algo ha salido mal");
+                    if (response.isSuccessful()) { // Si la petición se ha ejecutado correctamento
+                        Log.d("http", "OK");
+                    } else { // Si algo ha salido mal
+                        Log.d("http", "Algo ha salido mal");
                         Log.d("http", response.toString());
                     }
                 } catch (Exception e) {

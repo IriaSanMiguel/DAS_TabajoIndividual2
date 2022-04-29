@@ -1166,7 +1166,6 @@ color dim_foreground_material_dark
 color dim_foreground_material_light
 color error_color_material_dark
 color error_color_material_light
-color fcm_test_color
 color foreground_material_dark
 color foreground_material_light
 color highlighted_text_material_dark
@@ -1804,9 +1803,6 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
-drawable adaptive_icon
-drawable adaptive_icon_background
-drawable adaptive_icon_foreground
 drawable avd_hide_password
 drawable avd_show_password
 drawable baseline_account_box_black_48
@@ -1852,8 +1848,6 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable dune
-drawable gcm_icon
-drawable gcm_icon2
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_arrow_down_24dp
@@ -1865,7 +1859,6 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
-drawable icon_with_gradient
 drawable interstellar
 drawable king_richard
 drawable material_cursor_drawable
@@ -2618,7 +2611,6 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 navigation nav_graph
 plurals mtrl_badge_content_description
-raw gcm_bip
 raw instrucciones_en
 raw instrucciones_es
 string Guardar
@@ -2704,9 +2696,7 @@ string expand_button_title
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
-string fcm_2_args
 string fcm_fallback_notification_channel_label
-string fcm_no_args
 string first_fragment_label
 string gcm_defaultSenderId
 string google_api_key
@@ -2803,6 +2793,7 @@ string path_password_strike_through
 string peliculaCreada
 string peliculayaexiste
 string perfil
+string permiso
 string poster
 string preference_copied
 string preguntasalir

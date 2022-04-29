@@ -60,4 +60,5 @@
     <string name="resena">Por favor, escriba una reseña</string>
     <string name="vistopelicula">¿Has visto una nueva película? No te olvides de hacerle una reseña</string>
     <string name="notificacionFCM">¡Te echamos de menos!</string>
+    <string name="permiso">Sin el permiso de la cámara no se puede sacar una foto</string>
 </resources>

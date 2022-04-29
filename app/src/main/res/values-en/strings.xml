@@ -60,4 +60,5 @@
     <string name="resena">Please write a review</string>
     <string name="vistopelicula">Have you seen a new movie? Don\'t forget to write a new review</string>
     <string name="notificacionFCM">We midd you!</string>
+    <string name="permiso">Without the camera permission the photo cannot be taken</string>
 </resources>
