@@ -213,8 +213,8 @@ public class NuevaPelicula_Activity extends AppCompatActivity {
 
         // Creamos un diálogo para elegir el idioma
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.cambiarIdioma);
-        String[] languages = {"Galería", "Cámara"};
+        builder.setTitle(R.string.selectcamera);
+        String[] languages = {getString(R.string.galeria), getString(R.string.camarao)};
         builder.setSingleChoiceItems(languages, -1, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

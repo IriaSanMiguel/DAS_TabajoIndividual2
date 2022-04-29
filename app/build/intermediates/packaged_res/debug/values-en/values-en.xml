@@ -7,6 +7,7 @@
     <string name="app_name">Movie Reviews</string>
     <string name="boton_login">Log in</string>
     <string name="boton_logup">Create account</string>
+    <string name="camarao">Camera</string>
     <string name="cambiarApellido">Change surname</string>
     <string name="cambiarContraseña">Change password</string>
     <string name="cambiarIdioma">Change lenguage</string>
@@ -22,6 +23,7 @@
     <string name="error">An error has occurred</string>
     <string name="errorencriptar">An error has ocurred while encrypting the password</string>
     <string name="escribeAqui">Write here your review</string>
+    <string name="galeria">Gallery</string>
     <string name="hacerReview">Write a review</string>
     <string name="hintContraseña">Password</string>
     <string name="hintUsuario">Username</string>
@@ -36,7 +38,7 @@
     <string name="misreviews">My Reviews</string>
     <string name="nombre">Name</string>
     <string name="nombreActual">Current name</string>
-    <string name="notificacionFCM">We midd you!</string>
+    <string name="notificacionFCM">We miss you!</string>
     <string name="nousuario">There\'s no username with that name</string>
     <string name="nuevapelicula">Create new movie</string>
     <string name="peliculaCreada">Movie created successfully</string>
@@ -54,6 +56,7 @@
     <string name="salir">Exit</string>
     <string name="salirsinguardar">Are you sure you want to exit without creating a new movie?</string>
     <string name="seleccIdioma">Choose  a lenguage</string>
+    <string name="selectcamera">Camera or Gallery</string>
     <string name="tituloCrearCuenta">Fill in the following sections in order to create the account</string>
     <string name="tituloPeli">Movie title</string>
     <string name="usernameActual">Current username</string>

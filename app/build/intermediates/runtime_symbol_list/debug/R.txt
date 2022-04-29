@@ -2650,6 +2650,7 @@ int string boton_login 0x7f110022
 int string boton_logup 0x7f110023
 int string bottom_sheet_behavior 0x7f110024
 int string bottomsheet_action_expand_halfway 0x7f110025
+int string camarao 0x7f1100d2
 int string cambiarApellido 0x7f110026
 int string cambiarContraseña 0x7f110027
 int string cambiarIdioma 0x7f110028
@@ -2697,6 +2698,7 @@ int string fab_transformation_scrim_behavior 0x7f110051
 int string fab_transformation_sheet_behavior 0x7f110052
 int string fcm_fallback_notification_channel_label 0x7f110053
 int string first_fragment_label 0x7f110054
+int string galeria 0x7f1100d3
 int string gcm_defaultSenderId 0x7f110055
 int string google_api_key 0x7f110056
 int string google_app_id 0x7f110057
@@ -2809,6 +2811,7 @@ int string salirsinguardar 0x7f1100c0
 int string search_menu_title 0x7f1100c1
 int string second_fragment_label 0x7f1100c2
 int string seleccIdioma 0x7f1100c3
+int string selectcamera 0x7f1100d1
 int string status_bar_notification_info_overflow 0x7f1100c4
 int string summary_collapsed_preference_list 0x7f1100c5
 int string title_activity_my_account 0x7f1100c6

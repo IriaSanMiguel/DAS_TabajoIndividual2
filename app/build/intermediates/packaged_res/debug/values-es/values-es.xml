@@ -7,6 +7,7 @@
     <string name="app_name">Reviews de Películas</string>
     <string name="boton_login">Iniciar sesión</string>
     <string name="boton_logup">Crear cuenta</string>
+    <string name="camarao">Cámara</string>
     <string name="cambiarApellido">Cambiar apellido</string>
     <string name="cambiarContraseña">Cambiar contraseña</string>
     <string name="cambiarIdioma">Cambiar idioma</string>
@@ -22,6 +23,7 @@
     <string name="error">Ha ocurrido un error</string>
     <string name="errorencriptar">Ha ocurrido un error al encriptar la contraseña</string>
     <string name="escribeAqui">Escribe aquí tu reseña</string>
+    <string name="galeria">Galería</string>
     <string name="hacerReview">Escribir una review</string>
     <string name="hintContraseña">Contraseña</string>
     <string name="hintUsuario">Nombre de usuario</string>
@@ -54,6 +56,7 @@
     <string name="salir">Salir</string>
     <string name="salirsinguardar">¿Seguro que quieres salir sin crear una nueva película?</string>
     <string name="seleccIdioma">Selecciona un idioma</string>
+    <string name="selectcamera">Cámara o galería</string>
     <string name="tituloCrearCuenta">Rellena los siguientes apartados para crear la cuenta</string>
     <string name="tituloPeli">Título de la película</string>
     <string name="usernameActual">Username actual</string>

@@ -5,6 +5,7 @@ INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\ap
 INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-64:12
 INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:1-64:12
 MERGED from [androidx.databinding:viewbinding:7.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\01f462a7bf3987cd068fbdaa307b8442\transformed\viewbinding-7.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-auth:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9efad4672cbeefaaaa2e319b24bf2616\transformed\play-services-auth-19.0.0\AndroidManifest.xml:17:1-40:12
 MERGED from [com.google.firebase:firebase-analytics:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\d3e2b9e40b0a24d493edb0b2357632a3\transformed\firebase-analytics-20.1.2\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\320270e92e7578cdb39169f3fa865ec5\transformed\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.preference:preference:1.1.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\1389750bf57b46f941ccd56e51165306\transformed\preference-1.1.1\AndroidManifest.xml:17:1-24:12
@@ -25,22 +26,27 @@ MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] C:\Users\Iria Sa
 MERGED from [com.google.android.gms:play-services-measurement-api:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\ddd422e46f65b2e95735e2a51c6b8a45\transformed\play-services-measurement-api-20.1.2\AndroidManifest.xml:17:1-37:12
 MERGED from [com.google.firebase:firebase-installations:17.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\30010407be993d3ccfffefbf58ae8958\transformed\firebase-installations-17.0.1\AndroidManifest.xml:2:1-24:12
 MERGED from [com.google.firebase:firebase-common:20.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\49ba844213aabb3a21e0fbf91274a22d\transformed\firebase-common-20.1.0\AndroidManifest.xml:15:1-40:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\28ad9cddf3b6807b78c40002f337e6e9\transformed\play-services-auth-api-phone-17.0.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\6f4c34eab64aaa7e8f671adf6d743d1a\transformed\play-services-auth-base-17.0.0\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\00d37b3a4401e2630230bf9eb675465e\transformed\play-services-base-18.0.1\AndroidManifest.xml:16:1-24:12
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\3e8362e9c2c18392be296e12219b8976\transformed\play-services-cloud-messaging-17.0.1\AndroidManifest.xml:2:1-13:12
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\a9331409655f286b406c6940e0349b36\transformed\firebase-iid-interop-17.1.0\AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.firebase:firebase-installations-interop:17.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\b618cf40023989c3cf68cc96294b1e9a\transformed\firebase-installations-interop-17.0.1\AndroidManifest.xml:15:1-23:12
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\32a18700b90ee242fa995b7566274b94\transformed\play-services-tasks-18.0.1\AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-measurement:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9713a8d31791d3e3185635014f07cb2e\transformed\play-services-measurement-20.1.2\AndroidManifest.xml:17:1-46:12
 MERGED from [com.google.android.gms:play-services-measurement-sdk:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\71de4de580582283e0e8bd3d2996ee54\transformed\play-services-measurement-sdk-20.1.2\AndroidManifest.xml:17:1-25:12
 MERGED from [com.google.android.gms:play-services-measurement-impl:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\962afa2ac549280466d3c0df4839e523\transformed\play-services-measurement-impl-20.1.2\AndroidManifest.xml:17:1-32:12
 MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\cd60bee597eefb377f527e287e4862c2\transformed\play-services-stats-17.0.2\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\a9331409655f286b406c6940e0349b36\transformed\firebase-iid-interop-17.1.0\AndroidManifest.xml:2:1-10:12
-MERGED from [com.google.firebase:firebase-installations-interop:17.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\b618cf40023989c3cf68cc96294b1e9a\transformed\firebase-installations-interop-17.0.1\AndroidManifest.xml:15:1-23:12
-MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\32a18700b90ee242fa995b7566274b94\transformed\play-services-tasks-18.0.1\AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\13aefaeaf7611310c000fd7fbe58b551\transformed\firebase-measurement-connector-19.0.0\AndroidManifest.xml:17:1-25:12
 MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\7c53c9713f473d7c7584c54f333e36f8\transformed\play-services-ads-identifier-18.0.0\AndroidManifest.xml:17:1-27:12
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\b175ff9c3d09292a937629a5408fa86d\transformed\play-services-measurement-sdk-api-20.1.2\AndroidManifest.xml:17:1-28:12
 MERGED from [com.google.android.gms:play-services-measurement-base:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\118cc0c66e847af19cb42c9e3dc009f4\transformed\play-services-measurement-base-20.1.2\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\68c3d3a7ae2a34d6bdc878c18214a9a0\transformed\play-services-basement-18.0.0\AndroidManifest.xml:16:1-26:12
 MERGED from [androidx.fragment:fragment:1.3.4] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\69b3d11509c2175b4935d9ca7bfdc359\transformed\fragment-1.3.4\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\7bb024483fc42fdd865d88f0bfc35e4f\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\c72ed98f5b79f459f03e4076f72f8979\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\deecbafafa78820f34b4365b6e9e4140\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\e5a90fe778cbbb637c89b9a53f7ba683\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\a0d2abbac51ab892063ff3b656ea2056\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-runtime:2.3.5] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\23799005847b239a3d24be3d51c0f97f\transformed\navigation-runtime-2.3.5\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity:1.2.3] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\71a8a2cba07da5330892e204d15077f2\transformed\activity-1.2.3\AndroidManifest.xml:17:1-24:12
@@ -49,7 +55,6 @@ MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\I
 MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\5bd1514955e8d8727dabc92aaf6b8bae\transformed\savedstate-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.transition:transition:1.3.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\01d067406ad458a69bf4b251488682ef\transformed\transition-1.3.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\dac83cb48972711642a4f91cee76b571\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\7bb024483fc42fdd865d88f0bfc35e4f\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\69e3984fbcfdcb46861d1e2b57400e9f\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\31068ccf735b0d7ae7baf251a488792f\transformed\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\99ec489724368504b5ec7c3619d97b67\transformed\drawerlayout-1.1.1\AndroidManifest.xml:17:1-24:12
@@ -57,8 +62,6 @@ MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Iria San Miguel\.gradl
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\8c0ec69462107b1a98f04dcaa329aae9\transformed\slidingpanelayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.customview:customview:1.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\60b3c36730d6a7cdbe9d9cec71f935f6\transformed\customview-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.media:media:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\f93f20484331776d3288b6ebefa8698d\transformed\media-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\deecbafafa78820f34b4365b6e9e4140\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.loader:loader:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\e5a90fe778cbbb637c89b9a53f7ba683\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common:2.3.5] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\ddd85b3ea7d92b21b5b02e75a3c33066\transformed\navigation-common-2.3.5\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\fd923d4b54bd2093b2f38fd5413c8fb2\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\10648d6c59b162c8f4496d97bf858b52\transformed\asynclayoutinflater-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -102,6 +105,8 @@ INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\ap
 		ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:2:11-69
 application
 ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml:5:5-57:19
+MERGED from [com.google.android.gms:play-services-auth:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9efad4672cbeefaaaa2e319b24bf2616\transformed\play-services-auth-19.0.0\AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-auth:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9efad4672cbeefaaaa2e319b24bf2616\transformed\play-services-auth-19.0.0\AndroidManifest.xml:22:5-38:19
 MERGED from [com.google.firebase:firebase-analytics:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\d3e2b9e40b0a24d493edb0b2357632a3\transformed\firebase-analytics-20.1.2\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\d3e2b9e40b0a24d493edb0b2357632a3\transformed\firebase-analytics-20.1.2\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\5b55d40828a90429a96b53bc172f8e48\transformed\material-1.4.0\AndroidManifest.xml:22:5-20
@@ -126,6 +131,10 @@ MERGED from [com.google.firebase:firebase-common:20.1.0] C:\Users\Iria San Migue
 MERGED from [com.google.firebase:firebase-common:20.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\49ba844213aabb3a21e0fbf91274a22d\transformed\firebase-common-20.1.0\AndroidManifest.xml:25:5-38:19
 MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\00d37b3a4401e2630230bf9eb675465e\transformed\play-services-base-18.0.1\AndroidManifest.xml:19:5-23:19
 MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\00d37b3a4401e2630230bf9eb675465e\transformed\play-services-base-18.0.1\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\a9331409655f286b406c6940e0349b36\transformed\firebase-iid-interop-17.1.0\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\a9331409655f286b406c6940e0349b36\transformed\firebase-iid-interop-17.1.0\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\32a18700b90ee242fa995b7566274b94\transformed\play-services-tasks-18.0.1\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\32a18700b90ee242fa995b7566274b94\transformed\play-services-tasks-18.0.1\AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-measurement:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9713a8d31791d3e3185635014f07cb2e\transformed\play-services-measurement-20.1.2\AndroidManifest.xml:28:5-44:19
 MERGED from [com.google.android.gms:play-services-measurement:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9713a8d31791d3e3185635014f07cb2e\transformed\play-services-measurement-20.1.2\AndroidManifest.xml:28:5-44:19
 MERGED from [com.google.android.gms:play-services-measurement-sdk:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\71de4de580582283e0e8bd3d2996ee54\transformed\play-services-measurement-sdk-20.1.2\AndroidManifest.xml:22:5-23:19
@@ -134,10 +143,6 @@ MERGED from [com.google.android.gms:play-services-measurement-impl:20.1.2] C:\Us
 MERGED from [com.google.android.gms:play-services-measurement-impl:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\962afa2ac549280466d3c0df4839e523\transformed\play-services-measurement-impl-20.1.2\AndroidManifest.xml:29:5-30:19
 MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\cd60bee597eefb377f527e287e4862c2\transformed\play-services-stats-17.0.2\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\cd60bee597eefb377f527e287e4862c2\transformed\play-services-stats-17.0.2\AndroidManifest.xml:7:5-20
-MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\a9331409655f286b406c6940e0349b36\transformed\firebase-iid-interop-17.1.0\AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\a9331409655f286b406c6940e0349b36\transformed\firebase-iid-interop-17.1.0\AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\32a18700b90ee242fa995b7566274b94\transformed\play-services-tasks-18.0.1\AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\32a18700b90ee242fa995b7566274b94\transformed\play-services-tasks-18.0.1\AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\13aefaeaf7611310c000fd7fbe58b551\transformed\firebase-measurement-connector-19.0.0\AndroidManifest.xml:22:5-23:19
 MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\13aefaeaf7611310c000fd7fbe58b551\transformed\firebase-measurement-connector-19.0.0\AndroidManifest.xml:22:5-23:19
 MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\7c53c9713f473d7c7584c54f333e36f8\transformed\play-services-ads-identifier-18.0.0\AndroidManifest.xml:25:5-20
@@ -294,6 +299,8 @@ INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\ap
 INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml
 MERGED from [androidx.databinding:viewbinding:7.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\01f462a7bf3987cd068fbdaa307b8442\transformed\viewbinding-7.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.databinding:viewbinding:7.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\01f462a7bf3987cd068fbdaa307b8442\transformed\viewbinding-7.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-auth:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9efad4672cbeefaaaa2e319b24bf2616\transformed\play-services-auth-19.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9efad4672cbeefaaaa2e319b24bf2616\transformed\play-services-auth-19.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-analytics:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\d3e2b9e40b0a24d493edb0b2357632a3\transformed\firebase-analytics-20.1.2\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\d3e2b9e40b0a24d493edb0b2357632a3\transformed\firebase-analytics-20.1.2\AndroidManifest.xml:5:5-44
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\320270e92e7578cdb39169f3fa865ec5\transformed\multidex-2.0.1\AndroidManifest.xml:20:5-43
@@ -334,10 +341,20 @@ MERGED from [com.google.firebase:firebase-installations:17.0.1] C:\Users\Iria Sa
 MERGED from [com.google.firebase:firebase-installations:17.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\30010407be993d3ccfffefbf58ae8958\transformed\firebase-installations-17.0.1\AndroidManifest.xml:6:5-8:41
 MERGED from [com.google.firebase:firebase-common:20.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\49ba844213aabb3a21e0fbf91274a22d\transformed\firebase-common-20.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-common:20.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\49ba844213aabb3a21e0fbf91274a22d\transformed\firebase-common-20.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\28ad9cddf3b6807b78c40002f337e6e9\transformed\play-services-auth-api-phone-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\28ad9cddf3b6807b78c40002f337e6e9\transformed\play-services-auth-api-phone-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\6f4c34eab64aaa7e8f671adf6d743d1a\transformed\play-services-auth-base-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\6f4c34eab64aaa7e8f671adf6d743d1a\transformed\play-services-auth-base-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\00d37b3a4401e2630230bf9eb675465e\transformed\play-services-base-18.0.1\AndroidManifest.xml:18:5-43
 MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\00d37b3a4401e2630230bf9eb675465e\transformed\play-services-base-18.0.1\AndroidManifest.xml:18:5-43
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\3e8362e9c2c18392be296e12219b8976\transformed\play-services-cloud-messaging-17.0.1\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\3e8362e9c2c18392be296e12219b8976\transformed\play-services-cloud-messaging-17.0.1\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\a9331409655f286b406c6940e0349b36\transformed\firebase-iid-interop-17.1.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\a9331409655f286b406c6940e0349b36\transformed\firebase-iid-interop-17.1.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-installations-interop:17.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\b618cf40023989c3cf68cc96294b1e9a\transformed\firebase-installations-interop-17.0.1\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.firebase:firebase-installations-interop:17.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\b618cf40023989c3cf68cc96294b1e9a\transformed\firebase-installations-interop-17.0.1\AndroidManifest.xml:19:5-21:41
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\32a18700b90ee242fa995b7566274b94\transformed\play-services-tasks-18.0.1\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\32a18700b90ee242fa995b7566274b94\transformed\play-services-tasks-18.0.1\AndroidManifest.xml:4:5-43
 MERGED from [com.google.android.gms:play-services-measurement:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9713a8d31791d3e3185635014f07cb2e\transformed\play-services-measurement-20.1.2\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9713a8d31791d3e3185635014f07cb2e\transformed\play-services-measurement-20.1.2\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement-sdk:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\71de4de580582283e0e8bd3d2996ee54\transformed\play-services-measurement-sdk-20.1.2\AndroidManifest.xml:20:5-44
@@ -346,12 +363,6 @@ MERGED from [com.google.android.gms:play-services-measurement-impl:20.1.2] C:\Us
 MERGED from [com.google.android.gms:play-services-measurement-impl:20.1.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\962afa2ac549280466d3c0df4839e523\transformed\play-services-measurement-impl-20.1.2\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\cd60bee597eefb377f527e287e4862c2\transformed\play-services-stats-17.0.2\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\cd60bee597eefb377f527e287e4862c2\transformed\play-services-stats-17.0.2\AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\a9331409655f286b406c6940e0349b36\transformed\firebase-iid-interop-17.1.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\a9331409655f286b406c6940e0349b36\transformed\firebase-iid-interop-17.1.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-installations-interop:17.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\b618cf40023989c3cf68cc96294b1e9a\transformed\firebase-installations-interop-17.0.1\AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.firebase:firebase-installations-interop:17.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\b618cf40023989c3cf68cc96294b1e9a\transformed\firebase-installations-interop-17.0.1\AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\32a18700b90ee242fa995b7566274b94\transformed\play-services-tasks-18.0.1\AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\32a18700b90ee242fa995b7566274b94\transformed\play-services-tasks-18.0.1\AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\13aefaeaf7611310c000fd7fbe58b551\transformed\firebase-measurement-connector-19.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\13aefaeaf7611310c000fd7fbe58b551\transformed\firebase-measurement-connector-19.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-ads-identifier:18.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\7c53c9713f473d7c7584c54f333e36f8\transformed\play-services-ads-identifier-18.0.0\AndroidManifest.xml:20:5-44
@@ -364,8 +375,14 @@ MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\Iria
 MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\68c3d3a7ae2a34d6bdc878c18214a9a0\transformed\play-services-basement-18.0.0\AndroidManifest.xml:18:5-43
 MERGED from [androidx.fragment:fragment:1.3.4] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\69b3d11509c2175b4935d9ca7bfdc359\transformed\fragment-1.3.4\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.3.4] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\69b3d11509c2175b4935d9ca7bfdc359\transformed\fragment-1.3.4\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\7bb024483fc42fdd865d88f0bfc35e4f\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\7bb024483fc42fdd865d88f0bfc35e4f\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\c72ed98f5b79f459f03e4076f72f8979\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\c72ed98f5b79f459f03e4076f72f8979\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\deecbafafa78820f34b4365b6e9e4140\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\deecbafafa78820f34b4365b6e9e4140\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\e5a90fe778cbbb637c89b9a53f7ba683\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\e5a90fe778cbbb637c89b9a53f7ba683\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\a0d2abbac51ab892063ff3b656ea2056\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\a0d2abbac51ab892063ff3b656ea2056\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.navigation:navigation-runtime:2.3.5] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\23799005847b239a3d24be3d51c0f97f\transformed\navigation-runtime-2.3.5\AndroidManifest.xml:20:5-22:41
@@ -382,8 +399,6 @@ MERGED from [androidx.transition:transition:1.3.0] C:\Users\Iria San Miguel\.gra
 MERGED from [androidx.transition:transition:1.3.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\01d067406ad458a69bf4b251488682ef\transformed\transition-1.3.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\dac83cb48972711642a4f91cee76b571\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\dac83cb48972711642a4f91cee76b571\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\7bb024483fc42fdd865d88f0bfc35e4f\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\7bb024483fc42fdd865d88f0bfc35e4f\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\69e3984fbcfdcb46861d1e2b57400e9f\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\69e3984fbcfdcb46861d1e2b57400e9f\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\31068ccf735b0d7ae7baf251a488792f\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
@@ -398,10 +413,6 @@ MERGED from [androidx.customview:customview:1.1.0] C:\Users\Iria San Miguel\.gra
 MERGED from [androidx.customview:customview:1.1.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\60b3c36730d6a7cdbe9d9cec71f935f6\transformed\customview-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.media:media:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\f93f20484331776d3288b6ebefa8698d\transformed\media-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.media:media:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\f93f20484331776d3288b6ebefa8698d\transformed\media-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\deecbafafa78820f34b4365b6e9e4140\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\deecbafafa78820f34b4365b6e9e4140\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\e5a90fe778cbbb637c89b9a53f7ba683\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.loader:loader:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\e5a90fe778cbbb637c89b9a53f7ba683\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.navigation:navigation-common:2.3.5] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\ddd85b3ea7d92b21b5b02e75a3c33066\transformed\navigation-common-2.3.5\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.navigation:navigation-common:2.3.5] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\ddd85b3ea7d92b21b5b02e75a3c33066\transformed\navigation-common-2.3.5\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\fd923d4b54bd2093b2f38fd5413c8fb2\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
@@ -460,6 +471,26 @@ INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\ap
 		INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml
 		ADDED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Iria San Miguel\Documents\GitHub\DAS_TabajoIndividual2\app\src\main\AndroidManifest.xml
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9efad4672cbeefaaaa2e319b24bf2616\transformed\play-services-auth-19.0.0\AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9efad4672cbeefaaaa2e319b24bf2616\transformed\play-services-auth-19.0.0\AndroidManifest.xml:25:13-46
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9efad4672cbeefaaaa2e319b24bf2616\transformed\play-services-auth-19.0.0\AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9efad4672cbeefaaaa2e319b24bf2616\transformed\play-services-auth-19.0.0\AndroidManifest.xml:27:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9efad4672cbeefaaaa2e319b24bf2616\transformed\play-services-auth-19.0.0\AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9efad4672cbeefaaaa2e319b24bf2616\transformed\play-services-auth-19.0.0\AndroidManifest.xml:33:9-37:51
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9efad4672cbeefaaaa2e319b24bf2616\transformed\play-services-auth-19.0.0\AndroidManifest.xml:35:13-36
+	android:visibleToInstantApps
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9efad4672cbeefaaaa2e319b24bf2616\transformed\play-services-auth-19.0.0\AndroidManifest.xml:37:13-48
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9efad4672cbeefaaaa2e319b24bf2616\transformed\play-services-auth-19.0.0\AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:19.0.0] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\9efad4672cbeefaaaa2e319b24bf2616\transformed\play-services-auth-19.0.0\AndroidManifest.xml:34:13-89
 uses-permission#android.permission.WAKE_LOCK
 ADDED from [androidx.work:work-runtime:2.7.1] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\cf2880eed653224d0ee7cc13dd496cb9\transformed\work-runtime-2.7.1\AndroidManifest.xml:25:5-68
 MERGED from [com.google.firebase:firebase-messaging:23.0.3] C:\Users\Iria San Miguel\.gradle\caches\transforms-3\113d92b8efd68900d89fa4fa318b482d\transformed\firebase-messaging-23.0.3\AndroidManifest.xml:26:5-68

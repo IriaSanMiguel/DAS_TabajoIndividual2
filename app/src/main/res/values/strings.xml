@@ -71,4 +71,7 @@
     <string name="vistopelicula">¿Has visto una nueva película? No te olvides de hacerle una reseña</string>
     <string name="notificacionFCM">¡Te echamos de menos!</string>
     <string name="permiso">Sin el permiso de la cámara no se puede sacar una foto</string>
+    <string name="selectcamera">Cámara o galería</string>
+    <string name="galeria">Galería</string>
+    <string name="camarao">Cámara</string>
 </resources>

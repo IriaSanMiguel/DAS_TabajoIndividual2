@@ -2651,6 +2651,7 @@ string boton_login
 string boton_logup
 string bottom_sheet_behavior
 string bottomsheet_action_expand_halfway
+string camarao
 string cambiarApellido
 string cambiarContraseña
 string cambiarIdioma
@@ -2698,6 +2699,7 @@ string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string fcm_fallback_notification_channel_label
 string first_fragment_label
+string galeria
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
@@ -2810,6 +2812,7 @@ string salirsinguardar
 string search_menu_title
 string second_fragment_label
 string seleccIdioma
+string selectcamera
 string status_bar_notification_info_overflow
 string summary_collapsed_preference_list
 string title_activity_my_account

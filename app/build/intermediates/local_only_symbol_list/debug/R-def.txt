@@ -123,6 +123,7 @@ string apellidoActual
 string app_name
 string boton_login
 string boton_logup
+string camarao
 string cambiarApellido
 string cambiarContraseña
 string cambiarIdioma
@@ -140,6 +141,7 @@ string error
 string errorencriptar
 string escribeAqui
 string first_fragment_label
+string galeria
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
@@ -184,6 +186,7 @@ string salir
 string salirsinguardar
 string second_fragment_label
 string seleccIdioma
+string selectcamera
 string title_activity_my_account
 string tituloCrearCuenta
 string tituloPeli
