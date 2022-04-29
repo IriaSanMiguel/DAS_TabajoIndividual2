@@ -214,7 +214,7 @@ public class NuevaPelicula_Activity extends AppCompatActivity {
         // Creamos un diálogo para elegir el idioma
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.cambiarIdioma);
-        String[] languages = {"Galería", "Cámara", "Google Drive"};
+        String[] languages = {"Galería", "Cámara"};
         builder.setSingleChoiceItems(languages, -1, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -227,44 +227,12 @@ public class NuevaPelicula_Activity extends AppCompatActivity {
                         saveCameraImage();
                         dialogInterface.dismiss();
                         break;
-                    case 2: // Si se ha elegido seleccionar la foto desde google drive
-                        saveImagenGoogleDrive();
-                        dialogInterface.dismiss();
-                        break;
                 }
             }
         });
         builder.show();
     }
 
-    private void saveImagenGoogleDrive() {
-        /*
-        Pre: Se ha pulsado sobre la ImageView y se ha seleccionado elegir una imagen de GoogleDrive
-        Post: Se ha abierto Google Drive para que el usuario pueda seleccionar una foto al póster de la película
-        */
-
-
-
-    }
-
-    private boolean comprobarPlayServices(){
-        /*
-        Pre: Se ha seleccionado Google Drive para seleccionar una imagen
-        Post: True si Google Play Services está disponible, False en caso contrario
-        */
-
-        GoogleApiAvailability api = GoogleApiAvailability.getInstance();
-        int code = api.isGooglePlayServicesAvailable(this);
-        if (code == ConnectionResult.SUCCESS) {
-            return true;
-        }
-        else {
-            if (api.isUserResolvableError(code)){
-                api.getErrorDialog(this, code, 58).show();
-            }
-            return false;
-        }
-    }
 
 
     private void saveCameraImage() {
